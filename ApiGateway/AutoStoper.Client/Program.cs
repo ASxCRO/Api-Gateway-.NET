@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace AutoStoper.Client
 {
@@ -17,7 +18,21 @@ namespace AutoStoper.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            var http = new HttpClient()
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            };
+
+            builder.Services.AddScoped(sp => http);
+                
+            using var response = await http.GetAsync("appsettings.json");
+            using var stream = await response.Content.ReadAsStreamAsync();
+            builder.Configuration.AddJsonStream(stream);
+
+            var gatewayConnectionString = builder.Configuration["APIConnectionStrings:Gateway"];
+
+            builder.Services.AddHttpClient("AutoStoper.Gateway", client =>
+                client.BaseAddress = new Uri(gatewayConnectionString));
 
             await builder.Build().RunAsync();
         }

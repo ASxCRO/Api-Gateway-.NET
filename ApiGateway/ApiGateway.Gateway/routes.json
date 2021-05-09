@@ -1,0 +1,21 @@
+{
+  "routes": [
+    {
+      "endpoint": "/weather",
+      "destination": {
+        "uri": "https://jsonplaceholder.typicode.com/users",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
+      "endpoint": "/songs",
+      "destination": {
+        "uri": "http://localhost:8091/songs/",
+        "requiresAuthentication": "false"
+      }
+    }
+  ],
+  "authenticationService": {
+    "uri": "http://localhost:44309/api/auth/"
+  }
+}

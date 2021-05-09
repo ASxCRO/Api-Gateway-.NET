@@ -24,6 +24,7 @@ namespace AutoStoper.API.Controllers
         }
 
         [HttpGet]
+        [Route("Get")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
