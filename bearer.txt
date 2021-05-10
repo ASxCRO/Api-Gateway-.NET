@@ -1,0 +1,34 @@
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = true;
+                x.SaveToken = false;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["JwtBearerTokenSettings:Issuer"],
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.ASCII.GetBytes(Configuration["JwtBearerTokenSettings:SecretKey"])),
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["JwtBearerTokenSettings:Audience"],
+                    ValidateLifetime = true,
+                };
+            });
+
+
+
+
+
+
+
+
+
+  "JwtBearerTokenSettings": {
+    "SecretKey": "ThisIsSomeSampleSymmetricEncryptionKey",
+    "Issuer": "AuthServer",
+    "Audience": "Nemo"
+  },

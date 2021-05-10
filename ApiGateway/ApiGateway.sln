@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoStoper.Client", "AutoSt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway.Gateway", "ApiGateway.Gateway\ApiGateway.Gateway.csproj", "{0C68E93E-2FB6-41B0-A954-E2F33FB35A5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Package", "ApiGateway.Package\ApiGateway.Package.csproj", "{196D239A-A7E8-4896-AEC7-08BF4035AEB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway.Package", "ApiGateway.Package\ApiGateway.Package.csproj", "{196D239A-A7E8-4896-AEC7-08BF4035AEB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoStoper.Authorization", "AutoStoper.Authorization\AutoStoper.Authorization.csproj", "{62B7A7FE-79E3-47EE-9886-0CFD9B8C083A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoStoper.Authorization", "AutoStoper.Authorization\AutoStoper.Authorization.csproj", "{62B7A7FE-79E3-47EE-9886-0CFD9B8C083A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
