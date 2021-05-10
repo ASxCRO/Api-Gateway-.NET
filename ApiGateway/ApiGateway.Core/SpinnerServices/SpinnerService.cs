@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Project_Nemo.Shared.Services
+namespace ApiGateway.Core.SpinnerServices
 {
     public class SpinnerService
     {
