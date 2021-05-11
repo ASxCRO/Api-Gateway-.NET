@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using ApiGateway.Core.User;
+using System.Threading.Tasks;
 
 namespace ApiGateway.Core.LocalStorageServices
 {
@@ -12,9 +13,9 @@ namespace ApiGateway.Core.LocalStorageServices
             _localStorageService = localStorageService;
         }
 
-        public async Task<User> GetCurrentUser()
+        public async Task<AppUser> GetCurrentUser()
         {
-            var user = await _localStorageService.GetItem<User>("user");
+            var user = await _localStorageService.GetItem<AppUser>("user");
             return user;
         }
     }

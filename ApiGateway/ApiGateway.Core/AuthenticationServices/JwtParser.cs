@@ -59,9 +59,9 @@ namespace ApiGateway.Core.AuthenticationServices
             {
                 claims = handler.ValidateToken(token, validations, out SecurityToken tokenSecure);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
-                throw new Exception(e.Message);
+                throw new System.Exception(e.Message);
             }
 
             return claims.Claims;
@@ -89,9 +89,9 @@ namespace ApiGateway.Core.AuthenticationServices
             {
                 claims = handler.ValidateToken(token, validations, out SecurityToken tokenSecure);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
-                throw new Exception(e.Message);
+                throw new System.Exception(e.Message);
             }
 
             return claims;

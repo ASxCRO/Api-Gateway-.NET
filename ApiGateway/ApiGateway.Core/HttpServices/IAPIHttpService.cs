@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ApiGateway.Core.HttpServices
 {

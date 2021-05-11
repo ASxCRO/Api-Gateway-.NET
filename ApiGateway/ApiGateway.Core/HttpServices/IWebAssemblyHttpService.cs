@@ -1,4 +1,8 @@
-﻿namespace ApiGateway.Core.HttpServices
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace ApiGateway.Core.HttpServices
 {
     public interface IWebAssemblyHttpService
     {

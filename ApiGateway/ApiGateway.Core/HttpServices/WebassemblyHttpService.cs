@@ -1,6 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ApiGateway.Core.Exception;
+using ApiGateway.Core.SpinnerServices;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using MudBlazor;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ApiGateway.Core.HttpServices
 {
@@ -11,7 +20,7 @@ namespace ApiGateway.Core.HttpServices
         private readonly SpinnerService _spinnerService;
         private readonly ISnackbar _snackbarService;
 
-        public WebAssemblyHttpService(IHttpClientFactory httpClientFactory, NavigationManager navigationManager, SpinnerService spinnerService, ISnackbar snackbarService)
+        public WebassemblyHttpService(IHttpClientFactory httpClientFactory, NavigationManager navigationManager, SpinnerService spinnerService, ISnackbar snackbarService)
         {
             _httpClientFactory = httpClientFactory;
             _navigationManager = navigationManager;
@@ -55,7 +64,7 @@ namespace ApiGateway.Core.HttpServices
             if (!response.IsSuccessStatusCode)
             {
                 var msg = await response.Content.ReadAsStringAsync();
-                var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<ExceptionMsg>(msg);
+                var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<CustomExceptionMsg>(msg);
                 if (exceptionMsg != null)
                     _snackbarService.Add(exceptionMsg.Detail, Severity.Error);
                 return default;
@@ -90,7 +99,7 @@ namespace ApiGateway.Core.HttpServices
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    var exceptionMsg = await response.Content.ReadFromJsonAsync<ExceptionMsg>();
+                    var exceptionMsg = await response.Content.ReadFromJsonAsync<CustomExceptionMsg>();
                     //var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<ExceptionMsg>(msg);
                     if (exceptionMsg != null)
                         _snackbarService.Add(exceptionMsg.Detail, Severity.Error);

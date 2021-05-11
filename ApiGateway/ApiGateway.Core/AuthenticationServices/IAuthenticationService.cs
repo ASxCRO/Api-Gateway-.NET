@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using ApiGateway.Core.User;
+using System.Threading.Tasks;
 
 namespace ApiGateway.Core.AuthenticationServices
 {
     public interface IAuthenticationService
     {
-        User User { get; }
+        AppUser User { get; }
         Task Initialize();
         Task<bool> Login(string username, string password);
         Task Logout();
-        Task<User> ValidateToken(User user);
+        Task<AppUser> ValidateToken(AppUser user);
     }
 }

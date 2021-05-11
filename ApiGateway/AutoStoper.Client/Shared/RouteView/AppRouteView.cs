@@ -1,11 +1,16 @@
-﻿using System;
+﻿using ApiGateway.Core.AuthenticationServices;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace AutoStoper.Client.Shared.RouteView
 {
-    public class AppRouteView : RouteView
+    public class AppRouteView : Microsoft.AspNetCore.Components.RouteView
     {
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public IAuthenticationService AuthenticationService { get; set; }

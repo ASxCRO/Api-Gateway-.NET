@@ -1,6 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ApiGateway.Core.Exception;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ApiGateway.Core.HttpServices
 {
@@ -40,9 +44,9 @@ namespace ApiGateway.Core.HttpServices
             if (!response.IsSuccessStatusCode)
             {
                 var msg = await response.Content.ReadAsStringAsync();
-                var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<ExceptionMsg>(msg);
+                var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<CustomExceptionMsg>(msg);
                 if (exceptionMsg != null)
-                    throw new NemoException(exceptionMsg.Detail);
+                    throw new CustomException(exceptionMsg.Detail);
             }
 
 
