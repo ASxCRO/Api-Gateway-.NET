@@ -18,6 +18,7 @@ namespace ApiGateway.Package.Extension
             Router router = new Router("routes.json");
             var response = await router.RouteRequest(httpContext.Request);
             var content = await response.Content.ReadAsStringAsync();
+            httpContext.Response.ContentType = "application/json";
             await httpContext.Response.WriteAsync(content);
             await _next(httpContext);
         }

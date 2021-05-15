@@ -39,7 +39,7 @@ namespace ApiGateway.Package.Models
 
             if (destination.RequiresAuthentication)
             {
-                string token = request.Headers["Authentication"];
+                string token = request.Headers["Authorization"];
                 request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
                 HttpResponseMessage authResponse = await AuthenticationService.SendRequest(request);
                 if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");

@@ -3,7 +3,7 @@
     {
       "endpoint": "/weather",
       "destination": {
-        "uri": "https://jsonplaceholder.typicode.com/users",
+        "uri": "https://localhost:44386/WeatherForecast/get",
         "requiresAuthentication": "false"
       }
     }

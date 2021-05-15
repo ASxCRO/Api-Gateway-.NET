@@ -1,20 +1,21 @@
 ﻿@page "/"
-@using AutoStoper.Client.Models
+@using AutoStoper.Client.Shared.Models
+
 @inject IHttpClientFactory ClientFactory
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-Users:
+Weather Forecasts:
 
-@foreach (var item in Users)
+@foreach (var item in Weather)
 {
-    <h1>@item.Email</h1>
+    <h1>@item.Summary</h1>
 }
 
 @code {
-    public List<User> Users { get; set; } = new();
+    public List<WeatherForecast> Weather { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -28,8 +29,9 @@ Users:
 
             requestMessage.SetBrowserRequestMode(BrowserRequestMode.NoCors);
             requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-            var response = await httpClient.SendAsync(requestMessage);
-            Users = await response.Content.ReadFromJsonAsync<List<User>>();
+            var response = await httpClient.GetAsync("weather");
+            if (response.IsSuccessStatusCode)
+                Weather = await response.Content.ReadFromJsonAsync<List<WeatherForecast>>();
         }
     }
 }
