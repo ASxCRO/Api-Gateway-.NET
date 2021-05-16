@@ -1,3 +1,5 @@
+using ApiGateway.Core.Services.AuthenticationServices;
+using ApiGateway.Package.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,8 @@ namespace AutoStoper.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AutoStoper.API", Version = "v1" });
             });
+
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +51,6 @@ namespace AutoStoper.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

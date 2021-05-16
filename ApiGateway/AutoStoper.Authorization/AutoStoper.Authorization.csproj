@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\ApiGateway.Core\ApiGateway.Core.csproj" />
+    <ProjectReference Include="..\ApiGateway.Package\ApiGateway.Package.csproj" />
   </ItemGroup>
 
 </Project>

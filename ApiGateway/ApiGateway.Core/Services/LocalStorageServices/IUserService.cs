@@ -5,6 +5,6 @@ namespace ApiGateway.Core.LocalStorageServices
 {
     public interface IUserService
     {
-        Task<AppUser> GetCurrentUser();
+        Task<User.User> GetCurrentUser();
     }
 }

@@ -18,7 +18,6 @@ namespace ApiGateway.Gateway
                     builder => builder.AllowAnyOrigin()
                                         .AllowAnyHeader()
                                         .AllowAnyMethod()
-                                        //.AllowCredentials()
                                         );
             });
         }

@@ -1,3 +1,4 @@
+using ApiGateway.Package.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +32,7 @@ namespace AutoStoper.Authorization
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseApiGatewayAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
