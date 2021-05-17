@@ -2,6 +2,7 @@ using ApiGateway.Package.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace ApiGateway.Gateway
 {
@@ -14,10 +15,9 @@ namespace ApiGateway.Gateway
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("https://localhost:44317")
+                    builder => builder.AllowAnyOrigin()
                                         .AllowAnyHeader()
                                         .AllowAnyMethod()
-                                        .AllowCredentials()
                                         );
             });
         }
@@ -25,6 +25,10 @@ namespace ApiGateway.Gateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
             app.UseCors("AllowSpecificOrigin");
             app.UseApiGateway();
         }

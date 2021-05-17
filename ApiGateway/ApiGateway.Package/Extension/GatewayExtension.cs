@@ -9,5 +9,11 @@ namespace ApiGateway.Package.Extension
                 app.UseMiddleware<GatewayMiddleware>();
                 return app;
             }
+
+            public static IApplicationBuilder UseApiGatewayAuthorization(this IApplicationBuilder app)
+            {
+                app.UseMiddleware<JwtMiddleware>();
+                return app;
+            }
     }
 }

@@ -13,9 +13,9 @@ namespace ApiGateway.Core.LocalStorageServices
             _localStorageService = localStorageService;
         }
 
-        public async Task<AppUser> GetCurrentUser()
+        public async Task<User.User> GetCurrentUser()
         {
-            var user = await _localStorageService.GetItem<AppUser>("user");
+            var user = await _localStorageService.GetItem<User.User>("user");
             return user;
         }
     }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiGateway.Core.User
+namespace ApiGateway.Core.Enums
 {
-    public class AppUser
+    public class Schemes
     {
-        public string[] Roles{ get; set; }
     }
 }

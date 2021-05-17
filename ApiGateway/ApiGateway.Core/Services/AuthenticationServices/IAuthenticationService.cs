@@ -5,10 +5,10 @@ namespace ApiGateway.Core.AuthenticationServices
 {
     public interface IAuthenticationService
     {
-        AppUser User { get; }
+        User.User User { get; }
         Task Initialize();
         Task<bool> Login(string username, string password);
         Task Logout();
-        Task<AppUser> ValidateToken(AppUser user);
+        Task<User.User> ValidateToken(User.User user);
     }
 }
