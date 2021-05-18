@@ -13,13 +13,13 @@ namespace ApiGateway.Package.Models
     public class Router
     {
         public List<Route> Routes { get; set; }
-        public Destination AuthenticationService { get; set; }
+        public List<Service> Services { get; set; }
 
         public Router(string routeConfigFilePath)
         {
             dynamic router = JsonLoader.LoadFromFile<dynamic>(routeConfigFilePath);
             Routes = JsonLoader.Deserialize<List<Route>>(Convert.ToString(router.routes));
-            AuthenticationService = JsonLoader.Deserialize<Destination>(Convert.ToString(router.authenticationService));
+            Services = JsonLoader.Deserialize<List<Service>>(Convert.ToString(router.services));
         }
 
         public async Task<HttpResponseMessage> RouteRequest(HttpRequest request)
@@ -28,22 +28,25 @@ namespace ApiGateway.Package.Models
             string basePath = '/' + path.Split('/')[1];
 
             Destination destination;
+            Service service;
             try
             {
                 destination = Routes.First(r => r.Endpoint.Equals(basePath)).Destination;
+                service = Services.First(s => s.Id.Equals(destination.ServiceId));
+                destination.Uri = $"{service.baseUri}/{destination.Uri}";
             }
             catch
             {
                 return ConstructErrorMessage("Nije moguće pronaći putanju.");
             }
 
-            if (destination.RequiresAuthentication)
-            {
-                string token = request.Headers["Authorization"];
-                request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
-                HttpResponseMessage authResponse = await AuthenticationService.SendRequest(request);
-                if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
-            }
+            //if (destination.RequiresAuthentication)
+            //{
+            //    string token = request.Headers["Authorization"];
+            //    request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
+            //    HttpResponseMessage authResponse = await AuthenticationService.SendRequest(request);
+            //    if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
+            //}
 
             return await destination.SendRequest(request);
         }

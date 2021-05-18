@@ -6,6 +6,7 @@ namespace ApiGateway.Package.Models
 {
     public class Destination
     {
+        public int ServiceId{ get; set; }
         public string Uri { get; set; }
         public bool RequiresAuthentication { get; set; }
         static HttpClient client = new HttpClient();
