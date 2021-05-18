@@ -10,6 +10,7 @@ namespace ApiGateway.Package.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string baseUri { get; set; }
+        public string BaseUri { get; set; }
+        public List<string> IPSafelist { get; set; }
     }
 }

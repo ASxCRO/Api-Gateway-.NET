@@ -1,4 +1,5 @@
 using ApiGateway.Package.Extension;
+using ApiGateway.Package.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,8 @@ namespace ApiGateway.Gateway
                                         .AllowAnyMethod()
                                         );
             });
+
+            services.AddSingleton<RateLimitingCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

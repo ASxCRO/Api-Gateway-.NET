@@ -14,15 +14,18 @@ namespace ApiGateway.Package.Models
     {
         public List<Route> Routes { get; set; }
         public List<Service> Services { get; set; }
+        public List<RateLimit> RateLimits { get; set; }
+        private RateLimitingCache _rateLimitingCache { get; }
 
-        public Router(string routeConfigFilePath)
+        public Router(string routeConfigFilePath, RateLimitingCache rateLimitingCache)
         {
             dynamic router = JsonLoader.LoadFromFile<dynamic>(routeConfigFilePath);
             Routes = JsonLoader.Deserialize<List<Route>>(Convert.ToString(router.routes));
             Services = JsonLoader.Deserialize<List<Service>>(Convert.ToString(router.services));
+            _rateLimitingCache = rateLimitingCache;
         }
 
-        public async Task<HttpResponseMessage> RouteRequest(HttpRequest request)
+        public async Task<HttpResponseMessage> RouteRequest(HttpRequest request,IPAddress  iPAddress)
         {
             string path = request.Path.ToString();
             string basePath = '/' + path.Split('/')[1];
@@ -33,22 +36,32 @@ namespace ApiGateway.Package.Models
             {
                 destination = Routes.First(r => r.Endpoint.Equals(basePath)).Destination;
                 service = Services.First(s => s.Id.Equals(destination.ServiceId));
-                destination.Uri = $"{service.baseUri}/{destination.Uri}";
+                destination.Uri = $"{service.BaseUri}/{destination.Uri}";
             }
             catch
             {
                 return ConstructErrorMessage("Nije moguće pronaći putanju.");
             }
 
-            //if (destination.RequiresAuthentication)
-            //{
-            //    string token = request.Headers["Authorization"];
-            //    request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
-            //    HttpResponseMessage authResponse = await AuthenticationService.SendRequest(request);
-            //    if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
-            //}
+            if (!service.IPSafelist.Contains(iPAddress.ToString()))
+                return ConstructErrorMessage($"Nije moguće pristupiti uslugama sa IP adrese {iPAddress.MapToIPv4()}");
 
-            return await destination.SendRequest(request);
+            var rateLimit = _rateLimitingCache.AppRateLimits.FirstOrDefault(r => r.IPAddress.Equals(iPAddress.MapToIPv4().ToString()) && r.ServiceId.Equals(service.Id));
+            if (rateLimit is not null)
+                if (rateLimit.RatePerDay > 0)
+                    rateLimit.RatePerDay--;
+                else
+                    return ConstructErrorMessage($"Iskoristili ste {service.Name} za danas.");
+
+                //if (destination.RequiresAuthentication)
+                //{
+                //    string token = request.Headers["Authorization"];
+                //    request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
+                //    HttpResponseMessage authResponse = await AuthenticationService.SendRequest(request);
+                //    if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
+                //}
+
+                return await destination.SendRequest(request);
         }
 
         private HttpResponseMessage ConstructErrorMessage(string error)
@@ -60,5 +73,11 @@ namespace ApiGateway.Package.Models
             };
             return errorMessage;
         }
+
+        public int GetRateLimit()
+        {
+            return 0;
+        }
+
     }
 }

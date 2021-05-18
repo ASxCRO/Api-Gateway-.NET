@@ -18,7 +18,17 @@
     {
       "id": 1,
       "name": "autostoperService",
-      "baseUri": "https://localhost:44386"
+      "baseUri": "https://localhost:44386",
+      "ipSafelist": [
+        "0.0.0.1"
+      ]
+    }
+  ],
+  "rateLimiting": [
+    {
+      "ipAddress": "0.0.0.1",
+      "serviceId":  1,
+      "ratePerDay":  10
     }
   ]
 }
