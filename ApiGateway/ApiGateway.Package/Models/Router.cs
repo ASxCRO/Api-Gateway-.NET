@@ -77,7 +77,7 @@ namespace ApiGateway.Package.Models
                         client.DefaultRequestHeaders.Add("Datum", datum);
                         client.DefaultRequestHeaders.Add("Hash", hashBase64);
 
-                        var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), $"{service.BaseUri}");
+                        var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), $"{authService.BaseUri}");
                         var authResponse = await client.SendAsync(newRequest);
                         if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
                     }
