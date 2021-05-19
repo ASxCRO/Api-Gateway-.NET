@@ -1,4 +1,5 @@
-﻿using ApiGateway.Package.Helpers;
+﻿using ApiGateway.Package.Hash;
+using ApiGateway.Package.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Primitives;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ApiGateway.Package.Models
@@ -57,15 +59,32 @@ namespace ApiGateway.Package.Models
                 else
                     return ConstructErrorMessage($"Iskoristili ste {service.Name} za danas.");
 
-                //if (destination.RequiresAuthentication)
-                //{
-                //    string token = request.Headers["Authorization"];
-                //    request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
-                //    HttpResponseMessage authResponse = await AuthenticationService.SendRequest(request);
-                //    if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
-                //}
+            if (destination.RequiresAuthentication)
+            {
+                string token = request.Headers["Authorization"];
+                request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
+                var authService = Services.First(s => s.Name.Equals("authenticationService"));
+                using(var HttpClient = new HttpClient())
+                {
+                    var datum = DateTime.Now.ToString();
+                    var dateBytes = Encoding.UTF8.GetBytes(datum);
+                    var saltBytes = Encoding.ASCII.GetBytes(configuration["ApiKeyOptions:Secret"]);
+                    var hash = Hashinator.GenerateSaltedHash(dateBytes, saltBytes);
+                    var hashBase64 = Convert.ToBase64String(hash);
 
-                return await destination.SendRequest(request, configuration["ApiKeyOptions:Secret"]);
+                    using (HttpClient client = new HttpClient())
+                    {
+                        client.DefaultRequestHeaders.Add("Datum", datum);
+                        client.DefaultRequestHeaders.Add("Hash", hashBase64);
+
+                        var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), $"{service.BaseUri}");
+                        var authResponse = await client.SendAsync(newRequest);
+                        if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
+                    }
+                }
+            }
+
+            return await destination.SendRequest(request, configuration["ApiKeyOptions:Secret"]);
         }
 
         private HttpResponseMessage ConstructErrorMessage(string error)

@@ -22,22 +22,23 @@ namespace ApiGateway.Package.Extension
             _configuration = appSettings;
         }
 
-        public async Task Invoke(HttpContext context, IUserService userService)
+        public async Task Invoke(HttpContext context/*, IUserService userService*/)
         {
-            var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            //var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.uDm - tzoBJuvceAuY8GsKeGOtf4NiZejy2rxyNv6p5Rw";
 
             if (token != null)
-                attachUserToContext(context, userService, token);
+                attachUserToContext(context, token);
 
             await _next(context);
         }
 
-        private void attachUserToContext(HttpContext context, IUserService userService, string token)
+        private async void attachUserToContext(HttpContext context/* IUserService userService*/, string token)
         {
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_configuration["Secret"]);
+                var key = Encoding.ASCII.GetBytes(_configuration["JwtOptions:Secret"]);
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
@@ -49,15 +50,17 @@ namespace ApiGateway.Package.Extension
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+                //var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "name").Value);
 
                 // spoj korisnika na kontekst daje do znanja da je jwt autentikacija prosla
-                context.Items["User"] = userService.GetById(userId);
+                //context.Items["User"] = userService.GetById(userId);
             }
             catch
             {
                 // desava se kad autentikacija nije validna
                 // korisnik nije spojen na kontekst stoga request nece imati prava na rute
+                context.Response.StatusCode = 401;
+                await context.Response.WriteAsync("jwt nije validan");
             }
         }
     }
