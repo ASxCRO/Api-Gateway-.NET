@@ -52,6 +52,8 @@ namespace AutoStoper.API
 
             app.UseRouting();
 
+            app.UseApiKeyValidation();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

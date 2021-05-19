@@ -43,5 +43,15 @@ namespace ApiGateway.Package.Hash
 
             return true;
         }
+
+        public static bool CompareStrings(string hash1, string hash2)
+        {
+            if (hash1 != hash2)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

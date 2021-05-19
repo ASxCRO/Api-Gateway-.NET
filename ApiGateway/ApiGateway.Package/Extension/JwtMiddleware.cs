@@ -51,13 +51,13 @@ namespace ApiGateway.Package.Extension
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
-                // attach user to context on successful jwt validation
+                // spoj korisnika na kontekst daje do znanja da je jwt autentikacija prosla
                 context.Items["User"] = userService.GetById(userId);
             }
             catch
             {
-                // do nothing if jwt validation fails
-                // user is not attached to context so request won't have access to secure routes
+                // desava se kad autentikacija nije validna
+                // korisnik nije spojen na kontekst stoga request nece imati prava na rute
             }
         }
     }

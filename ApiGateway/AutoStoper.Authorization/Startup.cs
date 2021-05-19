@@ -32,6 +32,7 @@ namespace AutoStoper.Authorization
 
             app.UseRouting();
 
+            app.UseApiKeyValidation();
             app.UseApiGatewayAuthorization();
 
             app.UseEndpoints(endpoints =>

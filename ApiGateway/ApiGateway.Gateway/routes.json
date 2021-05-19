@@ -5,7 +5,7 @@
       "destination": {
         "serviceId":  1,
         "uri": "WeatherForecast/Get",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     }
   ],
