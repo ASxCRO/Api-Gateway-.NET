@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApiGateway.Package.Hash;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ApiGateway.Package.Models
@@ -9,7 +12,6 @@ namespace ApiGateway.Package.Models
         public int ServiceId{ get; set; }
         public string Uri { get; set; }
         public bool RequiresAuthentication { get; set; }
-        static HttpClient client = new HttpClient();
 
         public Destination(string uri, bool requiresAuthentication)
         {
@@ -44,10 +46,22 @@ namespace ApiGateway.Package.Models
         }
 
 
-        public async Task<HttpResponseMessage> SendRequest(HttpRequest request)
+        public async Task<HttpResponseMessage> SendRequest(HttpRequest request, string apiKeySecret)
         {
-            var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), CreateDestinationUri(request));
-            return await client.SendAsync(newRequest);
+            var datum = DateTime.Now.ToString();
+            var dateBytes = Encoding.UTF8.GetBytes(datum);
+            var saltBytes = Encoding.ASCII.GetBytes(apiKeySecret);
+            var hash = Hashinator.GenerateSaltedHash(dateBytes, saltBytes);
+            var hashBase64 = Convert.ToBase64String(hash);
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Datum", datum);
+                client.DefaultRequestHeaders.Add("Hash", hashBase64);
+
+                var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), CreateDestinationUri(request));
+                return await client.SendAsync(newRequest);
+            }
         }
     }
 }

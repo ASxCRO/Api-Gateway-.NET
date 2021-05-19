@@ -13,17 +13,20 @@ namespace ApiGateway.Package.Models
 {
     public class Router
     {
+        private readonly IConfiguration configuration;
+
         public List<Route> Routes { get; set; }
         public List<Service> Services { get; set; }
         public List<RateLimit> RateLimits { get; set; }
         private RateLimitingCache _rateLimitingCache { get; }
 
-        public Router(string routeConfigFilePath, RateLimitingCache rateLimitingCache)
+        public Router(string routeConfigFilePath, RateLimitingCache rateLimitingCache, IConfiguration configuration)
         {
             dynamic router = JsonLoader.LoadFromFile<dynamic>(routeConfigFilePath);
             Routes = JsonLoader.Deserialize<List<Route>>(Convert.ToString(router.routes));
             Services = JsonLoader.Deserialize<List<Service>>(Convert.ToString(router.services));
             _rateLimitingCache = rateLimitingCache;
+            this.configuration = configuration;
         }
 
         public async Task<HttpResponseMessage> RouteRequest(HttpRequest request,IPAddress  iPAddress)
@@ -62,7 +65,7 @@ namespace ApiGateway.Package.Models
                 //    if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
                 //}
 
-                return await destination.SendRequest(request);
+                return await destination.SendRequest(request, configuration["ApiKeyOptions:Secret"]);
         }
 
         private HttpResponseMessage ConstructErrorMessage(string error)

@@ -1,6 +1,7 @@
 ﻿using ApiGateway.Package.Hash;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -27,20 +28,29 @@ namespace ApiGateway.Package.Extension
             if(isDatumHere && isHashHere)
             {
                 var salt = appSettings["ApiKeyOptions:Secret"];
-                var dateBytes = Encoding.ASCII.GetBytes(datum);
-                var saltBytes = Encoding.ASCII.GetBytes(salt);
+                var dateBytes = Encoding.UTF8.GetBytes(datum);
+                var saltBytes = Encoding.UTF8.GetBytes(salt);
                 var hash = Hashinator.GenerateSaltedHash(dateBytes, saltBytes);
-                var hashString = Encoding.ASCII.GetString(hash);
+                var hashBase64 = Convert.ToBase64String(hash);
 
-                var areHashesTheSame = Hashinator.CompareStrings(hashString, hashRequestString);
+                var areHashesTheSame = Hashinator.CompareStrings(hashBase64, hashRequestString);
                 if(areHashesTheSame)
                 {
                     await _next(httpContext);
                 }
-
+                else
+                {
+                    httpContext.Response.StatusCode = 401;
+                    await httpContext.Response.WriteAsync("Hash nije validan");
+                }
             }
+            else
+            {
+                httpContext.Response.StatusCode = 401;
+                await httpContext.Response.WriteAsync("Nedostaju polja u headeru.");
+            }
+            
 
-            httpContext.Abort();
         }
     }
 }
