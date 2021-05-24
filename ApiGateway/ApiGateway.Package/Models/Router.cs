@@ -10,25 +10,28 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using ApiGateway.Package.Logging;
 
 namespace ApiGateway.Package.Models
 {
     public class Router
     {
         private readonly IConfiguration configuration;
+        private readonly Logger logger;
 
         public List<Route> Routes { get; set; }
         public List<Service> Services { get; set; }
         public List<RateLimit> RateLimits { get; set; }
         private RateLimitingCache _rateLimitingCache { get; }
 
-        public Router(string routeConfigFilePath, RateLimitingCache rateLimitingCache, IConfiguration configuration)
+        public Router(string routeConfigFilePath, RateLimitingCache rateLimitingCache, IConfiguration configuration, Logger logger)
         {
             dynamic router = JsonLoader.LoadFromFile<dynamic>(routeConfigFilePath);
             Routes = JsonLoader.Deserialize<List<Route>>(Convert.ToString(router.routes));
             Services = JsonLoader.Deserialize<List<Service>>(Convert.ToString(router.services));
             _rateLimitingCache = rateLimitingCache;
             this.configuration = configuration;
+            this.logger = logger;
         }
 
         public async Task<HttpResponseMessage> RouteRequest(HttpRequest request,IPAddress  iPAddress)
@@ -82,7 +85,12 @@ namespace ApiGateway.Package.Models
                         if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
                     }
                 }
+
+                logger.Log($"Korisnik sa tokenom {token} i IP adresom {iPAddress.MapToIPv4().ToString()} uputio je zahtjev na endpoint {basePath} kako bi dohvatio podatke sa {destination.Uri} datuma {DateTime.Now.ToString()}");
             }
+
+
+
 
             return await destination.SendRequest(request, configuration["ApiKeyOptions:Secret"]);
         }
