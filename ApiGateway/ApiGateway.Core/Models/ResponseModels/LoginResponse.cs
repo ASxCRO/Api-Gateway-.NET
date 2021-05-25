@@ -14,6 +14,10 @@ namespace ApiGateway.Core.ResponseModels
         public string Username { get; set; }
         public string Token { get; set; }
 
+        public LoginResponse()
+        {
+
+        }
 
         public LoginResponse(ApiGateway.Core.User.User user, string token)
         {

@@ -1,11 +1,16 @@
 using ApiGateway.Core.AuthenticationServices;
 using ApiGateway.Core.HttpServices;
 using ApiGateway.Core.LocalStorageServices;
+using ApiGateway.Core.Services.AuthenticationServices;
+using ApiGateway.Core.SpinnerServices;
+using AutoStoper.Client.Shared.Preferences;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
 using System;
+using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -26,6 +31,9 @@ namespace AutoStoper.Client
             builder.Services.AddScoped(sp => http);
             builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
             builder.Services.AddScoped<IWebAssemblyHttpService, WebassemblyHttpService>();
+            builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddScoped<SpinnerService>();
+
             builder.Services.AddMudServices();
 
             using var response = await http.GetAsync("appsettings.json");
@@ -37,7 +45,6 @@ namespace AutoStoper.Client
             builder.Services.AddHttpClient("AutoStoper.Gateway", client => {
                 client.BaseAddress = new Uri(gatewayConnectionString);
             });
-
 
             var host = builder.Build();
 

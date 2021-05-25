@@ -51,7 +51,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         private string generateJwtToken(ApiGateway.Core.User.User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings["Secret"]);
+            var key = Encoding.ASCII.GetBytes(_appSettings["JwtOptions:Secret"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) }),

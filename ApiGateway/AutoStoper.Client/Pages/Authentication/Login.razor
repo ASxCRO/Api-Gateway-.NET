@@ -3,7 +3,6 @@
 @attribute [AllowAnonymous]
 
 <EditForm Model="@tokenModel" OnValidSubmit="SubmitAsync">
-    <FluentValidationValidator @ref="_fluentValidationValidator" />
     <MudGrid>
         <MudItem xs="12">
             <div class="d-flex justify-center">
@@ -13,39 +12,36 @@
         <DataAnnotationsValidator />
         <MudItem xs="12">
             <div class="d-flex justify-center">
-                <MudText Typo="Typo.h4">@localizer["Title"]</MudText>
+                <MudText Typo="Typo.h4">Naslov</MudText>
             </div>
         </MudItem>
         <MudItem xs="12">
             <div class="d-flex justify-center">
-                <MudText>@localizer["Description"]</MudText>
+                <MudText>Opis</MudText>
             </div>
         </MudItem>
         <MudItem xs="12">
             <div class="d-flex justify-center">
-                <MudText>@localizer["Don't have an account?"] <MudLink Href="/register">@localizer["Register here"]</MudLink></MudText>
+                <MudText>Nemate račun? <MudLink Href="/register">Registrirajte se ovjdje</MudLink></MudText>
             </div>
         </MudItem>
         <MudItem xs="12">
-            <MudTextField T="string" Label="@localizer["E-mail"]" Variant="Variant.Outlined"
-                          @bind-Value="tokenModel.Email" For="@(() => tokenModel.Email)" />
+            <MudTextField T="string" Label="Email" Variant="Variant.Outlined"
+                          @bind-Value="tokenModel.Username" For="@(() => tokenModel.Username)" />
         </MudItem>
         <MudItem xs="12">
-            <MudTextField Label="@localizer["Password"]" Variant="Variant.Outlined"
+            <MudTextField Label="Lozinka" Variant="Variant.Outlined"
                           @bind-Value="tokenModel.Password" For="@(() => tokenModel.Password)"
                           InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
         </MudItem>
         <MudItem xs="12" Class="d-flex justify-space-between align-center">
-            <MudCheckBox T="bool" Label="@localizer["Remember me?"]" Color="Color.Primary" Class="ml-n1"></MudCheckBox> <MudLink Href="/account/forgot-password">@localizer["Forgot password?"]</MudLink>
+            <MudCheckBox T="bool" Label="Zapamti me?" Color="Color.Primary" Class="ml-n1"></MudCheckBox> <MudLink Href="/account/forgot-password">Zaboravljena lozinka?</MudLink>
         </MudItem>
         <MudItem xs="12" Class="d-flex justify-center">
-            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Disabled="@(!validated)" Color="Color.Primary" Size="Size.Large" Style="width: 100%;">@localizer["Sign In"]</MudButton>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Prijava</MudButton>
         </MudItem>
         <MudItem xs="12">
-            <MudButton OnClick="FillAdministratorCredentials">@localizer["Fill Administrator Credentials"]</MudButton>
-        </MudItem>
-        <MudItem xs="12">
-            <MudButton OnClick="FillBasicUserCredentials">@localizer["Fill Basic User Credentials"]</MudButton>
+            <MudButton OnClick="FillBasicUserCredentials">Popuni korisničke podatke</MudButton>
         </MudItem>
     </MudGrid>
 </EditForm>

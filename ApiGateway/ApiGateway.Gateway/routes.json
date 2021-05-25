@@ -3,9 +3,17 @@
     {
       "endpoint": "/weather",
       "destination": {
-        "serviceId":  1,
+        "serviceId": 1,
         "uri": "WeatherForecast/Get",
         "requiresAuthentication": "true"
+      }
+    },
+    {
+      "endpoint": "/authenticate",
+      "destination": {
+        "serviceId": 0,
+        "uri": "users/authenticate",
+        "requiresAuthentication": "false"
       }
     }
   ],

@@ -52,8 +52,9 @@ namespace ApiGateway.Package.Models
                 return ConstructErrorMessage("Nije moguće pronaći putanju.");
             }
 
-            if (!service.IPSafelist.Contains(iPAddress.ToString()))
-                return ConstructErrorMessage($"Nije moguće pristupiti uslugama sa IP adrese {iPAddress.MapToIPv4()}");
+            if(service.IPSafelist is not null)
+                if (!service.IPSafelist.Contains(iPAddress.ToString()))
+                    return ConstructErrorMessage($"Nije moguće pristupiti uslugama sa IP adrese {iPAddress.MapToIPv4()}");
 
             var rateLimit = _rateLimitingCache.AppRateLimits.FirstOrDefault(r => r.IPAddress.Equals(iPAddress.MapToIPv4().ToString()) && r.ServiceId.Equals(service.Id));
             if (rateLimit is not null)

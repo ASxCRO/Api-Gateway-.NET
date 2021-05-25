@@ -1,3 +1,4 @@
+using ApiGateway.Core.Services.AuthenticationServices;
 using ApiGateway.Package.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +19,7 @@ namespace AutoStoper.Authorization
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

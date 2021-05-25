@@ -1,6 +1,8 @@
 ﻿using ApiGateway.Package.Hash;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +62,20 @@ namespace ApiGateway.Package.Models
                 client.DefaultRequestHeaders.Add("Hash", hashBase64);
 
                 var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), CreateDestinationUri(request));
+                if (request.Method == "POST")
+                {
+                    try
+                    {
+                        var reader = new StreamReader(request.Body);
+                        var rawMessage = await reader.ReadToEndAsync();
+                        newRequest.Content = new StringContent(rawMessage, Encoding.UTF8, "application/json");
+                    }
+                    catch (Exception e)
+                    {
+                        throw;
+                    }
+                }
+                
                 return await client.SendAsync(newRequest);
             }
         }

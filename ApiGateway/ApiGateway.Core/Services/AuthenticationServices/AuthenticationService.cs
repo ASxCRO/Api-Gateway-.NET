@@ -1,6 +1,7 @@
 ﻿using ApiGateway.Core.AuthenticationServices;
 using ApiGateway.Core.HttpServices;
 using ApiGateway.Core.LocalStorageServices;
+using ApiGateway.Core.RequestModels;
 using ApiGateway.Core.ResponseModels;
 using ApiGateway.Core.StateServices;
 using Microsoft.AspNetCore.Components;
@@ -23,7 +24,6 @@ namespace ApiGateway.Core.Services.AuthenticationServices
     {
         private readonly IWebAssemblyHttpService webAssemblyHttpService;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly AppState _appState;
         private readonly NavigationManager nvgMgr;
         private readonly ApiGateway.Core.LocalStorageServices.UserService _userService;
         private readonly ILocalStorageService _localStorageService;
@@ -46,27 +46,39 @@ namespace ApiGateway.Core.Services.AuthenticationServices
             LoginResponse = await _userService.GetCurrentUser();
         }
 
-        public async Task<bool> Login(string Username, string Password)
+        public async Task<bool> Login(LoginRequest loginRequest)
         {
-                var requestMessage = new HttpRequestMessage()
+            var requestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri($"{httpClient.BaseAddress}authenticate"),
+                Content = new StringContent(JsonSerializer.Serialize(new { loginRequest.Username, loginRequest.Password }), Encoding.UTF8, "application/json"),
+            };
+
+            requestMessage.SetBrowserRequestMode(BrowserRequestMode.NoCors);
+            requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
+            var response = await httpClient.PostAsync(requestMessage.RequestUri.OriginalString, requestMessage.Content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                try
                 {
-                    Method = HttpMethod.Post,
-                    RequestUri = new Uri($"{httpClient.BaseAddress}authenticate"),
-                    Content = new StringContent(JsonSerializer.Serialize(new { Username, Password }), Encoding.UTF8, "application/json"),
-                };
-
-                requestMessage.SetBrowserRequestMode(BrowserRequestMode.NoCors);
-                requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-                var response = await httpClient.SendAsync(requestMessage);
-
-                if (response.IsSuccessStatusCode)
                     LoginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                else
-                    return false;
+                }
+                catch (System.Exception e)
+                {
 
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", LoginResponse.Token);
-                await _localStorageService.SetItem("user", LoginResponse);
-                return true;
+                    throw;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", LoginResponse.Token);
+            await _localStorageService.SetItem("user", LoginResponse);
+            return true;
         }
 
 

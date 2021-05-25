@@ -1,5 +1,7 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
@@ -9,3 +11,13 @@
 @using AutoStoper.Client
 @using AutoStoper.Client.Shared
 @using MudBlazor
+@using Blazored.FluentValidation
+@using AutoStoper.Client.Shared.Icons
+@using ApiGateway.Core.AuthenticationServices;
+
+@* DI *@
+@attribute [Authorize]
+@inject NavigationManager _navigationManager
+@inject IAuthenticationService _authorizationService
+@inject ISnackbar _snackBar
+@inject IDialogService _dialogService
