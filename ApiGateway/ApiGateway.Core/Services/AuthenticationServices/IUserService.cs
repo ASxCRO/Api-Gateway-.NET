@@ -12,6 +12,6 @@ namespace ApiGateway.Core.Services.AuthenticationServices
     {
         LoginResponse Authenticate(LoginRequest model);
         IEnumerable<ApiGateway.Core.User.User> GetAll();
-        ApiGateway.Core.User.User GetById(int id);
+        ApiGateway.Core.User.User GetById(string id);
     }
 }

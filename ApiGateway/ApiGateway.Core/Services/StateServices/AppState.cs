@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApiGateway.Core.StateServices
 {
-    class AppState
+    public class AppState
     {
     }
 }

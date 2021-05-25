@@ -17,7 +17,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
         private List<ApiGateway.Core.User.User> _users = new List<ApiGateway.Core.User.User>
         {
-            new ApiGateway.Core.User.User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
+            new ApiGateway.Core.User.User { Id = "1", FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
         };
 
         private readonly IConfiguration _appSettings;
@@ -31,12 +31,10 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         {
             var user = _users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
 
-            // return null if user not found
-            if (user == null) return null;
+            if (user == null) 
+                return null;
 
-            // authentication successful so generate jwt token
             var token = generateJwtToken(user);
-
             return new LoginResponse(user, token);
         }
 
@@ -45,21 +43,18 @@ namespace ApiGateway.Core.Services.AuthenticationServices
             return _users;
         }
 
-        public ApiGateway.Core.User.User GetById(int id)
+        public ApiGateway.Core.User.User GetById(string id)
         {
             return _users.FirstOrDefault(x => x.Id == id);
         }
 
-        // helper methods
-
         private string generateJwtToken(ApiGateway.Core.User.User user)
         {
-            // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings["Secret"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

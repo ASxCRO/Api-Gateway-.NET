@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,18 +23,17 @@ namespace ApiGateway.Package.Extension
             _configuration = appSettings;
         }
 
-        public async Task Invoke(HttpContext context/*, IUserService userService*/)
+        public async Task Invoke(HttpContext context, IUserService userService)
         {
-            //var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.uDm-tzoBJuvceAuY8GsKeGOtf4NiZejy2rxyNv6p5Rw";
+            var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
-                attachUserToContext(context, token);
+                attachUserToContext(context,userService, token);
 
             await _next(context);
         }
 
-        private async void attachUserToContext(HttpContext context/* IUserService userService*/, string token)
+        private async void attachUserToContext(HttpContext context, IUserService userService, string token)
         {
             try
             {
@@ -53,10 +53,10 @@ namespace ApiGateway.Package.Extension
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 context.Response.StatusCode = 200;
                 await context.Response.WriteAsync("jwt validan");
-                //var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "name").Value);
+                var userId = jwtToken.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
 
-                // spoj korisnika na kontekst daje do znanja da je jwt autentikacija prosla
-                //context.Items["User"] = userService.GetById(userId);
+                //spoj korisnika na kontext daje do znanja da je jwt autentikacija prosla
+                context.Items["User"] = userService.GetById(userId);
             }
             catch(Exception ex)
             {
