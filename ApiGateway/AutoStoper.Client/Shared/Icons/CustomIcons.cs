@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace AutoStoper.Client.Shared.Icons
+namespace AutoStoper.Client.Shared.CustomIcons
 {
     [ExcludeFromCodeCoverage]
     public class CustomIcons

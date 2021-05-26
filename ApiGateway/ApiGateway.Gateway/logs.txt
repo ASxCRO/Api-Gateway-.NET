@@ -18,3 +18,37 @@
 
 2021-05-26 15:47:07.675 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 3:47:07 PM
 
+2021-05-26 16:27:31.122 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:27:31 PM
+
+2021-05-26 16:27:41.853 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:27:41 PM
+
+2021-05-26 16:28:04.353 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:28:04 PM
+
+2021-05-26 16:31:36.754 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:31:36 PM
+
+2021-05-26 16:31:41.859 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:31:41 PM
+
+2021-05-26 16:33:18.900 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:33:18 PM
+
+2021-05-26 16:33:21.316 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:33:21 PM
+
+2021-05-26 16:33:37.630 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:33:37 PM
+
+2021-05-26 16:45:50.812 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:45:50 PM
+
+2021-05-26 16:46:02.446 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:46:02 PM
+
+2021-05-26 16:46:49.631 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:46:49 PM
+
+2021-05-26 16:47:33.860 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:47:33 PM
+
+2021-05-26 16:50:55.512 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:50:55 PM
+
+2021-05-26 16:52:01.154 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:52:01 PM
+
+2021-05-26 16:53:17.462 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:53:17 PM
+
+2021-05-26 16:54:37.487 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:54:37 PM
+
+2021-05-26 16:54:56.972 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/26/2021 4:54:56 PM
+

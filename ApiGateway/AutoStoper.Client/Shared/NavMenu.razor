@@ -1,27 +1,32 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">AutoStoper.Client</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using MudBlazor
+@layout MainLayout
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-    </ul>
-</div>
+<UserCard />
+<MudDivider Class="mb-4" />
+<MudNavMenu>
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Outlined.Home">Početna</MudNavLink>
+    <MudNavLink Href="/jobs" Icon="@Icons.Outlined.Work">
+        Vožnje
+    </MudNavLink>
+    <MudNavLink Href="https://codewithmukesh.com/blog/blazor-hero-quick-start-guide/" Target="_blank" Icon="@Icons.Outlined.ReadMore">
+        Korisničke upute
+    </MudNavLink>
+    <MudNavLink Href="/swagger/index.html" Target="_blank" Icon="@Icons.Outlined.LiveHelp">
+        Swagger
+    </MudNavLink>
+    <MudListSubheader Class="mt-2 mb-n2">Korisnik</MudListSubheader>
+    <MudNavLink Href="/dashboard" Icon="@Icons.Outlined.Dashboard">
+        Dashboard
+    </MudNavLink>
+    <MudNavLink Href="/account" Icon="@Icons.Outlined.SupervisorAccount">
+        Račun
+    </MudNavLink>
+    <MudNavLink Href="/document-store" Icon="@Icons.Outlined.AttachFile">
+        Dokumenti
+    </MudNavLink>
+    }
+</MudNavMenu>
 
 @code {
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
 }

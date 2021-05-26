@@ -17,7 +17,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
         private List<ApiGateway.Core.User.User> _users = new List<ApiGateway.Core.User.User>
         {
-            new ApiGateway.Core.User.User { Id = "1", FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
+            new ApiGateway.Core.User.User { Id = "1", FirstName = "Antonio", LastName = "Supan", Username = "test", Password = "test" }
         };
 
         private readonly IConfiguration _appSettings;

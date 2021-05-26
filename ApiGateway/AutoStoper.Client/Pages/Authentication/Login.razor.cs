@@ -30,7 +30,7 @@ namespace AutoStoper.Client.Pages.Authentication
             }
             else
             {
-                _snackBar.Add($"Credentials not valid", Severity.Error);
+                _snackBar.Add($"Korisničko ime/lozinka nije ispravno.", Severity.Error);
 
             }
         }
