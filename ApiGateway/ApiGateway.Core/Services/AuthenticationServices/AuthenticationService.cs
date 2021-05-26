@@ -3,14 +3,9 @@ using ApiGateway.Core.HttpServices;
 using ApiGateway.Core.LocalStorageServices;
 using ApiGateway.Core.RequestModels;
 using ApiGateway.Core.ResponseModels;
-using ApiGateway.Core.StateServices;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
-using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -27,7 +22,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         private readonly NavigationManager nvgMgr;
         private readonly ApiGateway.Core.LocalStorageServices.UserService _userService;
         private readonly ILocalStorageService _localStorageService;
-        public LoginResponse LoginResponse { get; set; }
+        public LoginResponse User { get; set; }
         static HttpClient httpClient { get; set;  }
 
         public AuthenticationService(NavigationManager nvgMgr, ILocalStorageService localStorageService, IWebAssemblyHttpService webAssemblyHttpService, IHttpClientFactory _httpClientFactory)
@@ -43,7 +38,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
 
         public async Task Initialize()
         {
-            LoginResponse = await _userService.GetCurrentUser();
+            User = await _userService.GetCurrentUser();
         }
 
         public async Task<bool> Login(LoginRequest loginRequest)
@@ -63,11 +58,10 @@ namespace ApiGateway.Core.Services.AuthenticationServices
             {
                 try
                 {
-                    LoginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                    User = await response.Content.ReadFromJsonAsync<LoginResponse>();
                 }
                 catch (System.Exception e)
                 {
-
                     throw;
                 }
             }
@@ -76,17 +70,17 @@ namespace ApiGateway.Core.Services.AuthenticationServices
                 return false;
             }
 
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", LoginResponse.Token);
-            await _localStorageService.SetItem("user", LoginResponse);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User.Token);
+            await _localStorageService.SetItem("user", User);
             return true;
         }
 
 
         public async Task Logout()
         {
-            LoginResponse = null;
+            User = null;
             await _localStorageService.RemoveItem("user");
-            nvgMgr.NavigateTo("");
+            nvgMgr.NavigateTo("/",true);
         }
     }
 }

@@ -14,7 +14,10 @@ namespace AutoStoper.Client.Pages.Authentication
 
         protected override async Task OnInitializedAsync()
         {
-
+            if(_authorizationService.User is not null)
+            {
+                _navigationManager.NavigateTo("/index", true);
+            }
         }
 
         private async Task SubmitAsync()
@@ -23,7 +26,7 @@ namespace AutoStoper.Client.Pages.Authentication
             if (result)
             {
                 _snackBar.Add($"Dobrodošli {tokenModel.Username}.", Severity.Success);
-                _navigationManager.NavigateTo("/", true);
+                _navigationManager.NavigateTo("/index", true);
             }
             else
             {

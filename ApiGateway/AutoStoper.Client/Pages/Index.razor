@@ -1,7 +1,6 @@
-﻿@page "/"
+﻿@page "/index"
 @using AutoStoper.Client.Shared.Models
 
-@inject IHttpClientFactory ClientFactory
 
 <h1>Hello, world!</h1>
 
@@ -19,7 +18,7 @@ Weather Forecasts:
 
     protected override async Task OnInitializedAsync()
     {
-        using (HttpClient httpClient = ClientFactory.CreateClient("AutoStoper.Gateway"))
+        using (HttpClient httpClient = _httpClientFactory.CreateClient("AutoStoper.Gateway"))
         {
             var requestMessage = new HttpRequestMessage()
             {

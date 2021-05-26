@@ -68,30 +68,24 @@ namespace ApiGateway.Package.Models
                 string token = request.Headers["Authorization"];
                 request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
                 var authService = Services.First(s => s.Name.Equals("authenticationService"));
-                using(var HttpClient = new HttpClient())
+                var datum = DateTime.Now.ToString();
+                var dateBytes = Encoding.UTF8.GetBytes(datum);
+                var saltBytes = Encoding.ASCII.GetBytes(configuration["ApiKeyOptions:Secret"]);
+                var hash = Hashinator.GenerateSaltedHash(dateBytes, saltBytes);
+                var hashBase64 = Convert.ToBase64String(hash);
+
+                using (HttpClient client = new HttpClient())
                 {
-                    var datum = DateTime.Now.ToString();
-                    var dateBytes = Encoding.UTF8.GetBytes(datum);
-                    var saltBytes = Encoding.ASCII.GetBytes(configuration["ApiKeyOptions:Secret"]);
-                    var hash = Hashinator.GenerateSaltedHash(dateBytes, saltBytes);
-                    var hashBase64 = Convert.ToBase64String(hash);
+                    client.DefaultRequestHeaders.Add("Datum", datum);
+                    client.DefaultRequestHeaders.Add("Hash", hashBase64);
 
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.DefaultRequestHeaders.Add("Datum", datum);
-                        client.DefaultRequestHeaders.Add("Hash", hashBase64);
-
-                        var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), $"{authService.BaseUri}");
-                        var authResponse = await client.SendAsync(newRequest);
-                        if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
-                    }
+                    var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), $"{authService.BaseUri}/users/getall");
+                    var authResponse = await client.PostAsync($"{authService.BaseUri}/users/getall", new StringContent(string.Empty));
+                    if (!authResponse.IsSuccessStatusCode) return ConstructErrorMessage("Neautorizirani pristup.");
                 }
 
                 logger.Log($"Korisnik sa tokenom {token} i IP adresom {iPAddress.MapToIPv4().ToString()} uputio je zahtjev na endpoint {basePath} kako bi dohvatio podatke sa {destination.Uri} datuma {DateTime.Now.ToString()}");
             }
-
-
-
 
             return await destination.SendRequest(request, configuration["ApiKeyOptions:Secret"]);
         }

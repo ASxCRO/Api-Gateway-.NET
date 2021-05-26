@@ -2,10 +2,6 @@
 using ApiGateway.Core.Services.AuthenticationServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutoStoper.Authorization.Controllers
 {
@@ -31,8 +27,7 @@ namespace AutoStoper.Authorization.Controllers
             return Ok(response);
         }
 
-        [Authorize]
-        [HttpGet]
+        [HttpPost("getall")]
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();

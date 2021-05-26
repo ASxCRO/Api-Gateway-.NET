@@ -2,13 +2,8 @@ using ApiGateway.Core.Services.AuthenticationServices;
 using ApiGateway.Package.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutoStoper.Authorization
 {
@@ -34,13 +29,16 @@ namespace AutoStoper.Authorization
 
             app.UseRouting();
 
-            //app.UseApiKeyValidation();
+            app.UseApiKeyValidation();
+
             app.UseApiGatewayAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }
