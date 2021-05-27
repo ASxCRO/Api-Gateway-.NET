@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutoStoper.Authorization.Data.Repository.Repositories
 {
-    class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         internal AuthDbContext context;
         internal DbSet<TEntity> dbSet;

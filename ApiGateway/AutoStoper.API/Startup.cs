@@ -1,6 +1,7 @@
-using ApiGateway.Core.Services.AuthenticationServices;
 using ApiGateway.Package.Extension;
 using AutoStoper.API.Data.Database;
+using AutoStoper.API.Data.UnitOfWork;
+using AutoStoper.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,8 @@ namespace AutoStoper.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AutoStoper.API", Version = "v1" });
             });
 
-            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IVoznjaService, VoznjaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

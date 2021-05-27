@@ -25,8 +25,4 @@
     <ProjectReference Include="..\ApiGateway.Package\ApiGateway.Package.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

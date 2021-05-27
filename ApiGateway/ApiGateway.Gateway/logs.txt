@@ -60,3 +60,7 @@
 
 2021-05-27 10:14:34.759 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /weather kako bi dohvatio podatke sa https://localhost:44386/WeatherForecast/Get datuma 5/27/2021 10:14:34 AM
 
+2021-05-27 19:07:10.682 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/Get datuma 5/27/2021 7:07:10 PM
+
+2021-05-27 19:07:20.753 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/Get datuma 5/27/2021 7:07:20 PM
+

@@ -1,6 +1,5 @@
 ﻿using ApiGateway.Core.RequestModels;
-using ApiGateway.Core.Services.AuthenticationServices;
-using Microsoft.AspNetCore.Authorization;
+using AutoStoper.Authorization.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutoStoper.Authorization.Controllers

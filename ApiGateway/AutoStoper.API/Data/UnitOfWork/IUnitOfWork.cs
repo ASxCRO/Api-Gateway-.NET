@@ -10,7 +10,9 @@ namespace AutoStoper.API.Data.UnitOfWork
     public interface IUnitOfWork
     {
         IRepository<Voznja> Voznje { get; }
-        IRepository<VoznjaUser> VoznjaUser { get; }
+        IRepository<VoznjaUser> VoznjeUser { get; }
+        IRepository<Adresa> Adrese { get; }
+
         void Commit();
     }
 }

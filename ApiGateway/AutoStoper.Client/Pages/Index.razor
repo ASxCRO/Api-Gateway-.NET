@@ -1,5 +1,4 @@
 ﻿@page "/index"
-@using AutoStoper.Client.Shared.Models
 
 
 <h1>Hello, world!</h1>
@@ -8,29 +7,21 @@ Welcome to your new app.
 
 Weather Forecasts:
 
-@foreach (var item in Weather)
+@foreach (var item in Voznje)
 {
-    <h1>@item.Summary</h1>
+    <h1>@item.MaksimalnoPutnika</h1>
 }
 
 @code {
-    public List<WeatherForecast> Weather { get; set; } = new();
+    public List<Voznja> Voznje { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
     {
         using (HttpClient httpClient = _httpClientFactory.CreateClient("AutoStoper.Gateway"))
         {
-            var requestMessage = new HttpRequestMessage()
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"{httpClient.BaseAddress}weather")
-            };
-
-            requestMessage.SetBrowserRequestMode(BrowserRequestMode.NoCors);
-            requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-            var response = await httpClient.GetAsync("weather");
+            var response = await httpClient.GetAsync("voznje");
             if (response.IsSuccessStatusCode)
-                Weather = await response.Content.ReadFromJsonAsync<List<WeatherForecast>>();
+                Voznje = await response.Content.ReadFromJsonAsync<List<Voznja>>();
         }
     }
 }

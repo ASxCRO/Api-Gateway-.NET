@@ -12,18 +12,18 @@ namespace AutoStoper.Authorization.Data.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private AuthDbContext _dbContext;
-        public IRepository<User> Korisnici { get; set; }
+        public BaseRepository<User> KorisniciRepo { get; set; }
         public UnitOfWork(AuthDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IRepository<User> KorisniciRepo
+        public IRepository<User> Korisnici
         {
             get
             {
-                return Korisnici ??
-                    (Korisnici = new BaseRepository<User>(_dbContext));
+                return KorisniciRepo ??
+                    (KorisniciRepo = new BaseRepository<User>(_dbContext));
             }
         }
 

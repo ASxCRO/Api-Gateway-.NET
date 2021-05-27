@@ -23,17 +23,17 @@ namespace ApiGateway.Package.Extension
             _configuration = appSettings;
         }
 
-        public async Task Invoke(HttpContext context, IUserService userService)
+        public async Task Invoke(HttpContext context)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
-                attachUserToContext(context,userService, token);
+                attachUserToContext(context, token);
 
             await _next(context);
         }
 
-        private async void attachUserToContext(HttpContext context, IUserService userService, string token)
+        private async void attachUserToContext(HttpContext context, string token)
         {
             try
             {
@@ -53,10 +53,6 @@ namespace ApiGateway.Package.Extension
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 context.Response.StatusCode = 200;
                 await context.Response.WriteAsync("jwt validan");
-                var userId = jwtToken.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
-
-                //spoj korisnika na kontext daje do znanja da je jwt autentikacija prosla
-                context.Items["User"] = userService.GetById(userId);
             }
             catch(Exception ex)
             {

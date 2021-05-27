@@ -1,6 +1,7 @@
-using ApiGateway.Core.Services.AuthenticationServices;
 using ApiGateway.Package.Extension;
 using AutoStoper.Authorization.Data.Database;
+using AutoStoper.Authorization.Data.UnitOfWork;
+using AutoStoper.Authorization.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,9 @@ namespace AutoStoper.Authorization
         {
             services.AddDbContext<AuthDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:AutoStoper"]));
             services.AddControllers();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserService, UserService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

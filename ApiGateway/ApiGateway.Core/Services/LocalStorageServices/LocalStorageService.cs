@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -20,7 +21,15 @@ namespace ApiGateway.Core.LocalStorageServices
             if (json == null)
                 return default;
 
-            return JsonSerializer.Deserialize<T>(json);
+            try
+            {
+                return JsonSerializer.Deserialize<T>(json);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return default;
+            }
         }
 
         public async Task SetItem<T>(string key, T value)

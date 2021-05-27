@@ -1,10 +1,10 @@
 {
   "routes": [
     {
-      "endpoint": "/weather",
+      "endpoint": "/voznje",
       "destination": {
         "serviceId": 1,
-        "uri": "WeatherForecast/Get",
+        "uri": "Voznja/Get",
         "requiresAuthentication": "true"
       }
     },

@@ -1,5 +1,6 @@
 ﻿using ApiGateway.Core.RequestModels;
 using ApiGateway.Core.ResponseModels;
+using AutoStoper.Authorization.Data.UnitOfWork;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -10,26 +11,22 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiGateway.Core.Services.AuthenticationServices
+namespace AutoStoper.Authorization.Services
 {
     public class UserService : IUserService
     {
-        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<ApiGateway.Core.User.User> _users = new List<ApiGateway.Core.User.User>
-        {
-            new ApiGateway.Core.User.User { Id = 1, FirstName = "Antonio", LastName = "Supan", Username = "test", Password = "test" }
-        };
-
         private readonly IConfiguration _appSettings;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IConfiguration appSettings)
+        public UserService(IConfiguration appSettings, IUnitOfWork unitOfWork)
         {
             _appSettings = appSettings;
+            _unitOfWork = unitOfWork;
         }
 
         public LoginResponse Authenticate(LoginRequest model)
         {
-            var user = _users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            var user = _unitOfWork.Korisnici.Get(p => p.Username == model.Username && p.Password == model.Password).FirstOrDefault();
 
             if (user == null) 
                 return null;
@@ -40,12 +37,12 @@ namespace ApiGateway.Core.Services.AuthenticationServices
 
         public IEnumerable<ApiGateway.Core.User.User> GetAll()
         {
-            return _users;
+            return _unitOfWork.Korisnici.Get();
         }
 
-        public ApiGateway.Core.User.User GetById(string id)
+        public ApiGateway.Core.User.User GetById(int id)
         {
-            return _users.FirstOrDefault(x => x.Id == Convert.ToInt32(id));
+            return _unitOfWork.Korisnici.GetByID(id);
         }
 
         private string generateJwtToken(ApiGateway.Core.User.User user)

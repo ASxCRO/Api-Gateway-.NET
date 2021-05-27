@@ -13,32 +13,41 @@ namespace AutoStoper.API.Data.UnitOfWork
     {
 
         private AutoStoperDbContext _dbContext;
-        public IRepository<Voznja> Voznje { get; set; }
-        public IRepository<VoznjaUser> VoznjaUser { get; set; }
+        public BaseRepository<Voznja> VoznjeRepo { get; set; }
+        public BaseRepository<VoznjaUser> VoznjeUserRepo { get; set; }
+        public BaseRepository<Adresa> AdreseRepo { get; set; }
+
         public UnitOfWork(AutoStoperDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IRepository<Voznja> VoznjeRepo
+        public IRepository<Voznja> Voznje
         {
             get
             {
-                return Voznje ??
-                    (Voznje = new BaseRepository<Voznja>(_dbContext));
+                return VoznjeRepo ??
+                    (VoznjeRepo = new BaseRepository<Voznja>(_dbContext));
             }
         }
 
-        public IRepository<VoznjaUser> VoznjaUserRepo
+        public IRepository<VoznjaUser> VoznjeUser
         {
             get
             {
-                return VoznjaUser ??
-                    (VoznjaUser = new BaseRepository<VoznjaUser>(_dbContext));
+                return VoznjeUserRepo ??
+                    (VoznjeUserRepo = new BaseRepository<VoznjaUser>(_dbContext));
             }
         }
 
-
+        public IRepository<Adresa> Adrese
+        {
+            get
+            {
+                return AdreseRepo ??
+                    (AdreseRepo = new BaseRepository<Adresa>(_dbContext));
+            }
+        }
 
         public void Commit()
         {
