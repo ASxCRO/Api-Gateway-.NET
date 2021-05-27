@@ -26,8 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Repository\" />
-    <Folder Include="Data\UnitOfWork\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
