@@ -17,7 +17,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
         private List<ApiGateway.Core.User.User> _users = new List<ApiGateway.Core.User.User>
         {
-            new ApiGateway.Core.User.User { Id = "1", FirstName = "Antonio", LastName = "Supan", Username = "test", Password = "test" }
+            new ApiGateway.Core.User.User { Id = 1, FirstName = "Antonio", LastName = "Supan", Username = "test", Password = "test" }
         };
 
         private readonly IConfiguration _appSettings;
@@ -45,7 +45,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
 
         public ApiGateway.Core.User.User GetById(string id)
         {
-            return _users.FirstOrDefault(x => x.Id == id);
+            return _users.FirstOrDefault(x => x.Id == Convert.ToInt32(id));
         }
 
         private string generateJwtToken(ApiGateway.Core.User.User user)

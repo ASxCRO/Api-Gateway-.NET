@@ -9,7 +9,7 @@ namespace AutoStoper.Client.Shared
 {
     public partial class MainLayout
     {
-        private string CurrentUserId { get; set; }
+        private int CurrentUserId { get; set; }
         private string FirstName { get; set; }
         private string SecondName { get; set; }
         private string Email { get; set; }
