@@ -10,11 +10,12 @@
 @using Microsoft.JSInterop
 @using AutoStoper.Client
 @using AutoStoper.Client.Shared
+@using AutoStoper.Client.Shared.Components
 @using MudBlazor
 @using Blazored.FluentValidation
 @using ApiGateway.Core.AuthenticationServices;
 @using AutoStoper.Client.Shared.Preferences;
-@using ApiGateway.Core.Models.ResponseModels 
+@using ApiGateway.Core.Models.ResponseModels
 
 @* DI *@
 @attribute [Authorize]
@@ -23,3 +24,4 @@
 @inject ISnackbar _snackBar
 @inject IDialogService _dialogService
 @inject IHttpClientFactory _httpClientFactory
+@inject IJSRuntime _jsRuntime

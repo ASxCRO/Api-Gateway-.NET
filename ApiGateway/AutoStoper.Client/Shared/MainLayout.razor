@@ -8,9 +8,11 @@
 
 @if (_authorizationService.User is null)
 {
-    <div class="content px-4">
-        @Body
-    </div>
+    <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 100vh;">
+        <MudPaper Elevation="25" Class="pa-8" Style="width: 500px;">
+                @Body
+        </MudPaper>
+    </MudContainer>
 }
 else
 {
@@ -22,20 +24,18 @@ else
                 <MudDivider Vertical="true" FlexItem="true" DividerType="DividerType.Middle" Class="mx-4 my-5" />
                 <MudMenu EndIcon="@Icons.Filled.KeyboardArrowDown" Label="Podrška" Color="Color.Inherit" Dense="true" Direction="Direction.Right" OffsetY="true">
                     <MudText Typo="Typo.body2" Class="px-4 py-2"><b>Zajednica</b></MudText>
-                    <MudMenuItem Link="https://www.facebook.com/groups/about.asp.net.core" Target="_blank">Facebook grupa</MudMenuItem>
-                    <MudMenuItem Link="https://www.facebook.com/codewithmukesh" Target="_blank">Facebook stranica</MudMenuItem>
-                    <MudMenuItem Link="https://www.linkedin.com/in/iammukeshm/" Target="_blank">LinkedIn</MudMenuItem>
+                    <MudMenuItem Link="https://www.facebook.com/BlaBlaCarHrvatska" Target="_blank">Facebook stranica</MudMenuItem>
+                    <MudMenuItem Link="https://www.linkedin.com/company/blablacar" Target="_blank">LinkedIn</MudMenuItem>
                     <MudText Typo="Typo.body2" Class="px-4 py-2"><b>Resursi</b></MudText>
                     <MudMenuItem Link="https://mudblazor.com/" Target="_blank">MudBlazor dokumentacija</MudMenuItem>
-                    <MudMenuItem Link="https://codewithmukesh.com/blog/blazor-hero-quick-start-guide/" Target="_blank">Upute za početak</MudMenuItem>
                 </MudMenu>
                 <MudAppBarSpacer />
 
-                <LanguageSelector />
-                <MudTooltip Text="Tamni način">
-                    <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" />
-                </MudTooltip>
-                <MudTooltip Text="Repozitorij projekta">
+                @*<LanguageSelector />*@
+                @*<MudTooltip Text="Tamni način">
+                        <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" />
+                    </MudTooltip>*@
+                <MudTooltip Text="Github">
                     <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/asxcro" Target="_blank" />
                 </MudTooltip>
             </MudHidden>
@@ -50,12 +50,10 @@ else
                         </MudTooltip>
                     </div>
                     <MudText Typo="Typo.body2" Class="px-4 py-2"><b>Zajednica</b></MudText>
-                    <MudMenuItem Link="https://www.facebook.com/groups/about.asp.net.core" Target="_blank">Facebook grupa</MudMenuItem>
-                    <MudMenuItem Link="https://www.facebook.com/codewithmukesh" Target="_blank">Facebook stranica</MudMenuItem>
-                    <MudMenuItem Link="https://www.linkedin.com/in/iammukeshm/" Target="_blank">LinkedIn</MudMenuItem>
+                    <MudMenuItem Link="https://www.facebook.com/BlaBlaCarHrvatska" Target="_blank">Facebook stranica</MudMenuItem>
+                    <MudMenuItem Link="https://www.linkedin.com/company/blablacar" Target="_blank">LinkedIn</MudMenuItem>
                     <MudText Typo="Typo.body2" Class="px-4 py-2"><b>Resursi</b></MudText>
-                    <MudMenuItem Link="https://mudblazor.com/getting-started/installation" Target="_blank">MudBlazor dokumentacija</MudMenuItem>
-                    <MudMenuItem Link="https://codewithmukesh.com/blog/blazor-hero-quick-start-guide/" Target="_blank">Upute za početak</MudMenuItem>
+                    <MudMenuItem Link="https://mudblazor.com/" Target="_blank">MudBlazor dokumentacija</MudMenuItem>
                 </MudMenu>
             </MudHidden>
             <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
@@ -78,7 +76,7 @@ else
                 <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
             </MudToolBar>
             <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
-                    @Body
+                @Body
             </MudContainer>
         </MudMainContent>
     </MudLayout>

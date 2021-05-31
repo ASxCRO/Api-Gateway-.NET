@@ -1,29 +1,22 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
-@using MudBlazor
+﻿@using MudBlazor
 @layout MainLayout
 
 <UserCard />
 <MudDivider Class="mb-4" />
 <MudNavMenu>
-    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Outlined.Home">Početna</MudNavLink>
-    <MudNavLink Href="/jobs" Icon="@Icons.Outlined.Work">
-        Vožnje
+    <MudNavLink Href="/index" Match="NavLinkMatch.All" Icon="@Icons.Outlined.Home">Naslovnica</MudNavLink>
+    <MudNavLink Href="/ponuda" Icon="@Icons.Outlined.LocalTaxi">
+        Ponudi
     </MudNavLink>
-    <MudNavLink Href="https://codewithmukesh.com/blog/blazor-hero-quick-start-guide/" Target="_blank" Icon="@Icons.Outlined.ReadMore">
-        Korisničke upute
-    </MudNavLink>
-    <MudNavLink Href="/swagger/index.html" Target="_blank" Icon="@Icons.Outlined.LiveHelp">
-        Swagger
+    <MudNavLink Href="/pretrazi" Icon="@Icons.Outlined.Search">
+        Pretraži
     </MudNavLink>
     <MudListSubheader Class="mt-2 mb-n2">Korisnik</MudListSubheader>
-    <MudNavLink Href="/dashboard" Icon="@Icons.Outlined.Dashboard">
-        Dashboard
+    <MudNavLink Href="/poruke" Icon="@Icons.Outlined.Message">
+        Poruke
     </MudNavLink>
-    <MudNavLink Href="/account" Icon="@Icons.Outlined.SupervisorAccount">
+    <MudNavLink Href="/profil" Icon="@Icons.Outlined.SupervisorAccount">
         Račun
-    </MudNavLink>
-    <MudNavLink Href="/document-store" Icon="@Icons.Outlined.AttachFile">
-        Dokumenti
     </MudNavLink>
     }
 </MudNavMenu>

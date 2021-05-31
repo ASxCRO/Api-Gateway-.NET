@@ -1,0 +1,69 @@
+﻿@namespace AutoStoper.Client.Shared.Components
+<MudGrid>
+    <MudItem xs="12" sm="4" md="3">
+        <MudCard Elevation="25">
+            <MudCardContent>
+                <div class="d-flex justify-center mb-4">
+                    @if (!string.IsNullOrEmpty("https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"))
+                    {
+                        <MudAvatar Image="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" Style="height:250px; width:250px;"> </MudAvatar>
+                    }
+                    else
+                    {
+                        <MudAvatar Color="Color.Secondary" Style="height:250px; width:250px;">@FirstLetterOfName</MudAvatar>
+                    }
+                </div>
+                <MudText Typo="Typo.h6" Align="Align.Center">@profileModel.FirstName @profileModel.LastName</MudText>
+                <MudText Align="Align.Center">@profileModel.Email</MudText>
+            </MudCardContent>
+            <MudCardActions Class="d-flex justify-center">
+                <InputFile id="fileInput" hidden />
+                <MudButton HtmlTag="label"
+                           Variant="Variant.Text"
+                           Color="Color.Primary"
+                           Size="Size.Small"
+                           StartIcon="@Icons.Filled.CloudUpload"
+                           for="fileInput">
+                    Odaberite sliku
+                </MudButton>
+                @if (!string.IsNullOrEmpty("https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"))
+                {
+                    <MudButton Variant="Variant.Text"
+                               Color="Color.Error"
+                               StartIcon="@Icons.Filled.Delete"
+                               Size="Size.Small"
+                               OnClick="DeleteAsync">
+                        Ukloni fotografiju
+                    </MudButton>
+                }
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" sm="8" md="9">
+        <EditForm Model="@profileModel" OnValidSubmit="UpdateProfileAsync">
+            <MudCard Elevation="25">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText>Detalji računa</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid>
+                        <MudItem xs="12" md="6">
+                            <MudTextField @bind-Value="@profileModel.FirstName" For="@(() => profileModel.FirstName)" Label="Ime" Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12" md="6">
+                            <MudTextField @bind-Value="@profileModel.LastName" For="@(() => profileModel.LastName)" Label="Prezime" Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12" md="6">
+                            <MudTextField @bind-Value="@profileModel.Email" Label="Email" For="@(() => profileModel.Email)" Variant="Variant.Outlined" InputType="InputType.Email" Disabled=true />
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+                <MudCardActions Class="pb-4 pl-4">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" ButtonType="ButtonType.Submit">Spremi promjene</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </EditForm>
+    </MudItem>
+</MudGrid>
