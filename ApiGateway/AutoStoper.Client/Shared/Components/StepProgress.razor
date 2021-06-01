@@ -1,5 +1,4 @@
-﻿<button @onclick="SetPreviousItemActive" class="btn btn-danger">Vrati se</button>
-
+﻿
 <div class="container">
     <ul class="progressbar">
 
@@ -17,33 +16,8 @@
     </ul>
 </div>
 
-<button @onclick="SetNextItemActive" class="btn btn-danger">Nastavi</button>
-
 @code{
-    private Dictionary<int, string> collection { get; set; }
-    private int activeItemInCollection { get; set; }
-
-    protected override void OnInitialized()
-    {
-        collection = new();
-        collection.Add(1, "Datum");
-        collection.Add(2, "Polazište");
-        collection.Add(3, "Odredište");
-        collection.Add(4, "Odaberi prijevoz");
-
-        activeItemInCollection = 1;
-    }
-
-    protected void SetNextItemActive()
-    {
-        activeItemInCollection++;
-        StateHasChanged();
-    }
-
-    protected void SetPreviousItemActive()
-    {
-        activeItemInCollection--;
-        StateHasChanged();
-    }
+    [Parameter] public Dictionary<int, string> collection { get; set; }
+    [Parameter] public int activeItemInCollection { get; set; }
 }
 

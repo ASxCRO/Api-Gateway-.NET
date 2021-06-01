@@ -1,2 +1,57 @@
 ﻿@page "/ponuda"
 
+<MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 70vh;">
+    <MudPaper Elevation="25" Class="pa-8" Style="width: 500px;">
+        <StepProgress collection="collection" activeItemInCollection="activeKey" />
+        <MudGrid>
+            @switch (activeKey)
+            {
+                case 1:
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center py-8">
+                            <MudDatePicker Label="Odaberite datum" @bind-Date="date" DisableToolbar="true" HelperText="Datum" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center py-8">
+                            <MudTimePicker Label="Vrijeme" AmPm="true" @bind-Time="time" />
+                        </div>
+                    </MudItem>
+                    break;
+                case 2:
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center">
+                            <div id="mapPolaziste" style="height: 300px; width: 100%">
+                            </div>
+                        </div>
+                    </MudItem>
+                    break;
+                case 3:
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center">
+                            <div id="mapOdrediste" style="height: 300px; width: 100%">
+                            </div>
+                        </div>
+                    </MudItem>
+                    break;
+                case 4:
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center">
+                            <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
+                        </div>
+                    </MudItem>
+                    break;
+                default:
+                    break;
+            }
+            <MudItem xs="12">
+                <div class="d-flex justify-space-between">
+                    <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowLeft" Size="Size.Large" @onclick="SetPreviousItemActive"></MudIcon>
+                    <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowRight" Size="Size.Large" @onclick="SetNextItemActive"></MudIcon>
+                </div>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
+
+
