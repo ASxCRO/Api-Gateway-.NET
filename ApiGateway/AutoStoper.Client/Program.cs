@@ -4,6 +4,7 @@ using ApiGateway.Core.LocalStorageServices;
 using ApiGateway.Core.Services.AuthenticationServices;
 using ApiGateway.Core.SpinnerServices;
 using AutoStoper.Client.Shared.Preferences;
+using Blazor.AdminLte;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,7 @@ namespace AutoStoper.Client
             };
 
             builder.Services.AddScoped(sp => http);
+            builder.Services.AddAdminLte();
             builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
             builder.Services.AddScoped<IWebAssemblyHttpService, WebassemblyHttpService>();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
