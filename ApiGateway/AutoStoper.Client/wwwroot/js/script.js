@@ -10,6 +10,13 @@ function inicijalizirajMapuPolaziste() {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiYXN1cGFuIiwiYSI6ImNrajhyMms5NjA4c2UyeXBldWxpaTEzN3kifQ.lk1KeaqGyg-Z0tJv-3J9FQ'
     }).addTo(mapPolaziste);
+
+    L.Routing.control({
+        waypoints: [
+            L.latLng(45.331208, 17.676212),
+            L.latLng(45.373629, 17.662172)
+        ]
+    }).addTo(mapPolaziste);
 }
 
 function inicijalizirajMapuOdrediste() {
