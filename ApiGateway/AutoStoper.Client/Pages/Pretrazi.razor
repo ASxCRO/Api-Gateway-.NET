@@ -14,7 +14,7 @@
                     </MudItem>
                     <MudItem xs="12">
                         <div class="d-flex justify-center py-8">
-                            <MudTimePicker Label="Vrijeme" AmPm="true" @bind-Time="time" />
+                            <MudTimePicker Label="Vrijeme" AmPm="false" @bind-Time="time" />
                         </div>
                     </MudItem>
                     break;
@@ -37,31 +37,8 @@
                 case 4:
                     <MudItem xs="12">
                         <div class="d-flex justify-center">
-                            <MudSwitch @bind-Checked="@KucniLjubimci" Label="KucniLjubimci" Color="Color.Primary" />
+                            <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
                         </div>
-                    </MudItem>
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <MudSwitch @bind-Checked="@Pusenje" Label="Pusenje" Color="Color.Primary" />
-                        </div>
-                    </MudItem>
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <MudSwitch @bind-Checked="@Glazba" Label="Glazba" Color="Color.Primary" />
-                        </div>
-                    </MudItem>
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <MudSwitch @bind-Checked="@Razgovor" Label="Razgovor" Color="Color.Primary" />
-                        </div>
-                    </MudItem>
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <MudNumericField @bind-Value="LjudiUAutu" Label="Mjesta u autu" Variant="Variant.Outlined" Step="1" />
-                        </div>
-                    </MudItem>
-                    <MudItem xs="12">
-                            <MudButton OnClick="ObjaviPrijevoz"></MudButton>
                     </MudItem>
                     break;
                 default:

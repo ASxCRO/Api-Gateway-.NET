@@ -4,14 +4,16 @@ using AutoStoper.API.Data.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AutoStoper.API.Migrations
 {
     [DbContext(typeof(AutoStoperDbContext))]
-    partial class AutoStoperDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210603162059_adresaPropertiesUpdate")]
+    partial class adresaPropertiesUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,16 +32,10 @@ namespace AutoStoper.API.Migrations
                     b.Property<double>("Distanca")
                         .HasColumnType("float");
 
-                    b.Property<double>("LatOdrediste")
+                    b.Property<double>("Lat")
                         .HasColumnType("float");
 
-                    b.Property<double>("LatPolaziste")
-                        .HasColumnType("float");
-
-                    b.Property<double>("LngOdrediste")
-                        .HasColumnType("float");
-
-                    b.Property<double>("LngPolaziste")
+                    b.Property<double>("Lng")
                         .HasColumnType("float");
 
                     b.Property<string>("Odrediste")

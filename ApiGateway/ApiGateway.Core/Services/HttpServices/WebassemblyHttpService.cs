@@ -108,13 +108,14 @@ namespace ApiGateway.Core.HttpServices
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    var exceptionMsg = await response.Content.ReadFromJsonAsync<CustomExceptionMsg>();
-                    //var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<ExceptionMsg>(msg);
-                    if (exceptionMsg != null)
-                        _snackbarService.Add(exceptionMsg.Detail, Severity.Error);
-                    else
-                        _snackbarService.Add("Dogodila se pogreška", Severity.Error);
-                    return false;
+                    try
+                    {
+                        var exceptionMsg = await response.Content.ReadFromJsonAsync<CustomExceptionMsg>();
+                    }
+                    catch (System.Exception)
+                    {
+                        return false;
+                    }
                 }
             }
             return true;

@@ -15,6 +15,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ApiGateway.Core.Models.Enums;
+using ApiGateway.Core.Services.AutoStoperUIServices;
 
 namespace AutoStoper.Client
 {
@@ -35,6 +36,7 @@ namespace AutoStoper.Client
             builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
             builder.Services.AddScoped<IWebAssemblyHttpService, WebassemblyHttpService>();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddScoped<IAutoStoperService, AutoStoperService>();
             builder.Services.AddScoped<SpinnerService>();
 
             builder.Services.AddMudServices();

@@ -17,6 +17,7 @@
 @using AutoStoper.Client.Shared.Preferences;
 @using ApiGateway.Core.Models.ResponseModels
 @using ApiGateway.Core.HttpServices
+@using ApiGateway.Core.Services.AutoStoperUIServices
 
 @* DI *@
 @attribute [Authorize]
@@ -27,3 +28,4 @@
 @inject IDialogService _dialogService
 @inject IHttpClientFactory _httpClientFactory
 @inject IJSRuntime _jsRuntime
+@inject IAutoStoperService _autoStoperService  

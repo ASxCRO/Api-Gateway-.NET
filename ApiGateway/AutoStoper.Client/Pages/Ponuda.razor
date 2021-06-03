@@ -1,6 +1,6 @@
 ﻿@page "/ponuda"
 
-<MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 70vh;">
+<MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="min-height: 50vh;">
     <MudPaper Elevation="25" Class="pa-8" Style="width: 500px;">
         <StepProgress collection="collection" activeItemInCollection="activeKey" />
         <MudGrid>
@@ -14,7 +14,7 @@
                     </MudItem>
                     <MudItem xs="12">
                         <div class="d-flex justify-center py-8">
-                            <MudTimePicker Label="Vrijeme" AmPm="true" @bind-Time="time" />
+                            <MudTimePicker Label="Vrijeme" AmPm="false" @bind-Time="time" />
                         </div>
                     </MudItem>
                     break;
@@ -36,8 +36,55 @@
                     break;
                 case 4:
                     <MudItem xs="12">
+                        <div class="d-flex justify-space-between">
+                            <MudNumericField @bind-Value="LjudiUAutu" Label="Mjesta u autu" Variant="Variant.Outlined" Step="1" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <div class="d-flex justify-space-between">
+                            <MudSwitch @bind-Checked="@KucniLjubimci" Label="Kućni ljubimci dopušteni" Color="Color.Primary" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <div class="d-flex justify-space-between">
+                            <MudSwitch @bind-Checked="@Pusenje" Label="Dozvoljeno pušenje" Color="Color.Primary" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <div class="d-flex justify-space-between">
+                            <MudSwitch @bind-Checked="@Glazba" Label="Glazba u autu" Color="Color.Primary" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12">
+                        <div class="d-flex justify-space-between">
+                            <MudSwitch @bind-Checked="@Razgovor" Label="Raspoložen sam za razgovor" Color="Color.Primary" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12">
                         <div class="d-flex justify-center">
-                            <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
+                            <div id="mapRoute" style="height: 300px; width: 100%">
+                            </div>
+                        </div>
+                    </MudItem>
+
+                    if (Ruta is not null)
+                    {
+                        <MudItem xs="12">
+                            <MudTextField Variant="Variant.Outlined" @bind-Value="Ruta.Polaziste" Label="Polazište" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField Variant="Variant.Outlined" @bind-Value="Ruta.Odrediste" Label="Odredište" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField Variant="Variant.Outlined" @bind-Value="Ruta.Distanca" Label="Distanca (km)" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField Variant="Variant.Outlined" @bind-Value="Ruta.Vrijeme" Label="Vrijeme (min)" />
+                        </MudItem>
+                    }
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center">
+                            <MudButton OnClick="ObjaviPrijevoz">Objavi prijevoz</MudButton>
                         </div>
                     </MudItem>
                     break;

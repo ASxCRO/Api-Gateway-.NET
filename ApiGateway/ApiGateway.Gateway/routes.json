@@ -1,11 +1,51 @@
 {
   "routes": [
     {
+      "endpoint": "/novavoznja",
+      "destination": {
+        "serviceId": 1,
+        "uri": "Voznja/Insert",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
       "endpoint": "/voznje",
       "destination": {
         "serviceId": 1,
-        "uri": "Voznja/Get",
-        "requiresAuthentication": "true"
+        "uri": "Voznja/GetAll",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
+      "endpoint": "/voznja",
+      "destination": {
+        "serviceId": 1,
+        "uri": "Voznja/GetById",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
+      "endpoint": "/voznjekorisnika",
+      "destination": {
+        "serviceId": 1,
+        "uri": "Voznja/GetByUserId",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
+      "endpoint": "/azurirajvoznju",
+      "destination": {
+        "serviceId": 1,
+        "uri": "Voznja/Update",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
+      "endpoint": "/obrisivoznju",
+      "destination": {
+        "serviceId": 1,
+        "uri": "Voznja/Delete",
+        "requiresAuthentication": "false"
       }
     },
     {

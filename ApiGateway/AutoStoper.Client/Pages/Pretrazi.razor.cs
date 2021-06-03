@@ -11,12 +11,6 @@ namespace AutoStoper.Client.Pages
         public int activeKey { get; set; }
         public DateTime? date { get; set; }
         public TimeSpan? time { get; set; }
-
-        public bool KucniLjubimci { get; set; }
-        public bool Pusenje { get; set; }
-        public bool Glazba { get; set; }
-        public bool Razgovor { get; set; }
-        public int LjudiUAutu { get; set; }
         protected override async Task OnInitializedAsync()
         {
 
@@ -80,10 +74,7 @@ namespace AutoStoper.Client.Pages
             await _jsRuntime.InvokeVoidAsync("inicijalizirajMapuOdrediste");
         }
 
-        public void ObjaviPrijevoz()
-        {
 
-        }
 
     }
 }

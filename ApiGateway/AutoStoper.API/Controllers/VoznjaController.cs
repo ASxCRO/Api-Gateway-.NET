@@ -16,11 +16,49 @@ namespace AutoStoper.API.Controllers
             this.voznjaService = voznjaService;
         }
 
+        [HttpPost]
+        [Route("Insert")]
+        public IActionResult Insert(Voznja voznja)
+        {
+            voznjaService.Insert(voznja);
+            return Ok();
+        }
+
         [HttpGet]
-        [Route("Get")]
+        [Route("GetAll")]
         public IEnumerable<Voznja> Get()
         {
             return voznjaService.GetAll();
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public Voznja GetById(int id)
+        {
+            return voznjaService.GetById(id);
+        }
+
+        [HttpGet]
+        [Route("GetByUserId")]
+        public Voznja GetByUserId(int userId)
+        {
+            return voznjaService.GetByUserId(userId);
+        }
+
+        [HttpPost]
+        [Route("Delete")]
+        public IActionResult Delete(Voznja voznja)
+        {
+            voznjaService.Delete(voznja);
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("Update")]
+        public IActionResult Update(Voznja voznja)
+        {
+            voznjaService.Update(voznja);
+            return Ok();
         }
     }
 }

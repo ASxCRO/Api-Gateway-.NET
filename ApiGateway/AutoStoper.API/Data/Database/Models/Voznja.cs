@@ -14,8 +14,6 @@ namespace AutoStoper.API.Data.Database.Models
         public bool AutomatskoOdobrenje { get; set; }
         public int MaksimalnoPutnika{ get; set; }
         public DateTime DateTime { get; set; }
-
-
         public  int AdresaId{ get; set; }
         public virtual Adresa Adresa { get; set; }
 
