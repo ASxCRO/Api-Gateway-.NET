@@ -29,6 +29,9 @@
             <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.LastName)" @bind-Value="registerUserModel.LastName" Label="Prezime" />
         </MudItem>
         <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.PhoneNumber)" @bind-Value="registerUserModel.PhoneNumber" Label="Broj mobitela" />
+        </MudItem>
+        <MudItem xs="12">
             <MudTextField Variant="Variant.Outlined" T="string" Label="Email"
                           @bind-Value="registerUserModel.Email" For="@(() => registerUserModel.Email)" />
         </MudItem>
@@ -37,9 +40,10 @@
         </MudItem>
         <MudItem xs="12">
             <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.ConfirmPassword)" InputType="InputType.Password" @bind-Value="registerUserModel.ConfirmPassword" Label="Potvrdi lozinku" />
-        </MudItem> 
-        <MudItem xs="12" Variant="Variant.Outlined" Class="d-flex justify-center">
-            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled"  Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Registriraj me</MudButton>
         </MudItem>
+        <MudItem xs="12" Variant="Variant.Outlined" Class="d-flex justify-center">
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Registriraj me</MudButton>
+        </MudItem>
+
     </MudGrid>
 </EditForm>

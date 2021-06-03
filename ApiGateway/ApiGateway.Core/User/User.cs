@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace ApiGateway.Core.User
 {
@@ -15,9 +10,8 @@ namespace ApiGateway.Core.User
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string? JwtToken { get; set; }
-
-        [JsonIgnore]
+        public string PhoneNumber { get; set; }
+        public byte[] Image { get; set; }
         public string Password { get; set; }
-
     }
 }

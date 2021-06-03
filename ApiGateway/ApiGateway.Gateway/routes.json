@@ -23,6 +23,22 @@
         "uri": "users/register",
         "requiresAuthentication": "false"
       }
+    },
+    {
+      "endpoint": "/korisnik",
+      "destination": {
+        "serviceId": 0,
+        "uri": "users/getbyid",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
+      "endpoint": "/azurirajkorisnika",
+      "destination": {
+        "serviceId": 0,
+        "uri": "users/update",
+        "requiresAuthentication": "false"
+      }
     }
   ],
   "services": [

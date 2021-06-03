@@ -68,9 +68,19 @@ namespace ApiGateway.Core.Services.AuthenticationServices
                 return true;
             }
             else
-            {
                 return false;
-            }
+        }
+
+        public async Task<bool> Update(User.User user)
+        {
+            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, user, HttpMethod.Post, "/azurirajkorisnika");
+            return response is not null ? true : false;
+        }
+
+        public async Task<User.User> GetById(int id)
+        {
+            var response = await webAssemblyHttpService.Fetch<ApiGateway.Core.User.User>(Client.ApiGateway, null, HttpMethod.Get, $"/korisnik?id={id}");
+            return response is not null ? response : null;
         }
     }
 }

@@ -1,75 +1,66 @@
 ﻿using ApiGateway.Core.User;
+using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AutoStoper.Client.Shared.Components
 {
     public partial class Profile
     {
-        private char FirstLetterOfName { get; set; }
-
-        private readonly User profileModel = new User { FirstName = "Antonio", LastName= "Supan", Email = "antonio.suusp@gmail.com"};
-        public string UserId { get; set; }
-
-        private async Task UpdateProfileAsync()
-        {
-            //var response = await _accountManager.UpdateProfileAsync(profileModel);
-            if (true)
-            {
-                //await _authenticationManager.Logout();
-                _snackBar.Add("Your Profile has been updated. Please Login to Continue.", Severity.Success);
-                _navigationManager.NavigateTo("/");
-            }
-            else
-            {
-                foreach (var message in new List<string> { "Greška prilikom update profila"})
-                {
-                    _snackBar.Add(message, Severity.Error);
-                }
-            }
-        }
+        private User profileModel { get; set; }
+        private string profileImageUrl { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            profileModel = new();
             await LoadDataAsync();
         }
 
         private async Task LoadDataAsync()
         {
+            profileModel = await _authorizationService.GetById(_authorizationService.User.Id);
+            if(profileModel.Image is not null)
+            {
+                var base64 = Convert.ToBase64String(profileModel.Image);
+                profileImageUrl = String.Format("data:image/gif;base64,{0}", base64);
+            }
         }
 
-
-        private async Task DeleteAsync()
+        private async Task UpdateProfileAsync()
         {
-            //var parameters = new DialogParameters
-            //{
-            //    //TODO: localize
-            //    {"ContentText", $"Do you want to delete the profile picture of {profileModel.Email} ?"}
-            //};
-            //var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true, DisableBackdropClick = true };
-            //var dialog = _dialogService.Show<Shared.Dialogs.DeleteConfirmation>("Delete", parameters, options);
-            //var result = await dialog.Result;
-            //if (!result.Cancelled)
-            //{
-            //    var request = new UpdateProfilePictureRequest() { Data = null, FileName = string.Empty, UploadType = Application.Enums.UploadType.ProfilePicture };
-            //    var data = await _accountManager.UpdateProfilePictureAsync(request, UserId);
-            //    if (data.Succeeded)
-            //    {
-            //        await _localStorage.RemoveItemAsync("userImageURL");
-            //        ImageDataUrl = string.Empty;
-            //        _navigationManager.NavigateTo("/account", true);
-            //    }
-            //    else
-            //    {
-            //        foreach (var error in data.Messages)
-            //        {
-            //            _snackBar.Add(localizer[error], Severity.Error);
-            //        }
-            //    }
-            //}
+            var response =  await _authorizationService.Update(profileModel);
+            if (response)
+            {
+                await _authorizationService.Logout();
+                _snackBar.Add("Profil uspješno ažuriran", Severity.Success);
+                _navigationManager.NavigateTo("/");
+            }
+            else
+            {
+                _snackBar.Add("Nemoguće ažurirati profil", Severity.Error);
+            }
+        }
+
+        public async Task LoadFiles(InputFileChangeEventArgs e)
+        {
+            foreach (var file in e.GetMultipleFiles(1))
+            {
+                var fileByteArray = await ReadFully(file.OpenReadStream());
+                var base64 = Convert.ToBase64String(fileByteArray);
+                profileImageUrl = String.Format("data:image/gif;base64,{0}", base64);
+                profileModel.Image = fileByteArray;
+            }
+        }
+
+        public static async Task<byte[]> ReadFully(Stream input)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                await input.CopyToAsync(ms);
+                return ms.ToArray();
+            }
         }
     }
 }

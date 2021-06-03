@@ -1,7 +1,7 @@
 ﻿
 @namespace AutoStoper.Client.Shared.Components
 
-<EditForm Model="@passwordModel" OnValidSubmit="ChangePasswordAsync">
+<EditForm Model="@profileModel" OnValidSubmit="ChangePasswordAsync">
     <MudCard Elevation="25">
         <MudCardHeader>
             <CardHeaderContent>
@@ -11,13 +11,13 @@
         <MudCardContent>
             <MudGrid>
                 <MudItem xs="12" md="6">
-                    <MudTextField T="string" @bind-Value="passwordModel.Password" For="@(() => passwordModel.Password)" Label="Lozinka" Variant="Variant.Outlined" InputType="InputType.Password" />
+                    <MudTextField T="string" @bind-Value="newPassword" For="@(() => newPassword)" Label="Lozinka" Variant="Variant.Outlined" InputType="InputType.Password" />
                 </MudItem>
                 <MudItem xs="12" md="6">
-                    <MudTextField T="string" @bind-Value="passwordModel.Password" For="@(() => passwordModel.Password)" Label="Ponovite lozinku" Variant="Variant.Outlined" InputType="InputType.Password" />
+                    <MudTextField T="string" @bind-Value="newPassword2" For="@(() => newPassword2)" Label="Ponovite lozinku" Variant="Variant.Outlined" InputType="InputType.Password" />
                 </MudItem>
                 <MudItem xs="12">
-                    <MudTextField T="string" @bind-Value="passwordModel.Password" For="@(() => passwordModel.Password)" Label="Sadašnja lozinka" Variant="Variant.Outlined" InputType="InputType.Password" />
+                    <MudTextField T="string" @bind-Value="todayPassword" For="@(() => todayPassword)" Label="Sadašnja lozinka" Variant="Variant.Outlined" InputType="InputType.Password" />
                 </MudItem>
             </MudGrid>
         </MudCardContent>

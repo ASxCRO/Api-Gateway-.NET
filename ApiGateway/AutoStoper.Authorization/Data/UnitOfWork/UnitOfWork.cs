@@ -1,5 +1,5 @@
-﻿using AutoStoper.Authorization.Data.Database;
-using AutoStoper.Authorization.Data.Database.Models;
+﻿using ApiGateway.Core.User;
+using AutoStoper.Authorization.Data.Database;
 using AutoStoper.Authorization.Data.Repository;
 using AutoStoper.Authorization.Data.Repository.Repositories;
 using System;

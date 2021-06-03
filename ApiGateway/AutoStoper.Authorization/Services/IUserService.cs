@@ -14,6 +14,7 @@ namespace AutoStoper.Authorization.Services
         LoginResponse Authenticate(LoginRequest model);
         LoginResponse Register(RegisterRequest model);
         IEnumerable<ApiGateway.Core.User.User> GetAll();
+        ApiGateway.Core.User.User Update(ApiGateway.Core.User.User user);
         ApiGateway.Core.User.User GetById(int id);
     }
 }

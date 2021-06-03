@@ -1,4 +1,4 @@
-﻿using AutoStoper.Authorization.Data.Database.Models;
+﻿using ApiGateway.Core.User;
 using AutoStoper.Authorization.Data.Repository;
 
 namespace AutoStoper.Authorization.Data.UnitOfWork

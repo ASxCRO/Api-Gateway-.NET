@@ -31,4 +31,3 @@ function inicijalizirajMapuOdrediste() {
         accessToken: 'pk.eyJ1IjoiYXN1cGFuIiwiYSI6ImNrajhyMms5NjA4c2UyeXBldWxpaTEzN3kifQ.lk1KeaqGyg-Z0tJv-3J9FQ'
     }).addTo(mapOdrediste);
 }
-

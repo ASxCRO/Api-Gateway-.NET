@@ -11,6 +11,8 @@ namespace ApiGateway.Core.AuthenticationServices
         Task Initialize();
         Task<bool> Login(LoginRequest loginRequest);
         Task<bool> Register(RegisterRequest registerRequest);
+        Task<bool> Update(User.User user);
+        Task<User.User> GetById(int id);
         Task Logout();
     }
 }

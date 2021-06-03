@@ -4,20 +4,20 @@
         <MudCard Elevation="25">
             <MudCardContent>
                 <div class="d-flex justify-center mb-4">
-                    @if (!string.IsNullOrEmpty("https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"))
+                    @if (profileImageUrl is not null)
                     {
-                        <MudAvatar Image="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" Style="height:250px; width:250px;"> </MudAvatar>
+                        <MudAvatar Image="@profileImageUrl" Style="height:250px; width:250px;"> </MudAvatar>
                     }
                     else
                     {
-                        <MudAvatar Color="Color.Secondary" Style="height:250px; width:250px;">@FirstLetterOfName</MudAvatar>
+                        <MudAvatar Color="Color.Secondary" Style="height:250px; width:250px;">@profileModel.FirstName?[0]</MudAvatar>
                     }
                 </div>
                 <MudText Typo="Typo.h6" Align="Align.Center">@profileModel.FirstName @profileModel.LastName</MudText>
-                <MudText Align="Align.Center">@profileModel.Email</MudText>
+                <MudText Align="Align.Center">@profileModel.Username</MudText>
             </MudCardContent>
             <MudCardActions Class="d-flex justify-center">
-                <InputFile id="fileInput" hidden />
+                <InputFile OnChange="@LoadFiles" id="fileInput" hidden accepts="image/*"/>
                 <MudButton HtmlTag="label"
                            Variant="Variant.Text"
                            Color="Color.Primary"
@@ -26,13 +26,13 @@
                            for="fileInput">
                     Odaberite sliku
                 </MudButton>
-                @if (!string.IsNullOrEmpty("https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"))
+                @if (profileImageUrl is not null)
                 {
                     <MudButton Variant="Variant.Text"
                                Color="Color.Error"
                                StartIcon="@Icons.Filled.Delete"
                                Size="Size.Small"
-                               OnClick="DeleteAsync">
+                               >
                         Ukloni fotografiju
                     </MudButton>
                 }
