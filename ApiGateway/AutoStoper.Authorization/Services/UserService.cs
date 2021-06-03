@@ -1,5 +1,7 @@
-﻿using ApiGateway.Core.RequestModels;
+﻿using ApiGateway.Core.Models.RequestModels;
+using ApiGateway.Core.RequestModels;
 using ApiGateway.Core.ResponseModels;
+using AutoStoper.Authorization.Data.Database.Models;
 using AutoStoper.Authorization.Data.UnitOfWork;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -43,6 +45,22 @@ namespace AutoStoper.Authorization.Services
         public ApiGateway.Core.User.User GetById(int id)
         {
             return _unitOfWork.Korisnici.GetByID(id);
+        }
+
+        public LoginResponse Register(RegisterRequest model)
+        {
+            var userToRegister = new User { 
+                Email = model.Email,
+                Username = model.UserName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Password = model.Password
+            };
+
+            _unitOfWork.Korisnici.Insert(userToRegister);
+            _unitOfWork.Commit();
+
+            return this.Authenticate(new LoginRequest { Username = userToRegister.Username, Password = userToRegister.Password });
         }
 
         private string generateJwtToken(ApiGateway.Core.User.User user)

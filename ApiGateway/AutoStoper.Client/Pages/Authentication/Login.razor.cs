@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
+﻿using ApiGateway.Core.RequestModels;
 using MudBlazor;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
-using Microsoft.AspNetCore.Components;
-using ApiGateway.Core.RequestModels;
 
 namespace AutoStoper.Client.Pages.Authentication
 {

@@ -1,4 +1,5 @@
-﻿using ApiGateway.Core.RequestModels;
+﻿using ApiGateway.Core.Models.RequestModels;
+using ApiGateway.Core.RequestModels;
 using AutoStoper.Authorization.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,17 @@ namespace AutoStoper.Authorization.Controllers
 
             if (response == null)
                 return BadRequest(new { message = "Korisnicko ime / lozinka nisu ispravni" });
+
+            return Ok(response);
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register(RegisterRequest model)
+        {
+            var response = _userService.Register(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Registracijske informacije nisu valjane" });
 
             return Ok(response);
         }

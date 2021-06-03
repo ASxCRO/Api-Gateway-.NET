@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ApiGateway.Core.Models.Enums;
 
 namespace AutoStoper.Client
 {
@@ -44,7 +45,7 @@ namespace AutoStoper.Client
 
             var gatewayConnectionString = builder.Configuration["APIConnectionStrings:Gateway"];
 
-            builder.Services.AddHttpClient("AutoStoper.Gateway", client => {
+            builder.Services.AddHttpClient(ApiGateway.Core.Models.Enums.Client.ApiGateway, client => {
                 client.BaseAddress = new Uri(gatewayConnectionString);
             });
 

@@ -28,14 +28,14 @@ namespace ApiGateway.Core.HttpServices
             _snackbarService = snackbarService;
         }
 
-        public HttpRequestMessage ForgeRequest(object requestModel, HttpMethod httpMethod, string uri, BrowserRequestMode browserRequestMode, BrowserRequestCredentials browserRequestCredentials)
+        public HttpRequestMessage ForgeRequest(object requestModel, HttpMethod httpMethod, string uri)
         {
             _spinnerService.Show();
             var request = new HttpRequestMessage(httpMethod, uri);
             if (httpMethod != HttpMethod.Get)
                 request.Content = new StringContent(JsonSerializer.Serialize(requestModel), Encoding.UTF8, "application/json");
-            request.SetBrowserRequestMode(browserRequestMode);
-            request.SetBrowserRequestCredentials(browserRequestCredentials);
+            request.SetBrowserRequestMode(BrowserRequestMode.NoCors);
+            request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
 
             return request;
         }
@@ -45,7 +45,16 @@ namespace ApiGateway.Core.HttpServices
             if (token != null)
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            var response = await client.SendAsync(request);
+
+            HttpResponseMessage response = new HttpResponseMessage(); 
+            if (request.Method == HttpMethod.Post)
+            {
+                response = await client.PostAsync(request.RequestUri.OriginalString, request.Content);
+            }
+            else if (request.Method == HttpMethod.Get)
+            {
+                response = await client.GetAsync(request.RequestUri.OriginalString);
+            }
 
             _spinnerService.Hide();
 
@@ -70,12 +79,12 @@ namespace ApiGateway.Core.HttpServices
                 return default;
             }
 
-            return await response.Content.ReadFromJsonAsync<T>();
+            return await response?.Content?.ReadFromJsonAsync<T>();
         }
 
-        public async Task<bool> Send(string clientName, object requestModel, HttpMethod httpMethod, string uri, BrowserRequestMode browserRequestMode, BrowserRequestCredentials browserRequestCredentials, string token = null)
+        public async Task<bool> Send(string clientName, object requestModel, HttpMethod httpMethod, string uri, string token = null)
         {
-            var request = ForgeRequest(requestModel, httpMethod, uri, browserRequestMode, browserRequestCredentials);
+            var request = ForgeRequest(requestModel, httpMethod, uri);
             using (var client = _httpClientFactory.CreateClient(clientName))
             {
                 if (token != null)
@@ -108,13 +117,12 @@ namespace ApiGateway.Core.HttpServices
                     return false;
                 }
             }
-
             return true;
         }
 
-        public async Task<T> Fetch<T>(string clientName, object requestModel, HttpMethod httpMethod, string uri, BrowserRequestMode browserRequestMode, BrowserRequestCredentials browserRequestCredentials, string token)
+        public async Task<T> Fetch<T>(string clientName, object requestModel, HttpMethod httpMethod, string uri, string token)
         {
-            var request = ForgeRequest(requestModel, httpMethod, uri, browserRequestMode, browserRequestCredentials);
+            var request = ForgeRequest(requestModel, httpMethod, uri);
             return await SendRequest<T>(clientName, request, token);
         }
     }

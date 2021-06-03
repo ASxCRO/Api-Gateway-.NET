@@ -16,11 +16,13 @@
 @using ApiGateway.Core.AuthenticationServices;
 @using AutoStoper.Client.Shared.Preferences;
 @using ApiGateway.Core.Models.ResponseModels
+@using ApiGateway.Core.HttpServices
 
 @* DI *@
 @attribute [Authorize]
 @inject NavigationManager _navigationManager
 @inject IAuthenticationService _authorizationService
+@inject IWebAssemblyHttpService _webassemblyHttpService
 @inject ISnackbar _snackBar
 @inject IDialogService _dialogService
 @inject IHttpClientFactory _httpClientFactory

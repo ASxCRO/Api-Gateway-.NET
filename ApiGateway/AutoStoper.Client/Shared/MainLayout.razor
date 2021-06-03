@@ -8,8 +8,8 @@
 
 @if (_authorizationService.User is null)
 {
-    <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 100vh;">
-        <MudPaper Elevation="25" Class="pa-8" Style="width: 500px;">
+    <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="min-height: 100vh;">
+        <MudPaper Elevation="25" Class="pa-8 ma-8" Style="width: 500px;">
                 @Body
         </MudPaper>
     </MudContainer>

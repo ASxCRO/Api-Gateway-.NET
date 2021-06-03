@@ -1,3 +1,45 @@
 ﻿@page "/register"
+@layout MainLayout
+@attribute [AllowAnonymous]
 
-<h3>Register</h3>
+<EditForm Model="@registerUserModel" OnValidSubmit="SubmitAsync">
+    <MudGrid>
+        <MudItem xs="12">
+            <div class="d-flex justify-center">
+                <MudIcon Icon="@Icons.Outlined.TimeToLeave" Color="Color.Primary" Size="Size.Large" />
+            </div>
+        </MudItem>
+        <MudItem xs="12">
+            <div class="d-flex justify-center">
+                <MudText Typo="Typo.h4">Registracija</MudText>
+            </div>
+        </MudItem>
+        <MudItem xs="12">
+            <div class="d-flex justify-center">
+                <MudText>Već imate račun? <MudLink Href="/">Prijava</MudLink></MudText>
+            </div>
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.UserName)" @bind-Value="registerUserModel.UserName" Label="Korisničko ime" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.FirstName)" @bind-Value="registerUserModel.FirstName" Label="Ime" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.LastName)" @bind-Value="registerUserModel.LastName" Label="Prezime" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" T="string" Label="Email"
+                          @bind-Value="registerUserModel.Email" For="@(() => registerUserModel.Email)" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.Password)" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" @bind-Value="registerUserModel.Password" Label="Lozinka" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField Variant="Variant.Outlined" For="@(() => registerUserModel.ConfirmPassword)" InputType="InputType.Password" @bind-Value="registerUserModel.ConfirmPassword" Label="Potvrdi lozinku" />
+        </MudItem> 
+        <MudItem xs="12" Variant="Variant.Outlined" Class="d-flex justify-center">
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled"  Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Registriraj me</MudButton>
+        </MudItem>
+    </MudGrid>
+</EditForm>

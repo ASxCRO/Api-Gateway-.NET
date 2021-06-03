@@ -1,16 +1,12 @@
 ﻿using ApiGateway.Core.AuthenticationServices;
 using ApiGateway.Core.HttpServices;
 using ApiGateway.Core.LocalStorageServices;
+using ApiGateway.Core.Models.Enums;
+using ApiGateway.Core.Models.RequestModels;
 using ApiGateway.Core.RequestModels;
 using ApiGateway.Core.ResponseModels;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.WebAssembly.Http;
-using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ApiGateway.Core.Services.AuthenticationServices
@@ -18,23 +14,18 @@ namespace ApiGateway.Core.Services.AuthenticationServices
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IWebAssemblyHttpService webAssemblyHttpService;
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly NavigationManager nvgMgr;
-        private readonly ApiGateway.Core.LocalStorageServices.UserService _userService;
+        private readonly UserService _userService;
         private readonly ILocalStorageService _localStorageService;
         public LoginResponse User { get; set; }
-        static HttpClient httpClient { get; set;  }
 
-        public AuthenticationService(NavigationManager nvgMgr, ILocalStorageService localStorageService, IWebAssemblyHttpService webAssemblyHttpService, IHttpClientFactory _httpClientFactory)
+        public AuthenticationService(NavigationManager nvgMgr, ILocalStorageService localStorageService, IWebAssemblyHttpService webAssemblyHttpService)
         {
             this.nvgMgr = nvgMgr;
             this._localStorageService = localStorageService;
             this.webAssemblyHttpService = webAssemblyHttpService;
-            this._httpClientFactory = _httpClientFactory;
-            this._userService = new ApiGateway.Core.LocalStorageServices.UserService(localStorageService);
-            httpClient = _httpClientFactory.CreateClient("AutoStoper.Gateway");
+            this._userService = new UserService(localStorageService);
         }
-
 
         public async Task Initialize()
         {
@@ -43,36 +34,18 @@ namespace ApiGateway.Core.Services.AuthenticationServices
 
         public async Task<bool> Login(LoginRequest loginRequest)
         {
-            var requestMessage = new HttpRequestMessage()
+            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, loginRequest, HttpMethod.Post, "/authenticate");
+            
+            if(response is not null)
             {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri($"{httpClient.BaseAddress}authenticate"),
-                Content = new StringContent(JsonSerializer.Serialize(new { loginRequest.Username, loginRequest.Password }), Encoding.UTF8, "application/json"),
-            };
-
-            requestMessage.SetBrowserRequestMode(BrowserRequestMode.NoCors);
-            requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-            var response = await httpClient.PostAsync(requestMessage.RequestUri.OriginalString, requestMessage.Content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                try
-                {
-                    User = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                }
-                catch (System.Exception e)
-                {
-                    throw;
-                }
+                User = response;
+                await _localStorageService.SetItem("user", User);
+                return true;
             }
             else
             {
                 return false;
             }
-
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", User.Token);
-            await _localStorageService.SetItem("user", User);
-            return true;
         }
 
 
@@ -81,6 +54,23 @@ namespace ApiGateway.Core.Services.AuthenticationServices
             User = null;
             await _localStorageService.RemoveItem("user");
             nvgMgr.NavigateTo("/",true);
+        }
+
+        public async Task<bool> Register(RegisterRequest requestModel)
+        {
+
+            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, requestModel, HttpMethod.Post, "/register");
+
+            if (response is not null)
+            {
+                this.User = response;
+                await _localStorageService.SetItem("user", User);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

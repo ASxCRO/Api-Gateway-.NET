@@ -15,6 +15,14 @@
         "uri": "users/authenticate",
         "requiresAuthentication": "false"
       }
+    },
+    {
+      "endpoint": "/register",
+      "destination": {
+        "serviceId": 0,
+        "uri": "users/register",
+        "requiresAuthentication": "false"
+      }
     }
   ],
   "services": [

@@ -1,6 +1,6 @@
-﻿using ApiGateway.Core.RequestModels;
+﻿using ApiGateway.Core.Models.RequestModels;
+using ApiGateway.Core.RequestModels;
 using ApiGateway.Core.ResponseModels;
-using ApiGateway.Core.User;
 using System.Threading.Tasks;
 
 namespace ApiGateway.Core.AuthenticationServices
@@ -10,6 +10,7 @@ namespace ApiGateway.Core.AuthenticationServices
         LoginResponse User { get; set; }
         Task Initialize();
         Task<bool> Login(LoginRequest loginRequest);
+        Task<bool> Register(RegisterRequest registerRequest);
         Task Logout();
     }
 }
