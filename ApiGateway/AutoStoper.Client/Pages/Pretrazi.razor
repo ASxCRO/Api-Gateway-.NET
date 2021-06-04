@@ -44,25 +44,36 @@
                             foreach (var item in Voznje)
                                 if (item is not null)
                                 {
+                                    var currentDriverId = item.Voznja.Putnici.Where(p => p.Vozac).FirstOrDefault().UserId;
+                                    var driver = item.Putnici.First(p => p.Id == currentDriverId);
                                     <MudPaper Outlined="true" Class="pa-16" Style="width: 100%;">
                                         <MudCard>
                                             <MudCardHeader>
                                                 <CardHeaderAvatar>
-                                                    <MudAvatar Color="Color.Secondary">I</MudAvatar>
+                                                    <MudAvatar Color="Color.Secondary">@driver.FirstName</MudAvatar>
                                                 </CardHeaderAvatar>
                                                 <CardHeaderContent>
                                                     <MudText Typo="Typo.body1">Prijevoz</MudText>
-                                                    <MudText Typo="Typo.body2">Hrvatska</MudText>
+                                                    <MudText Typo="Typo.body2">Autostoper</MudText>
                                                 </CardHeaderContent>
                                                 <CardHeaderActions>
                                                     <MudIconButton Icon="@Icons.Material.Filled.Details" Color="Color.Default" />
                                                 </CardHeaderActions>
                                             </MudCardHeader>
                                             <MudCardContent>
-                                                <MudText Typo="Typo.h5">Od: </MudText>
-                                                <MudText Typo="Typo.body2">@item.Adresa.Polaziste</MudText>
-                                                <MudText Typo="Typo.h5">Do: </MudText>
-                                                <MudText Typo="Typo.body2">@item.Adresa.Odrediste</MudText>
+                                                <MudGrid Style="width:100%">
+                                                    <MudItem xs="6">
+                                                        <MudText Typo="Typo.h5" Inline="true">Od: </MudText>
+                                                        <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Polaziste</MudText>
+                                                        <br />
+                                                        <MudText Typo="Typo.h5" Inline="true">Do: </MudText>
+                                                        <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Odrediste</MudText>
+                                                    </MudItem>
+                                                    <MudItem xs="6">
+                                                        <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.TimeToLeave"></MudIcon>
+                                                    </MudItem>
+                                                </MudGrid>
+
                                             </MudCardContent>
                                             <MudCardActions>
                                                 <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />

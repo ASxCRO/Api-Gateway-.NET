@@ -18,7 +18,7 @@ namespace AutoStoper.Client.Pages
         public bool KucniLjubimci { get; set; }
         public bool Pusenje { get; set; }
         public bool Glazba { get; set; }
-        public bool Razgovor { get; set; }
+        public bool AutomatskoOdobrenje { get; set; }
         public int LjudiUAutu { get; set; }
 
         public Lokacija lokacijaPolaziste { get; set; }
@@ -139,9 +139,17 @@ namespace AutoStoper.Client.Pages
                 },
                 LjubimciDozvoljeni = KucniLjubimci,
                 MaksimalnoPutnika = LjudiUAutu,
-                AutomatskoOdobrenje = Razgovor,
+                AutomatskoOdobrenje = this.AutomatskoOdobrenje,
                 DateTime = date.Value.AddHours(time.Value.Hours).AddMinutes(time.Value.Minutes),
-                PusenjeDozvoljeno = Pusenje
+                PusenjeDozvoljeno = Pusenje,
+                Putnici = new List<VoznjaUser>
+                {
+                    new VoznjaUser
+                    {
+                        UserId = _authorizationService.User.Id,
+                        Vozac = true
+                    }
+                }
             };
             await _autoStoperService.Insert(voznja);
             _snackBar.Add("Uspješno ste unjeli vožnju!", Severity.Success);

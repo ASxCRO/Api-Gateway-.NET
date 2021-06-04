@@ -1,6 +1,9 @@
 ﻿using ApiGateway.Core.Models;
 using ApiGateway.Core.Models.ResponseModels;
+using ApiGateway.Core.User;
+using AutoStoper.Client.ViewModels;
 using Microsoft.JSInterop;
+using MudBlazor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +18,8 @@ namespace AutoStoper.Client.Pages
         public DateTime? date { get; set; }
         public Lokacija lokacijaPolaziste { get; set; }
         public Lokacija lokacijaOdrediste { get; set; }
-        public List<Voznja> Voznje { get; set; }
+        public List<VoznjaViewModel> Voznje { get; set; }
+
 
         protected override async Task OnInitializedAsync()
         {
@@ -31,13 +35,12 @@ namespace AutoStoper.Client.Pages
         public async Task SetPreviousItemActive()
         {
             if (activeKey <= 1)
-            {
-                activeKey = 4;
-            }
+                if (lokacijaPolaziste is null || lokacijaOdrediste is null || !date.HasValue)
+                    _snackBar.Add("Prvo ispunite sve ostale podatke", Severity.Error);
+                else
+                    activeKey = 4;
             else
-            {
                 activeKey--;
-            }
 
             StateHasChanged();
         }
@@ -51,37 +54,37 @@ namespace AutoStoper.Client.Pages
         public async Task SetNextItemActive()
         {
             if (activeKey >= 4)
-            {
                 activeKey = 1;
-            }
             else
-            {
-                activeKey++;
-            }
+                await GetLatLngPolazisteOdrediste();
+                if (activeKey == 3 && (lokacijaPolaziste is null || lokacijaOdrediste is null || !date.HasValue))
+                    _snackBar.Add("Prvo ispunite sve ostale podatke", Severity.Error);
+                else
+                    activeKey++;
 
             StateHasChanged();
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (activeKey == 2)
+            switch (activeKey)
             {
-                await InicijalizirajMapuPolaziste();
-            }
-
-            if (activeKey == 3)
-            {
-                await InicijalizirajMapuOdrediste();
-            }
-
-            if (activeKey == 4)
-            {
-                if(Voznje is null)
-                {
-                    Voznje = new();
-                    await GetLatLngPolazisteOdrediste();
-                    await DohvatiVoznjeUDosegu();
-                }
+                case 2:
+                    await InicijalizirajMapuPolaziste();
+                    break;
+                case 3:
+                    await InicijalizirajMapuOdrediste();
+                    break;
+                case 4:
+                    if (Voznje is null)
+                    {
+                        Voznje = new();
+                        await GetLatLngPolazisteOdrediste();
+                        await DohvatiVoznjeUDosegu();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -99,7 +102,6 @@ namespace AutoStoper.Client.Pages
         {
             var sveVoznje = await _autoStoperService.GetAll();
             List<Lokacija> sveLokacijePolazista = new(), sveLokacijeOdredista = new();
-
 
             foreach (var item in sveVoznje)
             {
@@ -119,6 +121,8 @@ namespace AutoStoper.Client.Pages
             var lokacijeKojePasuPolazistu = await _jsRuntime.InvokeAsync<List<Lokacija>>("dohvatiVoznjeURadiusu", sveLokacijePolazista, lokacijaPolaziste);
             var lokacijeKojePasuOdredistu =
             await _jsRuntime.InvokeAsync<List<Lokacija>>("dohvatiVoznjeURadiusu", sveLokacijeOdredista, lokacijaOdrediste);
+            var voznje = new List<Voznja>();
+
 
             foreach (var voznja in sveVoznje)
                 foreach (var lokacijaPolaziste in lokacijeKojePasuPolazistu)
@@ -127,10 +131,29 @@ namespace AutoStoper.Client.Pages
                                 lokacijaPolaziste.Lng == voznja.Adresa.LngPolaziste &&
                                 lokacijaOdrediste.Lat == voznja.Adresa.LatOdrediste &&
                                 lokacijaOdrediste.Lng == voznja.Adresa.LngOdrediste)
-                                    Voznje.Add(voznja);
+                                    voznje.Add(voznja);
 
+            foreach (var item in voznje)
+            {
+                Voznje.Add(new VoznjaViewModel { 
+                    Voznja = item,
+                    Putnici = await GetPutniciFromVoznja(item.Putnici)
+                });
+            }
 
             StateHasChanged();
+        }
+
+        private async Task<List<User>> GetPutniciFromVoznja(List<VoznjaUser> putniciIzVoznje)
+        {
+            var putnici = new List<User>();
+            foreach (var item in putniciIzVoznje)
+            {
+                var currentPutnik = await _authorizationService.GetById(item.UserId);
+                putnici.Add(currentPutnik);
+            }
+
+            return putnici;
         }
     }
 }

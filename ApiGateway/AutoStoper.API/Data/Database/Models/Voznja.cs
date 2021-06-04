@@ -16,6 +16,7 @@ namespace AutoStoper.API.Data.Database.Models
         public DateTime DateTime { get; set; }
         public  int AdresaId{ get; set; }
         public virtual Adresa Adresa { get; set; }
+        public virtual ICollection<VoznjaUser> Putnici { get; set; }
 
     }
 }

@@ -4,14 +4,16 @@ using AutoStoper.API.Data.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AutoStoper.API.Migrations
 {
     [DbContext(typeof(AutoStoperDbContext))]
-    partial class AutoStoperDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210604193234_oneToManyVoznjaUser")]
+    partial class oneToManyVoznjaUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

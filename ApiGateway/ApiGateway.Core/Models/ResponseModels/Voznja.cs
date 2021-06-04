@@ -16,6 +16,8 @@ namespace ApiGateway.Core.Models.ResponseModels
         public DateTime DateTime { get; set; }
         public  int AdresaId{ get; set; }
         public virtual Adresa Adresa { get; set; }
+        public  List<VoznjaUser> Putnici { get; set; }
+
 
     }
 }

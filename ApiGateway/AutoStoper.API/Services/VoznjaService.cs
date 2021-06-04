@@ -3,7 +3,6 @@ using AutoStoper.API.Data.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutoStoper.API.Services
 {
@@ -32,18 +31,18 @@ namespace AutoStoper.API.Services
 
         public IEnumerable<Voznja> GetAll()
         {
-            return unitOfWork.Voznje.Get(includeProperties: "Adresa");
+            return unitOfWork.Voznje.Get(includeProperties: "Putnici,Adresa");
         }
 
         public Voznja GetById(int id)
         {
-            return unitOfWork.Voznje.Get(p=>p.Id == id, includeProperties: "Adresa").FirstOrDefault();
+            return unitOfWork.Voznje.Get(p=>p.Id == id, includeProperties: "Putnici,Adresa").FirstOrDefault();
         }
 
         public Voznja GetByUserId(int userID)
         {
-            var korisnikVoznja = unitOfWork.VoznjeUser.Get(v => v.UserId == userID, includeProperties: "Adresa").FirstOrDefault();
-            return korisnikVoznja?.Voznja;
+            var voznja = unitOfWork.Voznje.Get(v => v.Putnici.Any(p=>p.UserId == userID), includeProperties: "Putnici,Adresa").FirstOrDefault();
+            return voznja;
         }
 
         public bool Insert(Voznja voznja)
