@@ -43,13 +43,12 @@ namespace AutoStoper.Client.Pages
         public async Task SetPreviousItemActive()
         {
             if (activeKey <= 1)
-            {
-                activeKey = 4;
-            }
+                if (lokacijaPolaziste is null || lokacijaOdrediste is null || !date.HasValue || !time.HasValue)
+                    _snackBar.Add("Prvo ispunite sve ostale podatke", Severity.Error);
+                else
+                    activeKey = 4;
             else
-            {
                 activeKey--;
-            }
 
             StateHasChanged();
         }
@@ -62,7 +61,11 @@ namespace AutoStoper.Client.Pages
             }
             else
             {
-                activeKey++;
+                await GetLatLngPolazisteOdrediste();
+                if (activeKey==3 &&  (lokacijaPolaziste is null || lokacijaOdrediste is null || !date.HasValue || !time.HasValue))
+                    _snackBar.Add("Prvo ispunite sve ostale podatke", Severity.Error);
+                else
+                    activeKey++;
             }
 
             StateHasChanged();
@@ -73,17 +76,16 @@ namespace AutoStoper.Client.Pages
             switch (activeKey)
             {
                 case 2:
-                    await InicijalizirajMapuPolaziste();
+                        await InicijalizirajMapuPolaziste();
                     break;
                 case 3:
-                    await InicijalizirajMapuOdrediste();
+                        await InicijalizirajMapuOdrediste();
                     break;
                 case 4:
-                    if(lokacijaPolaziste is null)
+                    if(Ruta is null)
                     {
                         await InicijalizirajMapuRuta();
                         await GetLatLngPolazisteOdrediste();
-
                     }
                     break;
                 default:

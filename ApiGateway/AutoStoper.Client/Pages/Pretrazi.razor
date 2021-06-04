@@ -1,7 +1,7 @@
 ﻿@page "/pretrazi"
 
-<MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 70vh;">
-    <MudPaper Elevation="25" Class="pa-8" Style="width: 500px;">
+<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex align-center" Style="height: 70vh;">
+    <MudPaper Elevation="25" Class="pa-8" Style="width: 100%;">
         <StepProgress collection="collection" activeItemInCollection="activeKey" />
         <MudGrid>
             @switch (activeKey)
@@ -10,11 +10,6 @@
                     <MudItem xs="12">
                         <div class="d-flex justify-center py-8">
                             <MudDatePicker Label="Odaberite datum" @bind-Date="date" DisableToolbar="true" HelperText="Datum" />
-                        </div>
-                    </MudItem>
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center py-8">
-                            <MudTimePicker Label="Vrijeme" AmPm="false" @bind-Time="time" />
                         </div>
                     </MudItem>
                     break;
@@ -35,11 +30,48 @@
                     </MudItem>
                     break;
                 case 4:
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
-                        </div>
-                    </MudItem>
+                    if (Voznje?.Count < 1)
+                    {
+                        <MudItem xs="12">
+                            <div class="d-flex justify-center">
+                                <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
+                            </div>
+                        </MudItem>
+                    }
+                    else
+                    {
+                        if (Voznje is not null)
+                            foreach (var item in Voznje)
+                                if (item is not null)
+                                {
+                                    <MudPaper Outlined="true" Class="pa-16" Style="width: 100%;">
+                                        <MudCard>
+                                            <MudCardHeader>
+                                                <CardHeaderAvatar>
+                                                    <MudAvatar Color="Color.Secondary">I</MudAvatar>
+                                                </CardHeaderAvatar>
+                                                <CardHeaderContent>
+                                                    <MudText Typo="Typo.body1">Prijevoz</MudText>
+                                                    <MudText Typo="Typo.body2">Hrvatska</MudText>
+                                                </CardHeaderContent>
+                                                <CardHeaderActions>
+                                                    <MudIconButton Icon="@Icons.Material.Filled.Details" Color="Color.Default" />
+                                                </CardHeaderActions>
+                                            </MudCardHeader>
+                                            <MudCardContent>
+                                                <MudText Typo="Typo.h5">Od: </MudText>
+                                                <MudText Typo="Typo.body2">@item.Adresa.Polaziste</MudText>
+                                                <MudText Typo="Typo.h5">Do: </MudText>
+                                                <MudText Typo="Typo.body2">@item.Adresa.Odrediste</MudText>
+                                            </MudCardContent>
+                                            <MudCardActions>
+                                                <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
+                                                <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
+                                            </MudCardActions>
+                                        </MudCard>
+                                    </MudPaper>
+                                }
+                    }
                     break;
                 default:
                     break;

@@ -168,3 +168,7 @@ a, .btn-link {
         transform: rotate(360deg);
     }
 }
+
+.leaflet-routing-container {
+    display: none;
+}

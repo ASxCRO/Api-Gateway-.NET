@@ -72,10 +72,10 @@ namespace ApiGateway.Core.HttpServices
 
             if (!response.IsSuccessStatusCode)
             {
-                var msg = await response.Content.ReadAsStringAsync();
-                var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<CustomExceptionMsg>(msg);
-                if (exceptionMsg != null)
-                    _snackbarService.Add(exceptionMsg.Detail, Severity.Error);
+                //var msg = await response.Content.ReadAsStringAsync();
+                //var exceptionMsg = Newtonsoft.Json.JsonConvert.DeserializeObject<CustomExceptionMsg>(msg);
+                //if (exceptionMsg != null)
+                //    _snackbarService.Add(exceptionMsg.Detail, Severity.Error);
                 return default;
             }
 

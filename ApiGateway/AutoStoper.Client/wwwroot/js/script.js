@@ -18,6 +18,9 @@ var _lokacijaPolaziste;
 var _lokacijaOdrediste;
 var _ruta;
 var dotNetObj;
+var mapPolaziste;
+var mapOdrediste;
+var mapRoute;
 
 var GLOBAL = {};
 GLOBAL.DotNetReference = null;
@@ -58,13 +61,24 @@ function GetRutu() {
     return _ruta;
 }
 
+
+
 function inicijalizirajMapuPolaziste() {
-    var mapPolaziste = L.map('mapPolaziste').setView([44.60, 16.70], 5);
+
+    if (mapPolaziste != undefined) {
+        mapPolaziste.off();
+        mapPolaziste.remove(); 
+    }
+
+    mapPolaziste = L.map('mapPolaziste').setView([44.60, 16.70], 5);
 
     mapPolaziste.on('click', function (e) {
         let lokacija = new Lokacija(e.latlng.lat,e.latlng.lng);
         SpremiLokacijuPolaziste(lokacija);
-        L.marker([e.latlng.lat, e.latlng.lng]).addTo(mapPolaziste);
+        L.popup()
+            .setLatLng(e.latlng)
+            .setContent("Lokacija polazišta postavljena na " + e.latlng.toString())
+            .openOn(mapPolaziste);
     });
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -78,12 +92,22 @@ function inicijalizirajMapuPolaziste() {
 }
 
 function inicijalizirajMapuOdrediste() {
-    var mapOdrediste = L.map('mapOdrediste').setView([44.60, 16.70], 5);
+
+
+    if (mapOdrediste != undefined) {
+        mapOdrediste.off();
+        mapOdrediste.remove();  
+    }
+
+    mapOdrediste = L.map('mapOdrediste').setView([44.60, 16.70], 5);
 
     mapOdrediste.on('click', function (e) {
         let lokacija = new Lokacija(e.latlng.lat, e.latlng.lng);
         SpremiLokacijuOdrediste(lokacija);
-        L.marker([e.latlng.lat, e.latlng.lng]).addTo(mapOdrediste);
+        L.popup()
+            .setLatLng(e.latlng)
+            .setContent("Lokacija odredišta postavljena na " + e.latlng.toString())
+            .openOn(mapOdrediste);
     });
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -96,8 +120,13 @@ function inicijalizirajMapuOdrediste() {
     }).addTo(mapOdrediste);
 }
 
-function inicijalizirajMapuRuta(lat1, lng1, lat2, lng2) {
-    var mapRoute = L.map('mapRoute').setView([44.60, 16.70], 5);
+function inicijalizirajMapuRuta() {
+    if (mapRoute != undefined) {
+        mapRoute.off();
+        mapRoute.remove(); 
+    }
+
+    mapRoute = L.map('mapRoute').setView([44.60, 16.70], 5);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -112,8 +141,7 @@ function inicijalizirajMapuRuta(lat1, lng1, lat2, lng2) {
         waypoints: [
             L.latLng(_lokacijaPolaziste.lat, _lokacijaPolaziste.lng),
             L.latLng(_lokacijaOdrediste.lat, _lokacijaOdrediste.lng)
-        ],
-        routeWhileDragging: false
+        ]
     })
     .on('routeselected', function (e) {
         var route = e.route;
@@ -122,5 +150,23 @@ function inicijalizirajMapuRuta(lat1, lng1, lat2, lng2) {
         getRoute();
     })
     .addTo(mapRoute);
+}
 
+function dohvatiVoznjeURadiusu(sveLokacije, lokacija) {
+    console.log(sveLokacije);
+    console.log(lokacija);
+
+    var inRange = [], latlng_a = new L.LatLng(lokacija.lat, lokacija.lng), latlng_b;
+
+    sveLokacije.forEach(function (location) {
+        if (location != undefined) {
+
+            latlng_b = new L.LatLng(location.lat, location.lng);
+            if (latlng_a.distanceTo(latlng_b) < 50000) {
+                inRange.push(location);
+            }
+        }
+    });
+
+    return inRange;
 }
