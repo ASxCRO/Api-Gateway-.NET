@@ -22,6 +22,8 @@ var mapPolaziste;
 var mapOdrediste;
 var mapRoute;
 
+
+
 var GLOBAL = {};
 GLOBAL.DotNetReference = null;
 GLOBAL.SetDotnetReference = function (pDotNetReference) {
@@ -153,9 +155,6 @@ function inicijalizirajMapuRuta() {
 }
 
 function dohvatiVoznjeURadiusu(sveLokacije, lokacija) {
-    console.log(sveLokacije);
-    console.log(lokacija);
-
     var inRange = [], latlng_a = new L.LatLng(lokacija.lat, lokacija.lng), latlng_b;
 
     sveLokacije.forEach(function (location) {
@@ -169,4 +168,12 @@ function dohvatiVoznjeURadiusu(sveLokacije, lokacija) {
     });
 
     return inRange;
+}
+
+
+function ResetirajLokacije() {
+    if (_lokacijaPolaziste != undefined && _lokacijaOdrediste != undefined) {
+        _lokacijaPolaziste = undefined;
+        _lokacijaOdrediste = undefined;
+    }
 }

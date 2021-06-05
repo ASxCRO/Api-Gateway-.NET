@@ -24,7 +24,6 @@ namespace AutoStoper.Client.Pages
         public Lokacija lokacijaOdrediste { get; set; }
         public List<VoznjaViewModel> Voznje { get; set; }
 
-
         protected override async Task OnInitializedAsync()
         {
             collection = new();
@@ -34,6 +33,8 @@ namespace AutoStoper.Client.Pages
             collection.Add(4, "Odaberi prijevoz");
 
             activeKey = 1;
+
+            await _jsRuntime.InvokeVoidAsync("ResetirajLokacije");
         }
 
         public async Task SetPreviousItemActive()

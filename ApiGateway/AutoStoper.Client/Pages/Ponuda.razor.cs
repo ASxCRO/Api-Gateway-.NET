@@ -42,6 +42,8 @@ namespace AutoStoper.Client.Pages
 
             objRef = DotNetObjectReference.Create(this);
             await _jsRuntime.InvokeVoidAsync("GLOBAL.SetDotnetReference", objRef);
+
+            await _jsRuntime.InvokeVoidAsync("ResetirajLokacije");
         }
 
         public async Task SetPreviousItemActive()
@@ -128,6 +130,17 @@ namespace AutoStoper.Client.Pages
 
         public async Task ObjaviPrijevoz()
         {
+            if(this.Cijena <=4.99 && this.Cijena > 1000)
+            {
+                _snackBar.Add("Cijena mora biti između 5 i 1000");
+                return;
+            }
+            if (this.LjudiUAutu < 1 && this.LjudiUAutu > 4)
+            {
+                _snackBar.Add("Možete voziti minimalno jednog a maksimalno četvero ljudi u autu");
+                return;
+            }
+
             var voznja = new Voznja { 
                 Adresa = new Adresa
                 {
