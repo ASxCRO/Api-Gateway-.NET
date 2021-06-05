@@ -22,13 +22,14 @@ namespace AutoStoper.Client.Pages
         public bool Pusenje { get; set; }
         public bool Glazba { get; set; }
         public bool AutomatskoOdobrenje { get; set; }
-        public int LjudiUAutu { get; set; }
-        public double Cijena{ get; set; }
+        public int LjudiUAutu { get; set; } = 2;
+        public double Cijena { get; set; } = 50;
 
         public Lokacija lokacijaPolaziste { get; set; }
         public Lokacija lokacijaOdrediste { get; set; }
         public Ruta Ruta { get; set; }
         private DotNetObjectReference<Ponuda> objRef { get; set; }
+        public bool CantGoBackOnlyReset { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -42,8 +43,8 @@ namespace AutoStoper.Client.Pages
 
             objRef = DotNetObjectReference.Create(this);
             await _jsRuntime.InvokeVoidAsync("GLOBAL.SetDotnetReference", objRef);
-
             await _jsRuntime.InvokeVoidAsync("ResetirajLokacije");
+
         }
 
         public async Task SetPreviousItemActive()
@@ -82,10 +83,10 @@ namespace AutoStoper.Client.Pages
             switch (activeKey)
             {
                 case 2:
-                        await InicijalizirajMapuPolaziste();
+                    await InicijalizirajMapuPolaziste();
                     break;
                 case 3:
-                        await InicijalizirajMapuOdrediste();
+                    await InicijalizirajMapuOdrediste();
                     break;
                 case 4:
                     if(Ruta is null)
@@ -126,39 +127,46 @@ namespace AutoStoper.Client.Pages
             Ruta = await _jsRuntime.InvokeAsync<Ruta>("GetRutu");
             Ruta.Distanca = Math.Round(Ruta.Distanca / 1000,2);
             Ruta.Vrijeme = Math.Round( Ruta.Vrijeme / 60,2);
+            CantGoBackOnlyReset = true;
+            StateHasChanged();
         }
 
         public async Task ObjaviPrijevoz()
         {
-            if(this.Cijena <=4.99 && this.Cijena > 1000)
+            bool isValid = true;
+
+            if(this.Cijena <=4.99 || this.Cijena > 1000)
             {
                 _snackBar.Add("Cijena mora biti između 5 i 1000");
-                return;
+                isValid = false;
             }
-            if (this.LjudiUAutu < 1 && this.LjudiUAutu > 4)
+            if (this.LjudiUAutu < 1 || this.LjudiUAutu > 4)
             {
                 _snackBar.Add("Možete voziti minimalno jednog a maksimalno četvero ljudi u autu");
-                return;
+                isValid = false;
             }
 
-            var voznja = new Voznja { 
-                Adresa = new Adresa
+            if(isValid)
+            {
+                var voznja = new Voznja
                 {
-                    Distanca = Ruta.Distanca,
-                    Vrijeme = Ruta.Vrijeme,
-                    LatPolaziste = lokacijaPolaziste.Lat,
-                    LngPolaziste = lokacijaPolaziste.Lng,
-                    LatOdrediste = lokacijaOdrediste.Lat,
-                    LngOdrediste = lokacijaOdrediste.Lng,
-                    Polaziste = Ruta.Polaziste,
-                    Odrediste = Ruta.Odrediste
-                },
-                LjubimciDozvoljeni = KucniLjubimci,
-                MaksimalnoPutnika = LjudiUAutu,
-                AutomatskoOdobrenje = this.AutomatskoOdobrenje,
-                DateTime = date.Value.AddHours(time.Value.Hours).AddMinutes(time.Value.Minutes),
-                PusenjeDozvoljeno = Pusenje,
-                Putnici = new List<VoznjaUser>
+                    Adresa = new Adresa
+                    {
+                        Distanca = Ruta.Distanca,
+                        Vrijeme = Ruta.Vrijeme,
+                        LatPolaziste = lokacijaPolaziste.Lat,
+                        LngPolaziste = lokacijaPolaziste.Lng,
+                        LatOdrediste = lokacijaOdrediste.Lat,
+                        LngOdrediste = lokacijaOdrediste.Lng,
+                        Polaziste = Ruta.Polaziste,
+                        Odrediste = Ruta.Odrediste
+                    },
+                    LjubimciDozvoljeni = KucniLjubimci,
+                    MaksimalnoPutnika = LjudiUAutu,
+                    AutomatskoOdobrenje = this.AutomatskoOdobrenje,
+                    DateTime = date.Value.AddHours(time.Value.Hours).AddMinutes(time.Value.Minutes),
+                    PusenjeDozvoljeno = Pusenje,
+                    Putnici = new List<VoznjaUser>
                 {
                     new VoznjaUser
                     {
@@ -166,12 +174,13 @@ namespace AutoStoper.Client.Pages
                         Vozac = true
                     }
                 },
-                Cijena = Math.Round(this.Cijena,2)
-            };
-            await _autoStoperService.Insert(voznja);
-            _snackBar.Add("Uspješno ste unjeli vožnju!", Severity.Success);
-            await Task.Delay(500);
-            _navigationManager.NavigateTo("/index");
+                    Cijena = Math.Round(this.Cijena, 2)
+                };
+                await _autoStoperService.Insert(voznja);
+                _snackBar.Add("Uspješno ste unjeli vožnju!", Severity.Success);
+                await Task.Delay(500);
+                _navigationManager.NavigateTo("/index");
+            }
         }
     }
 }
