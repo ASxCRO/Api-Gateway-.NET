@@ -15,6 +15,7 @@ namespace ApiGateway.Core.Models.ResponseModels
         public int MaksimalnoPutnika{ get; set; }
         public DateTime DateTime { get; set; }
         public  int AdresaId{ get; set; }
+        public double Cijena { get; set; }
         public virtual Adresa Adresa { get; set; }
         public  List<VoznjaUser> Putnici { get; set; }
 

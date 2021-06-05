@@ -1,7 +1,9 @@
 ﻿using ApiGateway.Core.Models;
+using ApiGateway.Core.Models.RequestModels;
 using ApiGateway.Core.Models.ResponseModels;
 using ApiGateway.Core.User;
 using AutoStoper.Client.ViewModels;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System;
@@ -13,6 +15,8 @@ namespace AutoStoper.Client.Pages
 {
     public partial class Pretrazi
     {
+        [Inject] private IDialogService DialogService { get; set; }
+
         public Dictionary<int,string> collection { get; set; }
         public int activeKey { get; set; }
         public DateTime? date { get; set; }
@@ -130,7 +134,8 @@ namespace AutoStoper.Client.Pages
                             if (lokacijaPolaziste.Lat == voznja.Adresa.LatPolaziste &&
                                 lokacijaPolaziste.Lng == voznja.Adresa.LngPolaziste &&
                                 lokacijaOdrediste.Lat == voznja.Adresa.LatOdrediste &&
-                                lokacijaOdrediste.Lng == voznja.Adresa.LngOdrediste)
+                                lokacijaOdrediste.Lng == voznja.Adresa.LngOdrediste &&
+                                date.Value == voznja.DateTime.Date)
                                     voznje.Add(voznja);
 
             foreach (var item in voznje)
@@ -154,6 +159,43 @@ namespace AutoStoper.Client.Pages
             }
 
             return putnici;
+        }
+
+        public async Task PotvrdiOdabir(int voznjaId)
+        {
+            bool? result = await DialogService.ShowMessageBox(
+                "Potvrda",
+                "Želite li se prijaviti na vožnju?",
+                yesText: "Potvrdi", cancelText: "Odustani");
+
+            if (result is not null)
+            {
+                if (result.Value)
+                {
+                    var request = new PrijavaNaVoznjuRequest
+                    {
+                        VoznjaID = voznjaId,
+                        UserID = _authorizationService.User.Id
+                    };
+
+                    await _autoStoperService.InsertPutnik(request);
+
+                    _snackBar.Add("Uspješna prijava na vožnju!");
+                    await Task.Delay(1000);
+                    _navigationManager.NavigateTo("/index");
+                }
+            }
+        }
+
+        public async Task PokaziPutike(Voznja voznja)
+        {
+            List<string> putnici = (await GetPutniciFromVoznja(voznja.Putnici.Where(p=>p.Vozac == false).ToList())).Select(p=>p.FirstName+" "+p.LastName).ToList();
+            string putniciString = string.Join(", ", putnici);
+
+            await DialogService.ShowMessageBox(
+                "Putnici na vožnji",
+                putniciString,
+                yesText: "U redu", cancelText: "Izlaz");
         }
     }
 }

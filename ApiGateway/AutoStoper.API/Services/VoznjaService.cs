@@ -1,4 +1,5 @@
-﻿using AutoStoper.API.Data.Database.Models;
+﻿using ApiGateway.Core.Models.RequestModels;
+using AutoStoper.API.Data.Database.Models;
 using AutoStoper.API.Data.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,25 @@ namespace AutoStoper.API.Services
                 unitOfWork.Voznje.Insert(voznja);
                 unitOfWork.Adrese.Insert(voznja.Adresa);
 
+                unitOfWork.Commit();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool InsertPutnika(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest)
+        {
+            try
+            {
+                unitOfWork.VoznjeUser.Insert(new VoznjaUser
+                {
+                    UserId = prijavaNaVoznjuRequest.UserID,
+                    Vozac = false,
+                    VoznjaId = prijavaNaVoznjuRequest.VoznjaID
+                });
                 unitOfWork.Commit();
                 return true;
             }

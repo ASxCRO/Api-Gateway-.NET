@@ -4,14 +4,16 @@ using AutoStoper.API.Data.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AutoStoper.API.Migrations
 {
     [DbContext(typeof(AutoStoperDbContext))]
-    partial class AutoStoperDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210605154652_dodanPropertyCijenaNaVoznju")]
+    partial class dodanPropertyCijenaNaVoznju
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +106,7 @@ namespace AutoStoper.API.Migrations
                     b.Property<bool>("Vozac")
                         .HasColumnType("bit");
 
-                    b.Property<int>("VoznjaId")
+                    b.Property<int?>("VoznjaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -129,9 +131,7 @@ namespace AutoStoper.API.Migrations
                 {
                     b.HasOne("AutoStoper.API.Data.Database.Models.Voznja", null)
                         .WithMany("Putnici")
-                        .HasForeignKey("VoznjaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VoznjaId");
                 });
 
             modelBuilder.Entity("AutoStoper.API.Data.Database.Models.Voznja", b =>

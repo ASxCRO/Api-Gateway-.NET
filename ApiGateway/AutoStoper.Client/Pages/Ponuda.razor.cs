@@ -1,5 +1,7 @@
 ﻿using ApiGateway.Core.Models;
+using ApiGateway.Core.Models.RequestModels;
 using ApiGateway.Core.Models.ResponseModels;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System;
@@ -11,6 +13,7 @@ namespace AutoStoper.Client.Pages
 {
     public partial class Ponuda
     {
+
         public Dictionary<int, string> collection { get; set; }
         public int activeKey { get; set; }
         public DateTime? date { get; set; }
@@ -20,6 +23,7 @@ namespace AutoStoper.Client.Pages
         public bool Glazba { get; set; }
         public bool AutomatskoOdobrenje { get; set; }
         public int LjudiUAutu { get; set; }
+        public double Cijena{ get; set; }
 
         public Lokacija lokacijaPolaziste { get; set; }
         public Lokacija lokacijaOdrediste { get; set; }
@@ -120,7 +124,6 @@ namespace AutoStoper.Client.Pages
             Ruta = await _jsRuntime.InvokeAsync<Ruta>("GetRutu");
             Ruta.Distanca = Math.Round(Ruta.Distanca / 1000,2);
             Ruta.Vrijeme = Math.Round( Ruta.Vrijeme / 60,2);
-            StateHasChanged();
         }
 
         public async Task ObjaviPrijevoz()
@@ -149,7 +152,8 @@ namespace AutoStoper.Client.Pages
                         UserId = _authorizationService.User.Id,
                         Vozac = true
                     }
-                }
+                },
+                Cijena = Math.Round(this.Cijena,2)
             };
             await _autoStoperService.Insert(voznja);
             _snackBar.Add("Uspješno ste unjeli vožnju!", Severity.Success);

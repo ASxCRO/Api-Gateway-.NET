@@ -1,5 +1,6 @@
 ﻿using ApiGateway.Core.HttpServices;
 using ApiGateway.Core.Models.Enums;
+using ApiGateway.Core.Models.RequestModels;
 using ApiGateway.Core.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,9 @@ namespace ApiGateway.Core.Services.AutoStoperUIServices
             return response is not null ? response : null;
         }
 
-
+        public async Task InsertPutnik(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest)
+        {
+            await webAssemblyHttpService.Send(Client.ApiGateway, prijavaNaVoznjuRequest, HttpMethod.Post, $"/dodajputnika");
+        }
     }
 }

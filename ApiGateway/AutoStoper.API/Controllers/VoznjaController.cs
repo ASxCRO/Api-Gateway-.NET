@@ -1,4 +1,5 @@
-﻿using AutoStoper.API.Data.Database.Models;
+﻿using ApiGateway.Core.Models.RequestModels;
+using AutoStoper.API.Data.Database.Models;
 using AutoStoper.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -21,6 +22,15 @@ namespace AutoStoper.API.Controllers
         public IActionResult Insert(Voznja voznja)
         {
             voznjaService.Insert(voznja);
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [Route("InsertPutnika")]
+        public IActionResult InsertPutnika(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest)
+        {
+            voznjaService.InsertPutnika(prijavaNaVoznjuRequest);
             return Ok();
         }
 

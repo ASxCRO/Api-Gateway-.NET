@@ -49,6 +49,14 @@
       }
     },
     {
+      "endpoint": "/dodajputnika",
+      "destination": {
+        "serviceId": 1,
+        "uri": "Voznja/InsertPutnika",
+        "requiresAuthentication": "false"
+      }
+    },
+    {
       "endpoint": "/authenticate",
       "destination": {
         "serviceId": 0,

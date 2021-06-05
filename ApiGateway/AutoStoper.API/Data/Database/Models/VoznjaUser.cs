@@ -10,5 +10,7 @@ namespace AutoStoper.API.Data.Database.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public bool Vozac { get; set; }
+        public int VoznjaId { get; set; }
+
     }
 }

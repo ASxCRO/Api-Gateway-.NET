@@ -1,4 +1,5 @@
-﻿using ApiGateway.Core.Models.ResponseModels;
+﻿using ApiGateway.Core.Models.RequestModels;
+using ApiGateway.Core.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ApiGateway.Core.Services.AutoStoperUIServices
     public interface IAutoStoperService
     {
         Task Insert(Voznja voznja);
+        Task InsertPutnik(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest);
         Task<List<Voznja>> GetAll();
         Task<Voznja> GetById(int id);
         Task<List<Voznja>> GetByUserId(int userId);
