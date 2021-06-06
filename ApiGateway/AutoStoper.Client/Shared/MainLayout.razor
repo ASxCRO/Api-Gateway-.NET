@@ -7,7 +7,7 @@
 <AutoStoper.Client.Shared.Spinner.Spinner/>
 
 @if (_authorizationService.User is null)
-{
+{ 
     <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="min-height: 100vh;">
         <MudPaper Elevation="25" Class="pa-8 ma-8" Style="width: 500px;">
                 @Body
@@ -28,6 +28,8 @@ else
                     <MudMenuItem Link="https://www.linkedin.com/company/blablacar" Target="_blank">LinkedIn</MudMenuItem>
                     <MudText Typo="Typo.body2" Class="px-4 py-2"><b>Resursi</b></MudText>
                     <MudMenuItem Link="https://mudblazor.com/" Target="_blank">MudBlazor dokumentacija</MudMenuItem>
+                    <MudMenuItem Link="https://github.com/perliedman/leaflet-routing-machine" Target="_blank">Routing machine</MudMenuItem>
+                    <MudMenuItem Link="https://leafletjs.com/" Target="_blank">Leaflet Maps</MudMenuItem>
                 </MudMenu>
                 <MudAppBarSpacer />
 
@@ -36,7 +38,7 @@ else
                         <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" />
                     </MudTooltip>*@
                 <MudTooltip Text="Github">
-                    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/asxcro" Target="_blank" />
+                    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/ASxCRO/Api-Gateway-.NET" Target="_blank" />
                 </MudTooltip>
             </MudHidden>
             <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
@@ -58,7 +60,7 @@ else
             </MudHidden>
             <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
                 <ActivatorContent>
-                    <MudAvatar Color="Color.Secondary">@FirstLetterOfName</MudAvatar>
+                    <MudAvatar Color="Color.Secondary" Image="@ImageDataUrl" />
                 </ActivatorContent>
                 <ChildContent>
                     <UserCard Class="mt-n2" />

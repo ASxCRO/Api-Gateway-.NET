@@ -8,9 +8,10 @@ namespace AutoStoper.API.Services
     {
         bool Insert(Voznja voznja);
         bool InsertPutnika(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest);
+        bool DeletePutnika(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest);
         IEnumerable<Voznja> GetAll();
         Voznja GetById(int id);
-        Voznja GetByUserId(int userID);
+        List<Voznja> GetByUserId(int userID);
         bool Delete(Voznja voznja);
         bool Update(Voznja voznja);
 

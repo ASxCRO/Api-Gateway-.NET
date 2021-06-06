@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Files\Images\avatar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Files\Images\avatar.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ApiGateway.Core\ApiGateway.Core.csproj" />
     <ProjectReference Include="..\ApiGateway.Package\ApiGateway.Package.csproj" />
   </ItemGroup>
@@ -23,10 +34,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Database\Models\" />
   </ItemGroup>
 
 </Project>

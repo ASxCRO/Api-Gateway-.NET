@@ -49,13 +49,17 @@ namespace AutoStoper.Authorization.Services
 
         public LoginResponse Register(RegisterRequest model)
         {
+            byte[] imgdata = System.IO.File.ReadAllBytes(@"Files\Images\avatar.png");
+
             var userToRegister = new User { 
                 Email = model.Email,
                 Username = model.UserName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Password = model.Password,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                DateRegistered = DateTime.Now,
+                Image = imgdata
             };
 
             _unitOfWork.Korisnici.Insert(userToRegister);

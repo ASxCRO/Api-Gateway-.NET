@@ -1,4 +1,5 @@
-﻿using AutoStoper.Client.Shared.Preferences;
+﻿using ApiGateway.Core.User;
+using AutoStoper.Client.Shared.Preferences;
 using MudBlazor;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,16 @@ namespace AutoStoper.Client.Shared
         private string SecondName { get; set; }
         private string Email { get; set; }
         private char FirstLetterOfName { get; set; }
+        private string ImageDataUrl { get; set; }
 
         private async Task LoadDataAsync()
         {
-            var user = _authorizationService.User;
+            var user = new User();
+            if (_authorizationService.User is not null)
+                user = await _authorizationService.GetById(_authorizationService.User.Id);
+            else
+                user = null;
+
             if (user == null) return;
             CurrentUserId = user.Id;
             this.FirstName = user.FirstName;
@@ -27,6 +34,8 @@ namespace AutoStoper.Client.Shared
             }
             this.SecondName = user.LastName;
             this.Email = user.Username;
+            var base64 = Convert.ToBase64String(user.Image);
+            ImageDataUrl = String.Format("data:image/gif;base64,{0}", base64);
         }
 
         private MudTheme _currentTheme;

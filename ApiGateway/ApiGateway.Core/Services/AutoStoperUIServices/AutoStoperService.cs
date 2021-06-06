@@ -57,5 +57,10 @@ namespace ApiGateway.Core.Services.AutoStoperUIServices
         {
             await webAssemblyHttpService.Send(Client.ApiGateway, prijavaNaVoznjuRequest, HttpMethod.Post, $"/dodajputnika");
         }
+
+        public async Task DeletePutnik(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest)
+        {
+            await webAssemblyHttpService.Send(Client.ApiGateway, prijavaNaVoznjuRequest, HttpMethod.Post, $"/makniputnika");
+        }
     }
 }

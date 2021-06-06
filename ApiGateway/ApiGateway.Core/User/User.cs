@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace ApiGateway.Core.User
 {
@@ -12,6 +13,8 @@ namespace ApiGateway.Core.User
         public string? JwtToken { get; set; }
         public string PhoneNumber { get; set; }
         public byte[] Image { get; set; }
+        public DateTime DateRegistered{ get; set; }
         public string Password { get; set; }
+
     }
 }

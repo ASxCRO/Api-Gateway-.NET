@@ -23,9 +23,14 @@ namespace AutoStoper.Client.Pages
         public Lokacija lokacijaPolaziste { get; set; }
         public Lokacija lokacijaOdrediste { get; set; }
         public List<VoznjaViewModel> Voznje { get; set; }
+        public bool CantGoBackOnlyReset { get; set; } = false;
+        public List<VoznjaViewModel> VoznjeTrenutnogKorisnika { get; set; }
+
+
 
         protected override async Task OnInitializedAsync()
         {
+            VoznjeTrenutnogKorisnika = new();
             collection = new();
             collection.Add(1, "Datum");
             collection.Add(2, "Polazište");
@@ -147,7 +152,9 @@ namespace AutoStoper.Client.Pages
                 });
             }
 
-            StateHasChanged();
+            CantGoBackOnlyReset = true;
+                   
+                StateHasChanged();
         }
 
         private async Task<List<User>> GetPutniciFromVoznja(List<VoznjaUser> putniciIzVoznje)
@@ -197,6 +204,46 @@ namespace AutoStoper.Client.Pages
                 "Putnici na vožnji",
                 putniciString,
                 yesText: "U redu", cancelText: "Izlaz");
+        }
+
+        public async Task DohvatiVoznjeTrenutnogKorisnika()
+        {
+            var sveVoznjeTrenutnogKorisnika = await _autoStoperService.GetByUserId(_authorizationService.User.Id);
+            VoznjeTrenutnogKorisnika.Clear();
+            foreach (var item in sveVoznjeTrenutnogKorisnika)
+                foreach (var putnik in item.Putnici.Where(p=>p.Vozac == false))
+                    VoznjeTrenutnogKorisnika.Add(new VoznjaViewModel
+                    {
+                        Voznja = item,
+                        Putnici = await GetPutniciFromVoznja(item.Putnici)
+                    });
+
+
+            StateHasChanged();
+        }
+
+        public async Task OtkaziVoznju(Voznja voznja)
+        {
+            bool? result = await DialogService.ShowMessageBox(
+                "Potvrda",
+                "Želite li se odjaviti sa vožnje?",
+                yesText: "Potvrdi", cancelText: "Odustani");
+
+            if (result is not null)
+            {
+                if (result.Value)
+                {
+                    var odjaviPutnika = new PrijavaNaVoznjuRequest {
+                        UserID = _authorizationService.User.Id,
+                        VoznjaID = voznja.Id
+                    };
+
+                    await _autoStoperService.DeletePutnik(odjaviPutnika);
+
+                    _snackBar.Add("Uspješno ste otkazali vožnju", Severity.Success);
+                    await DohvatiVoznjeTrenutnogKorisnika();
+                }
+            }
         }
     }
 }

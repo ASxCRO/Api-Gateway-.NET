@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System;
 using System.Threading.Tasks;
 
 namespace AutoStoper.Client.Shared
@@ -21,7 +22,7 @@ namespace AutoStoper.Client.Shared
 
         private async Task LoadDataAsync()
         {
-            var user = _authorizationService.User;
+            var user = await _authorizationService.GetById(_authorizationService.User.Id);
 
             this.Email = user.Username;
             this.FirstName = user.FirstName;
@@ -30,7 +31,8 @@ namespace AutoStoper.Client.Shared
             {
                 FirstLetterOfName = FirstName[0];
             }
-            ImageDataUrl = "https://media.istockphoto.com/photos/portrait-of-smiling-mature-man-standing-on-white-background-picture-id1245820678?s=612x612";
+            var base64 = Convert.ToBase64String(user.Image);
+            ImageDataUrl = String.Format("data:image/gif;base64,{0}", base64);
         }
     }
 }

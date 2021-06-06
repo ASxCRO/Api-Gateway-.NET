@@ -30,6 +30,7 @@ namespace AutoStoper.API.Services
             }
         }
 
+
         public IEnumerable<Voznja> GetAll()
         {
             return unitOfWork.Voznje.Get(includeProperties: "Putnici,Adresa");
@@ -40,10 +41,10 @@ namespace AutoStoper.API.Services
             return unitOfWork.Voznje.Get(p=>p.Id == id, includeProperties: "Putnici,Adresa").FirstOrDefault();
         }
 
-        public Voznja GetByUserId(int userID)
+        public List<Voznja> GetByUserId(int userID)
         {
-            var voznja = unitOfWork.Voznje.Get(v => v.Putnici.Any(p=>p.UserId == userID), includeProperties: "Putnici,Adresa").FirstOrDefault();
-            return voznja;
+            var voznje = unitOfWork.Voznje.Get(v => v.Putnici.Any(p=>p.UserId == userID), includeProperties: "Putnici,Adresa").ToList();
+            return voznje;
         }
 
         public bool Insert(Voznja voznja)
@@ -80,6 +81,22 @@ namespace AutoStoper.API.Services
                 return false;
             }
         }
+
+        public bool DeletePutnika(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest)
+        {
+            try
+            {
+                var voznjaUser = unitOfWork.VoznjeUser.Get(p => p.VoznjaId == prijavaNaVoznjuRequest.VoznjaID && p.UserId == prijavaNaVoznjuRequest.UserID).FirstOrDefault();
+                unitOfWork.VoznjeUser.Delete(voznjaUser.Id);
+                unitOfWork.Commit();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
         public bool Update(Voznja voznja)
         {

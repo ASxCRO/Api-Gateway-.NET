@@ -1,6 +1,8 @@
 ﻿using ApiGateway.Core.Models;
 using ApiGateway.Core.Models.RequestModels;
 using ApiGateway.Core.Models.ResponseModels;
+using ApiGateway.Core.User;
+using AutoStoper.Client.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
@@ -13,7 +15,7 @@ namespace AutoStoper.Client.Pages
 {
     public partial class Ponuda
     {
-
+        [Inject] private IDialogService DialogService { get; set; }
         public Dictionary<int, string> collection { get; set; }
         public int activeKey { get; set; }
         public DateTime? date { get; set; }
@@ -21,7 +23,7 @@ namespace AutoStoper.Client.Pages
         public bool KucniLjubimci { get; set; }
         public bool Pusenje { get; set; }
         public bool Glazba { get; set; }
-        public bool AutomatskoOdobrenje { get; set; }
+        public bool AutomatskoOdobrenje { get; set; } = true;
         public int LjudiUAutu { get; set; } = 2;
         public double Cijena { get; set; } = 50;
 
@@ -29,10 +31,13 @@ namespace AutoStoper.Client.Pages
         public Lokacija lokacijaOdrediste { get; set; }
         public Ruta Ruta { get; set; }
         private DotNetObjectReference<Ponuda> objRef { get; set; }
+        public List<VoznjaViewModel> VoznjeTrenutnogKorisnika { get; set; }
         public bool CantGoBackOnlyReset { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
         {
+            VoznjeTrenutnogKorisnika = new();
+
             collection = new();
             collection.Add(1, "Datum");
             collection.Add(2, "Polazište");
@@ -42,6 +47,7 @@ namespace AutoStoper.Client.Pages
             activeKey = 1;
 
             objRef = DotNetObjectReference.Create(this);
+
             await _jsRuntime.InvokeVoidAsync("GLOBAL.SetDotnetReference", objRef);
             await _jsRuntime.InvokeVoidAsync("ResetirajLokacije");
 
@@ -182,5 +188,64 @@ namespace AutoStoper.Client.Pages
                 _navigationManager.NavigateTo("/index");
             }
         }
+
+        public async Task DohvatiVoznjeTrenutnogKorisnika()
+        {
+            var sveVoznjeTrenutnogKorisnika = await _autoStoperService.GetByUserId(_authorizationService.User.Id);
+            VoznjeTrenutnogKorisnika.Clear();
+            foreach (var item in sveVoznjeTrenutnogKorisnika)
+                foreach (var putnik in item.Putnici.Where(p => p.Vozac))
+                    VoznjeTrenutnogKorisnika.Add(new VoznjaViewModel
+                    {
+                        Voznja = item,
+                        Putnici = await GetPutniciFromVoznja(item.Putnici)
+                    });
+
+            StateHasChanged();
+        }
+
+
+        private async Task<List<User>> GetPutniciFromVoznja(List<VoznjaUser> putniciIzVoznje)
+        {
+            var putnici = new List<User>();
+            foreach (var item in putniciIzVoznje)
+            {
+                var currentPutnik = await _authorizationService.GetById(item.UserId);
+                putnici.Add(currentPutnik);
+            }
+
+            return putnici;
+        }
+
+        public async Task PotvrdiOdabir(Voznja voznja)
+        {
+            bool? result = await DialogService.ShowMessageBox(
+                "Potvrda",
+                "Želite li odjaviti vožnju?",
+                yesText: "Potvrdi", cancelText: "Odustani");
+
+            if (result is not null)
+            {
+                if (result.Value)
+                {
+                    await _autoStoperService.Delete(voznja);
+
+                    _snackBar.Add("Uspješno ste otkazali vožnju", Severity.Success);
+                    await DohvatiVoznjeTrenutnogKorisnika();
+                }
+            }
+        }
+
+        public async Task PokaziPutike(Voznja voznja)
+        {
+            List<string> putnici = (await GetPutniciFromVoznja(voznja.Putnici.Where(p => p.Vozac == false).ToList())).Select(p => p.FirstName + " " + p.LastName).ToList();
+            string putniciString = string.Join(", ", putnici);
+
+            await DialogService.ShowMessageBox(
+                "Putnici na vožnji",
+                putniciString,
+                yesText: "U redu", cancelText: "Izlaz");
+        }
+
     }
 }

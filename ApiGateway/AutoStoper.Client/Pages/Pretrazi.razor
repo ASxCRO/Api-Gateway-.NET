@@ -1,153 +1,281 @@
 ﻿@page "/pretrazi"
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex align-center" Style="min-height: 70vh; margin-top: 5rem;">
-    <MudPaper Elevation="25" Class="pa-8" Style="width: 100%;">
-        <StepProgress collection="collection" activeItemInCollection="activeKey" />
-        <MudGrid>
-            @switch (activeKey)
-            {
-                case 1:
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center py-8">
-                            <MudDatePicker Label="Odaberite datum" @bind-Date="date" DisableToolbar="true" HelperText="Datum" />
-                        </div>
-                    </MudItem>
-                    break;
-                case 2:
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <div id="mapPolaziste" style="height: 300px; width: 100%">
-                            </div>
-                        </div>
-                    </MudItem>
-                    break;
-                case 3:
-                    <MudItem xs="12">
-                        <div class="d-flex justify-center">
-                            <div id="mapOdrediste" style="height: 300px; width: 100%">
-                            </div>
-                        </div>
-                    </MudItem>
-                    break;
-                case 4:
-                    if (Voznje?.Count < 1)
+<HeroTitle Title="Pretraži" Description="Pronađi vožnju u kojoj želiš sudjelovati" />
+<MudTabs Elevation="25" Color="Color.Transparent" Rounded="true" PanelClass="mt-6">
+    <MudTabPanel Text="Pretraga">
+        <MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex align-center" Style="min-height: 70vh; margin-top: 5rem;">
+            <MudPaper Elevation="25" Class="pa-8" Style="width: 100%;">
+                @if (!CantGoBackOnlyReset)
+                {
+                    <StepProgress collection="collection" activeItemInCollection="activeKey" />
+                }
+                <MudGrid>
+                    @switch (activeKey)
                     {
-                        <MudItem xs="12">
-                            <div class="d-flex justify-center">
-                                <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
-                            </div>
-                        </MudItem>
+                        case 1:
+                            <MudItem xs="12">
+                                <div class="d-flex justify-center py-8">
+                                    <MudDatePicker Label="Odaberite datum" @bind-Date="date" DisableToolbar="true" HelperText="Datum" />
+                                </div>
+                            </MudItem>
+                            break;
+                        case 2:
+                            <MudItem xs="12">
+                                <div class="d-flex justify-center">
+                                    <div id="mapPolaziste" style="height: 300px; width: 100%">
+                                    </div>
+                                </div>
+                            </MudItem>
+                            break;
+                        case 3:
+                            <MudItem xs="12">
+                                <div class="d-flex justify-center">
+                                    <div id="mapOdrediste" style="height: 300px; width: 100%">
+                                    </div>
+                                </div>
+                            </MudItem>
+                            break;
+                        case 4:
+                            if (Voznje?.Count < 1)
+                            {
+                                <MudItem xs="12">
+                                    <div class="d-flex justify-center">
+                                        <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
+                                    </div>
+                                </MudItem>
+                            }
+                            else
+                            {
+                                if (Voznje is not null)
+                                    foreach (var item in Voznje)
+                                        if (item is not null)
+                                        {
+                                            var currentDriverId = item.Voznja.Putnici.Where(p => p.Vozac).FirstOrDefault()?.UserId;
+                                            var driver = item.Putnici.First(p => p.Id == currentDriverId);
+                                            <MudPaper Outlined="true" Class="pa-16" Style="width: 100%;">
+                                                <MudCard>
+                                                    <MudCardHeader>
+                                                        <CardHeaderAvatar>
+                                                            <MudAvatar Color="Color.Secondary">@driver.FirstName[0]</MudAvatar>
+                                                        </CardHeaderAvatar>
+                                                        <CardHeaderContent>
+                                                            <MudText Typo="Typo.body1">Prijevoz</MudText>
+                                                            <MudText Typo="Typo.body2">Vozač @driver.FirstName @driver.LastName</MudText>
+                                                        </CardHeaderContent>
+                                                        <CardHeaderActions>
+                                                            @{
+                                                                var imaSlobodnihMjesta = (item.Voznja.MaksimalnoPutnika - item.Voznja.Putnici.Where(p=>p.Vozac==false).Count()) > 0;
+                                                            }
+                                                            <MudChip Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Default" OnClick="() => PotvrdiOdabir(item.Voznja.Id)" Disabled="!imaSlobodnihMjesta">Odaberi prijevoz</MudChip>
+                                                            <MudIconButton Icon="@Icons.Material.Filled.Face" Color="Color.Default" OnClick="() => PokaziPutike(item.Voznja)" />
+                                                        </CardHeaderActions>
+                                                    </MudCardHeader>
+                                                    <MudCardContent>
+                                                        <MudGrid Style="width:100%">
+                                                            <MudItem xs="6">
+                                                                <MudText Typo="Typo.h5" Inline="true">Od: </MudText>
+                                                                <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Polaziste</MudText>
+                                                                <br />
+                                                                <MudText Typo="Typo.h5" Inline="true">Do: </MudText>
+                                                                <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Odrediste</MudText>
+                                                            </MudItem>
+
+                                                            <MudItem xs="6">
+                                                                <div class="d-flex justify-space-between">
+                                                                    <MudText Typo="Typo.h4"> Cijena @Math.Round(item.Voznja.Cijena, 2).ToString() kn</MudText>
+                                                                    <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.TimeToLeave"></MudIcon>
+                                                                </div>
+
+                                                            </MudItem>
+                                                        </MudGrid>
+
+                                                    </MudCardContent>
+                                                    <MudCardActions>
+                                                        <MudGrid Style="width:100%">
+                                                            <MudItem xs="12">
+                                                                <div class="d-flex justify-space-between">
+                                                                    @if (item.Voznja.AutomatskoOdobrenje)
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.FlashOn" Color="Color.Secondary">Automatsko odobrenje</MudChip>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.FlashOff" Color="Color.Secondary">Odobrenje na zahtjev</MudChip>
+                                                                    }
+                                                                    @if (item.Voznja.LjubimciDozvoljeni)
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.Pets" Color="Color.Dark">Dozovoljeni ljubimci</MudChip>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.Pets" Color="Color.Dark">Ljubimci nisu dozvoljeni</MudChip>
+
+                                                                    }
+                                                                </div>
+                                                            </MudItem>
+                                                            <MudItem xs="12">
+                                                                <div class="d-flex justify-space-between">
+                                                                    @if (item.Voznja.MaksimalnoPutnika == item.Putnici.Count())
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Error">Nema više mjesta</MudChip>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        var slobodnihMjesta = item.Voznja.MaksimalnoPutnika - item.Putnici.Count();
+                                                                        <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Primary">Još @slobodnihMjesta slobodnih mjesta</MudChip>
+                                                                    }
+                                                                    @if (item.Voznja.PusenjeDozvoljeno)
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.Done" Color="Color.Success">Pušenje dozvoljeno</MudChip>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <MudChip Icon="@Icons.Material.Filled.Clear" Color="Color.Info">Pušenje nije dozvoljeno</MudChip>
+                                                                    }
+                                                                </div>
+                                                            </MudItem>
+                                                        </MudGrid>
+
+
+                                                    </MudCardActions>
+                                                </MudCard>
+                                            </MudPaper>
+                                        }
+                            }
+                            <MudItem xs="12">
+                                <div class="d-flex justify-center">
+                                    <MudButton OnClick="() => _navigationManager.NavigateTo(_navigationManager.Uri , true)">Resetiraj podatke</MudButton>
+                                </div>
+                            </MudItem>
+                            break;
+                        default:
+                            break;
                     }
-                    else
-                    {
-                        if (Voznje is not null)
-                            foreach (var item in Voznje)
-                                if (item is not null)
-                                {
-                                    var currentDriverId = item.Voznja.Putnici.Where(p => p.Vozac).FirstOrDefault().UserId;
-                                    var driver = item.Putnici.First(p => p.Id == currentDriverId);
-                                    <MudPaper Outlined="true" Class="pa-16" Style="width: 100%;">
-                                        <MudCard>
-                                            <MudCardHeader>
-                                                <CardHeaderAvatar>
-                                                    <MudAvatar Color="Color.Secondary">@driver.FirstName[0]</MudAvatar>
-                                                </CardHeaderAvatar>
-                                                <CardHeaderContent>
-                                                    <MudText Typo="Typo.body1">Prijevoz</MudText>
-                                                    <MudText Typo="Typo.body2">Vozač @driver.FirstName @driver.LastName</MudText>
-                                                </CardHeaderContent>
-                                                <CardHeaderActions>
-                                                    @{
-                                                        var imaSlobodnihMjesta = (item.Voznja.MaksimalnoPutnika - item.Putnici.Count()) > 0;
+                    <MudItem xs="12">
+                        @if (!CantGoBackOnlyReset)
+                        {
+                            <div class="d-flex justify-space-between">
+                                <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowLeft" Size="Size.Large" @onclick="SetPreviousItemActive"></MudIcon>
+                                <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowRight" Size="Size.Large" @onclick="SetNextItemActive"></MudIcon>
+                            </div>
+                        }
+                    </MudItem>
+                </MudGrid>
+            </MudPaper>
+        </MudContainer>
+
+    </MudTabPanel>
+    <MudTabPanel Text="Moji prijevozi" OnClick="() => DohvatiVoznjeTrenutnogKorisnika()">
+        <MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex align-center" Style="min-height: 50vh;">
+            <MudPaper Elevation="25" Class="pa-8" Style="width: 100%;">
+                @if (VoznjeTrenutnogKorisnika.Count() < 1)
+                {
+                    <MudItem xs="12">
+                        <div class="d-flex justify-center">
+                            <MudText>Nema rezulata.<MudLink Href="/index"> Početna stranica</MudLink></MudText>
+                        </div>
+                    </MudItem>
+                }
+                else
+                {
+                    foreach (var item in VoznjeTrenutnogKorisnika)
+                        if (item is not null)
+                        {
+                            var currentDriverId = item.Voznja.Putnici.Where(p => p.Vozac).FirstOrDefault()?.UserId;
+                            var driver = item.Putnici.FirstOrDefault(p => p.Id == currentDriverId);
+                            <MudPaper Outlined="true" Class="pa-16" Style="width: 100%;">
+                                <MudCard>
+                                    <MudCardHeader>
+                                        <CardHeaderAvatar>
+                                            <MudAvatar Color="Color.Secondary">@driver?.FirstName[0]</MudAvatar>
+                                        </CardHeaderAvatar>
+                                        <CardHeaderContent>
+                                            <MudText Typo="Typo.body1">Vaš prijevoz</MudText>
+                                            <MudText Typo="Typo.body2">Vozač @driver?.FirstName @driver?.LastName</MudText>
+                                        </CardHeaderContent>
+                                        <CardHeaderActions>
+                                            @{
+                                                var imaSlobodnihMjesta = (item.Voznja.MaksimalnoPutnika - item.Putnici.Count()) > 0;
+                                            }
+                                            <MudChip Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Default" OnClick="() => OtkaziVoznju(item.Voznja)">Otkaži vožnju</MudChip>
+                                            <MudIconButton Icon="@Icons.Material.Filled.Face" Color="Color.Default" OnClick="() => PokaziPutike(item.Voznja)" />
+                                        </CardHeaderActions>
+                                    </MudCardHeader>
+                                    <MudCardContent>
+                                        <MudGrid Style="width:100%">
+                                            <MudItem xs="6">
+                                                <MudText Typo="Typo.h5" Inline="true">Od: </MudText>
+                                                <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Polaziste</MudText>
+                                                <br />
+                                                <MudText Typo="Typo.h5" Inline="true">Do: </MudText>
+                                                <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Odrediste</MudText>
+                                            </MudItem>
+
+                                            <MudItem xs="6">
+                                                <div class="d-flex justify-space-between">
+                                                    <MudText Typo="Typo.h4"> Cijena @Math.Round(item.Voznja.Cijena, 2).ToString() kn</MudText>
+                                                    <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.TimeToLeave"></MudIcon>
+                                                </div>
+
+                                            </MudItem>
+                                        </MudGrid>
+
+                                    </MudCardContent>
+                                    <MudCardActions>
+                                        <MudGrid Style="width:100%">
+                                            <MudItem xs="12">
+                                                <div class="d-flex justify-space-between">
+                                                    @if (item.Voznja.AutomatskoOdobrenje)
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.FlashOn" Color="Color.Secondary">Automatsko odobrenje</MudChip>
                                                     }
-                                                    <MudChip Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Default" OnClick="() => PotvrdiOdabir(item.Voznja.Id)" Disabled="!imaSlobodnihMjesta">Odaberi prijevoz</MudChip>
-                                                    <MudIconButton Icon="@Icons.Material.Filled.Face" Color="Color.Default" OnClick="() => PokaziPutike(item.Voznja)" />
-                                                </CardHeaderActions>
-                                            </MudCardHeader>
-                                            <MudCardContent>
-                                                <MudGrid Style="width:100%">
-                                                    <MudItem xs="6">
-                                                        <MudText Typo="Typo.h5" Inline="true">Od: </MudText>
-                                                        <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Polaziste</MudText>
-                                                        <br />
-                                                        <MudText Typo="Typo.h5" Inline="true">Do: </MudText>
-                                                        <MudText Typo="Typo.h6" Inline="true">@item.Voznja.Adresa.Odrediste</MudText>
-                                                    </MudItem>
- 
-                                                    <MudItem xs="6">
-                                                        <div class="d-flex justify-space-between">
-                                                            <MudText Typo="Typo.h4"> Cijena @Math.Round(item.Voznja.Cijena,2).ToString() kn</MudText>
-                                                            <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.TimeToLeave"></MudIcon>
-                                                        </div>
-                                                       
-                                                    </MudItem>
-                                                </MudGrid>
+                                                    else
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.FlashOff" Color="Color.Secondary">Odobrenje na zahtjev</MudChip>
+                                                    }
+                                                    @if (item.Voznja.LjubimciDozvoljeni)
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.Pets" Color="Color.Dark">Dozovoljeni ljubimci</MudChip>
+                                                    }
+                                                    else
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.Pets" Color="Color.Dark">Ljubimci nisu dozvoljeni</MudChip>
 
-                                            </MudCardContent>
-                                            <MudCardActions>
-                                                <MudGrid Style="width:100%">
-                                                    <MudItem xs="12">
-                                                        <div class="d-flex justify-space-between">
-                                                            @if (item.Voznja.AutomatskoOdobrenje)
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.FlashOn" Color="Color.Secondary">Automatsko odobrenje</MudChip>
-                                                            }
-                                                            else
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.FlashOff" Color="Color.Secondary">Odobrenje na zahtjev</MudChip>
-                                                            }
-                                                            @if (item.Voznja.LjubimciDozvoljeni)
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.Pets" Color="Color.Dark">Dozovoljeni ljubimci</MudChip>
-                                                            }
-                                                            else
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.Pets" Color="Color.Dark">Ljubimci nisu dozvoljeni</MudChip>
+                                                    }
+                                                </div>
+                                            </MudItem>
+                                            <MudItem xs="12">
+                                                <div class="d-flex justify-space-between">
+                                                    @if (item.Voznja.MaksimalnoPutnika == item.Putnici.Count())
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Error">Nema više mjesta</MudChip>
+                                                    }
+                                                    else
+                                                    {
+                                                        var slobodnihMjesta = item.Voznja.MaksimalnoPutnika - item.Putnici.Count();
+                                                        <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Primary">Još @slobodnihMjesta slobodnih mjesta</MudChip>
+                                                    }
+                                                    @if (item.Voznja.PusenjeDozvoljeno)
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.Done" Color="Color.Success">Pušenje dozvoljeno</MudChip>
+                                                    }
+                                                    else
+                                                    {
+                                                        <MudChip Icon="@Icons.Material.Filled.Clear" Color="Color.Info">Pušenje nije dozvoljeno</MudChip>
+                                                    }
+                                                </div>
+                                            </MudItem>
+                                        </MudGrid>
+                                    </MudCardActions>
+                                </MudCard>
+                            </MudPaper>
+                        }
+                }
 
-                                                            }
-                                                        </div>
-                                                    </MudItem>
-                                                    <MudItem xs="12">
-                                                        <div class="d-flex justify-space-between">
-                                                            @if (item.Voznja.MaksimalnoPutnika == item.Putnici.Count())
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Error">Nema više mjesta</MudChip>
-                                                            }
-                                                            else
-                                                            {
-                                                                var slobodnihMjesta = item.Voznja.MaksimalnoPutnika - item.Putnici.Count();
-                                                                <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Primary">Još @slobodnihMjesta slobodnih mjesta</MudChip>
-                                                            }
-                                                            @if (item.Voznja.PusenjeDozvoljeno)
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.Done" Color="Color.Success">Pušenje dozvoljeno</MudChip>
-                                                            }
-                                                            else
-                                                            {
-                                                                <MudChip Icon="@Icons.Material.Filled.Clear" Color="Color.Info">Pušenje nije dozvoljeno</MudChip>
-                                                            }
-                                                        </div>
-                                                    </MudItem>
-                                                </MudGrid>
+            </MudPaper>
+        </MudContainer>
+    </MudTabPanel>
+</MudTabs>
 
-
-                                            </MudCardActions>
-                                        </MudCard>
-                                    </MudPaper>
-                                }
-                    }
-                    break;
-                default:
-                    break;
-            }
-            <MudItem xs="12">
-                <div class="d-flex justify-space-between">
-                    <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowLeft" Size="Size.Large" @onclick="SetPreviousItemActive"></MudIcon>
-                    <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowRight" Size="Size.Large" @onclick="SetNextItemActive"></MudIcon>
-                </div>
-            </MudItem>
-        </MudGrid>
-    </MudPaper>
-</MudContainer>
 
 

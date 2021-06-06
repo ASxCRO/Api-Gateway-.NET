@@ -12,6 +12,7 @@ namespace ApiGateway.Core.Services.AutoStoperUIServices
     {
         Task Insert(Voznja voznja);
         Task InsertPutnik(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest);
+        Task DeletePutnik(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest);
         Task<List<Voznja>> GetAll();
         Task<Voznja> GetById(int id);
         Task<List<Voznja>> GetByUserId(int userId);

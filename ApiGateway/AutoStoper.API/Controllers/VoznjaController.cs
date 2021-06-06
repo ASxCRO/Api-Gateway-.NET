@@ -34,6 +34,14 @@ namespace AutoStoper.API.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("DeletePutnika")]
+        public IActionResult DeletePutnika(PrijavaNaVoznjuRequest prijavaNaVoznjuRequest)
+        {
+            voznjaService.DeletePutnika(prijavaNaVoznjuRequest);
+            return Ok();
+        }
+
         [HttpGet]
         [Route("GetAll")]
         public IEnumerable<Voznja> Get()
@@ -50,7 +58,7 @@ namespace AutoStoper.API.Controllers
 
         [HttpGet]
         [Route("GetByUserId")]
-        public Voznja GetByUserId(int userId)
+        public List<Voznja> GetByUserId(int userId)
         {
             return voznjaService.GetByUserId(userId);
         }

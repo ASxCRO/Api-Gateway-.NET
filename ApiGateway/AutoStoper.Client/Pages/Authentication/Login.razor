@@ -2,46 +2,57 @@
 @layout MainLayout
 @attribute [AllowAnonymous]
 
-<EditForm Model="@tokenModel" OnValidSubmit="SubmitAsync">
-    <MudGrid>
-        <MudItem xs="12">
-            <div class="d-flex justify-center">
-                <MudIcon Icon="@Icons.Outlined.TimeToLeave" Color="Color.Primary" Size="Size.Large" />
-            </div>
-        </MudItem>
-        <DataAnnotationsValidator />
-        <MudItem xs="12">
-            <div class="d-flex justify-center">
-                <MudText Typo="Typo.h4">AutoStoper</MudText>
-            </div>
-        </MudItem>
-        <MudItem xs="12">
-            <div class="d-flex justify-center">
-                <MudText>Neka ovo bude tvoje najmanje skupo putovanje u povijesti.</MudText>
-            </div>
-        </MudItem>
-        <MudItem xs="12">
-            <div class="d-flex justify-center">
-                <MudText>Nemate račun? <MudLink Href="/register">Registrirajte se ovdje</MudLink></MudText>
-            </div>
-        </MudItem>
-        <MudItem xs="12">
-            <MudTextField T="string" Label="Email" Variant="Variant.Outlined"
-                          @bind-Value="tokenModel.Username" For="@(() => tokenModel.Username)" />
-        </MudItem>
-        <MudItem xs="12">
-            <MudTextField Label="Lozinka" Variant="Variant.Outlined"
-                          @bind-Value="tokenModel.Password" For="@(() => tokenModel.Password)"
-                          InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
-        </MudItem>
-        <MudItem xs="12" Class="d-flex justify-space-between align-center">
-            <MudCheckBox T="bool" Label="Zapamti me?" Color="Color.Primary" Class="ml-n1"></MudCheckBox> <MudLink Href="/account/forgot-password">Zaboravljena lozinka?</MudLink>
-        </MudItem>
-        <MudItem xs="12" Class="d-flex justify-center">
-            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Prijava</MudButton>
-        </MudItem>
-        <MudItem xs="12">
-            <MudButton OnClick="FillBasicUserCredentials">Popuni korisničke podatke</MudButton>
-        </MudItem>
-    </MudGrid>
-</EditForm>
+@if (_authorizationService.User is null)
+{
+    <EditForm Model="@tokenModel" OnValidSubmit="SubmitAsync">
+        <MudGrid>
+            <MudItem xs="12">
+                <div class="d-flex justify-center">
+                    <MudIcon Icon="@Icons.Outlined.TimeToLeave" Color="Color.Primary" Size="Size.Large" />
+                </div>
+            </MudItem>
+            <DataAnnotationsValidator />
+            <MudItem xs="12">
+                <div class="d-flex justify-center">
+                    <MudText Typo="Typo.h4">AutoStoper</MudText>
+                </div>
+            </MudItem>
+            <MudItem xs="12">
+                <div class="d-flex justify-center">
+                    <MudText>Neka ovo bude tvoje najmanje skupo putovanje u povijesti.</MudText>
+                </div>
+            </MudItem>
+            <MudItem xs="12">
+                <div class="d-flex justify-center">
+                    <MudText>Nemate račun? <MudLink Href="/register">Registrirajte se ovdje</MudLink></MudText>
+                </div>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField T="string" Label="Email" Variant="Variant.Outlined"
+                              @bind-Value="tokenModel.Username" For="@(() => tokenModel.Username)" />
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField Label="Lozinka" Variant="Variant.Outlined"
+                              @bind-Value="tokenModel.Password" For="@(() => tokenModel.Password)"
+                              InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
+            </MudItem>
+            <MudItem xs="12" Class="d-flex justify-space-between align-center">
+                <MudCheckBox T="bool" Label="Zapamti me?" Color="Color.Primary" Class="ml-n1"></MudCheckBox> <MudLink Href="/account/forgot-password">Zaboravljena lozinka?</MudLink>
+            </MudItem>
+            <MudItem xs="12" Class="d-flex justify-center">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Prijava</MudButton>
+            </MudItem>
+            <MudItem xs="12">
+                <MudButton OnClick="FillBasicUserCredentials">Popuni korisničke podatke</MudButton>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+}
+else
+{
+    <MudItem xs="12">
+        <div class="d-flex justify-center">
+            <MudText>Pričekajte trenutak..</MudText>
+        </div>
+    </MudItem>
+}
