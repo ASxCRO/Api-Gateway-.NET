@@ -31,8 +31,11 @@ namespace AutoStoper.Client.Shared
             {
                 FirstLetterOfName = FirstName[0];
             }
-            var base64 = Convert.ToBase64String(user.Image);
-            ImageDataUrl = String.Format("data:image/gif;base64,{0}", base64);
+            if (user.Image is not null)
+            {
+                var base64 = Convert.ToBase64String(user.Image);
+                ImageDataUrl = String.Format("data:image/gif;base64,{0}", base64);
+            }
         }
     }
 }

@@ -122,15 +122,30 @@
                                             @foreach (var item in SveVoznjeUKojimaTrenutniKorisnikSudjeluje)
                                                 foreach (var putnik in item.Putnici.Where(p => p.Id != _authorizationService.User.Id).ToList())
                                                 {
-                                                    var base64 = Convert.ToBase64String(putnik.Image);
-                                                    var profileImageUrl = String.Format("data:image/gif;base64,{0}", base64);
-                                                    <li>
-                                                        <img src="@profileImageUrl" alt="User Image">
-                                                        <a class="users-list-name" href="#">@putnik.FirstName @putnik.LastName</a>
-                                                        <span class="users-list-date">@item.Voznja.DateTime.ToString("dd.MM.yyyy")</span>
-                                                    </li>
+                                                    var base64 = string.Empty;
+                                                    var profileImageUrl = string.Empty;
+                                                    if (putnik.Image is not null)
+                                                    {
+                                                        base64 = Convert.ToBase64String(putnik.Image);
+                                                        profileImageUrl = String.Format("data:image/gif;base64,{0}", base64);
+                                                    }
+                                                    if (string.IsNullOrEmpty(profileImageUrl))
+                                                    {
+                                                        <li>
+                                                            <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.Photo"></MudIcon>
+                                                            <a class="users-list-name" href="#">@putnik.FirstName @putnik.LastName</a>
+                                                            <span class="users-list-date">@item.Voznja.DateTime.ToString("dd.MM.yyyy")</span>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            <img src="@profileImageUrl" alt="User Image">
+                                                            <a class="users-list-name" href="#">@putnik.FirstName @putnik.LastName</a>
+                                                            <span class="users-list-date">@item.Voznja.DateTime.ToString("dd.MM.yyyy")</span>
+                                                        </li>
+                                                    }
                                                 }
-
                                         </ul>
                                         <!-- /.users-list -->
                                     </div>

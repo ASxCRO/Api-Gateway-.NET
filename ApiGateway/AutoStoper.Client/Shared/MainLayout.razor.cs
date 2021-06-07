@@ -34,8 +34,11 @@ namespace AutoStoper.Client.Shared
             }
             this.SecondName = user.LastName;
             this.Email = user.Username;
-            var base64 = Convert.ToBase64String(user.Image);
-            ImageDataUrl = String.Format("data:image/gif;base64,{0}", base64);
+            if(user.Image is not null)
+            {
+                var base64 = Convert.ToBase64String(user.Image);
+                ImageDataUrl = String.Format("data:image/gif;base64,{0}", base64);
+            }
         }
 
         private MudTheme _currentTheme;

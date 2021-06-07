@@ -9,10 +9,10 @@ namespace ApiGateway.Core.RequestModels
 {
     public class LoginRequest
     {
-        [Required]
+        [Required(ErrorMessage = "Unesite korisničko ime")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Unesite lozinku")]
         public string Password { get; set; }
     }
 }

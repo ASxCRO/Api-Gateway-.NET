@@ -10,7 +10,7 @@ namespace ApiGateway.Core.Models.RequestModels
         [Required(ErrorMessage= "Molimo unesite prezime.")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Molimo unesite email adresu.")]
         [EmailAddress(ErrorMessage ="Molimo unesite ispravnu email adresu.")]
         public string Email { get; set; }
 
@@ -26,6 +26,7 @@ namespace ApiGateway.Core.Models.RequestModels
         [Compare(nameof(Password), ErrorMessage = "Lozinke se ne podudaraju.")]
         public string ConfirmPassword { get; set; }
 
+        [Required(ErrorMessage = "Molimo unesite broj mobitela.")]
         public string PhoneNumber { get; set; }
 
         public bool ActivateUser { get; set; } = false;
