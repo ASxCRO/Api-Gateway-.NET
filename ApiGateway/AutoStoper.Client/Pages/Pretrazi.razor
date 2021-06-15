@@ -121,7 +121,7 @@
                                                                     }
                                                                     else
                                                                     {
-                                                                        var slobodnihMjesta = item.Voznja.MaksimalnoPutnika - item.Putnici.Count();
+                                                                        var slobodnihMjesta = item.Voznja.MaksimalnoPutnika - item.Putnici.Count()+1;
                                                                         <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Primary">Još @slobodnihMjesta slobodnih mjesta</MudChip>
                                                                     }
                                                                     @if (item.Voznja.PusenjeDozvoljeno)
@@ -250,13 +250,13 @@
                                             </MudItem>
                                             <MudItem xs="12">
                                                 <div class="d-flex justify-space-between">
-                                                    @if (item.Voznja.MaksimalnoPutnika == item.Putnici.Count())
+                                                    @if (item.Voznja.MaksimalnoPutnika == (item.Putnici.Count()-1))
                                                     {
                                                         <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Error">Nema više mjesta</MudChip>
                                                     }
                                                     else
                                                     {
-                                                        var slobodnihMjesta = item.Voznja.MaksimalnoPutnika - item.Putnici.Count();
+                                                        var slobodnihMjesta = 1+ item.Voznja.MaksimalnoPutnika - item.Putnici.Count();
                                                         <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Primary">Još @slobodnihMjesta slobodnih mjesta</MudChip>
                                                     }
                                                     @if (item.Voznja.PusenjeDozvoljeno)

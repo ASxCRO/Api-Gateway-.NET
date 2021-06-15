@@ -134,3 +134,393 @@
 
 2021-06-15 16:03:11.698 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:03:11 PM
 
+2021-06-15 16:24:12.922 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:12 PM
+
+2021-06-15 16:24:13.114 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:24:13 PM
+
+2021-06-15 16:24:13.221 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:13 PM
+
+2021-06-15 16:24:13.346 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:13 PM
+
+2021-06-15 16:24:14.909 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:14 PM
+
+2021-06-15 16:24:17.827 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:17 PM
+
+2021-06-15 16:24:18.412 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:24:18 PM
+
+2021-06-15 16:24:18.477 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:18 PM
+
+2021-06-15 16:24:30.564 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:30 PM
+
+2021-06-15 16:24:30.836 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:24:30 PM
+
+2021-06-15 16:24:30.875 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:30 PM
+
+2021-06-15 16:24:30.971 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:30 PM
+
+2021-06-15 16:24:31.254 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:24:31 PM
+
+2021-06-15 16:24:33.426 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:24:33 PM
+
+2021-06-15 16:24:35.196 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:24:35 PM
+
+2021-06-15 16:24:43.158 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:24:43 PM
+
+2021-06-15 16:24:45.362 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:24:45 PM
+
+2021-06-15 16:25:05.734 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /novavoznja kako bi dohvatio podatke sa https://localhost:44386/Voznja/Insert datuma 6/15/2021 4:25:05 PM
+
+2021-06-15 16:25:06.612 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:25:06 PM
+
+2021-06-15 16:25:06.738 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:06 PM
+
+2021-06-15 16:25:06.769 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:06 PM
+
+2021-06-15 16:25:08.780 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:25:08 PM
+
+2021-06-15 16:25:08.854 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:08 PM
+
+2021-06-15 16:25:19.022 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:19 PM
+
+2021-06-15 16:25:19.223 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:25:19 PM
+
+2021-06-15 16:25:19.251 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:19 PM
+
+2021-06-15 16:25:19.365 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:19 PM
+
+2021-06-15 16:25:19.697 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:19 PM
+
+2021-06-15 16:25:20.101 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:20 PM
+
+2021-06-15 16:25:30.952 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:25:30 PM
+
+2021-06-15 16:25:31.005 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:31 PM
+
+2021-06-15 16:25:40.419 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /dodajputnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/InsertPutnika datuma 6/15/2021 4:25:40 PM
+
+2021-06-15 16:25:41.520 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:25:41 PM
+
+2021-06-15 16:25:41.568 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:41 PM
+
+2021-06-15 16:25:41.606 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:41 PM
+
+2021-06-15 16:25:41.637 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:25:41 PM
+
+2021-06-15 16:26:13.139 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:26:13 PM
+
+2021-06-15 16:26:13.194 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:26:13 PM
+
+2021-06-15 16:26:13.229 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:26:13 PM
+
+2021-06-15 16:26:15.997 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /dodajputnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/InsertPutnika datuma 6/15/2021 4:26:15 PM
+
+2021-06-15 16:26:17.059 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:26:17 PM
+
+2021-06-15 16:26:17.105 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:26:17 PM
+
+2021-06-15 16:26:17.131 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:26:17 PM
+
+2021-06-15 16:26:17.162 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:26:17 PM
+
+2021-06-15 16:26:17.197 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:26:17 PM
+
+2021-06-15 16:31:08.615 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:08 PM
+
+2021-06-15 16:31:09.375 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:09 PM
+
+2021-06-15 16:31:10.044 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:31:10 PM
+
+2021-06-15 16:31:10.095 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:10 PM
+
+2021-06-15 16:31:10.369 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:10 PM
+
+2021-06-15 16:31:11.849 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:11 PM
+
+2021-06-15 16:31:43.298 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /novavoznja kako bi dohvatio podatke sa https://localhost:44386/Voznja/Insert datuma 6/15/2021 4:31:43 PM
+
+2021-06-15 16:31:44.244 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:31:44 PM
+
+2021-06-15 16:31:44.338 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:44 PM
+
+2021-06-15 16:31:44.383 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:44 PM
+
+2021-06-15 16:31:47.996 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:31:47 PM
+
+2021-06-15 16:31:48.072 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:31:48 PM
+
+2021-06-15 16:32:48.631 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:32:48 PM
+
+2021-06-15 16:32:49.464 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:32:49 PM
+
+2021-06-15 16:32:49.912 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:32:49 PM
+
+2021-06-15 16:32:49.956 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:32:49 PM
+
+2021-06-15 16:32:50.189 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:32:50 PM
+
+2021-06-15 16:32:51.731 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:32:51 PM
+
+2021-06-15 16:32:51.774 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:32:51 PM
+
+2021-06-15 16:33:06.267 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:33:06 PM
+
+2021-06-15 16:33:06.415 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:33:06 PM
+
+2021-06-15 16:35:30.773 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:30 PM
+
+2021-06-15 16:35:31.522 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:31 PM
+
+2021-06-15 16:35:31.897 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:35:31 PM
+
+2021-06-15 16:35:31.930 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:31 PM
+
+2021-06-15 16:35:32.089 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:32 PM
+
+2021-06-15 16:35:33.385 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:33 PM
+
+2021-06-15 16:35:33.424 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:33 PM
+
+2021-06-15 16:35:34.878 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:35:34 PM
+
+2021-06-15 16:35:35.035 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:35 PM
+
+2021-06-15 16:35:51.835 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:35:51 PM
+
+2021-06-15 16:35:51.893 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:51 PM
+
+2021-06-15 16:35:57.912 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:35:57 PM
+
+2021-06-15 16:35:59.312 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:35:59 PM
+
+2021-06-15 16:35:59.359 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:35:59 PM
+
+2021-06-15 16:37:50.862 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:37:50 PM
+
+2021-06-15 16:39:41.153 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:41 PM
+
+2021-06-15 16:39:41.827 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:41 PM
+
+2021-06-15 16:39:42.173 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:39:42 PM
+
+2021-06-15 16:39:42.204 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:42 PM
+
+2021-06-15 16:39:42.364 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:42 PM
+
+2021-06-15 16:39:43.719 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:43 PM
+
+2021-06-15 16:39:43.825 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:43 PM
+
+2021-06-15 16:39:46.665 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:39:46 PM
+
+2021-06-15 16:39:46.814 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:39:46 PM
+
+2021-06-15 16:40:00.096 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:00 PM
+
+2021-06-15 16:40:00.338 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:40:00 PM
+
+2021-06-15 16:40:00.363 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:00 PM
+
+2021-06-15 16:40:00.473 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:00 PM
+
+2021-06-15 16:40:00.815 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:00 PM
+
+2021-06-15 16:40:00.847 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:00 PM
+
+2021-06-15 16:40:11.429 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:40:11 PM
+
+2021-06-15 16:40:11.478 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:11 PM
+
+2021-06-15 16:40:13.833 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /dodajputnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/InsertPutnika datuma 6/15/2021 4:40:13 PM
+
+2021-06-15 16:40:15.094 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:40:15 PM
+
+2021-06-15 16:40:15.166 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:15 PM
+
+2021-06-15 16:40:15.217 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:15 PM
+
+2021-06-15 16:40:15.249 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:15 PM
+
+2021-06-15 16:40:16.908 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:40:16 PM
+
+2021-06-15 16:40:16.946 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:16 PM
+
+2021-06-15 16:40:16.978 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:16 PM
+
+2021-06-15 16:40:22.571 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:40:22 PM
+
+2021-06-15 16:40:22.617 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:22 PM
+
+2021-06-15 16:40:22.663 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:22 PM
+
+2021-06-15 16:40:22.702 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:22 PM
+
+2021-06-15 16:40:25.304 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:25 PM
+
+2021-06-15 16:40:25.555 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:40:25 PM
+
+2021-06-15 16:40:25.586 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:25 PM
+
+2021-06-15 16:40:25.698 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:25 PM
+
+2021-06-15 16:40:26.080 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:26 PM
+
+2021-06-15 16:40:26.142 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:26 PM
+
+2021-06-15 16:40:26.536 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:26 PM
+
+2021-06-15 16:40:47.295 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:47.508 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:47.536 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:47.634 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:47.928 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:47.964 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:47.996 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:47 PM
+
+2021-06-15 16:40:55.955 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:40:55 PM
+
+2021-06-15 16:40:56.001 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:56 PM
+
+2021-06-15 16:40:56.031 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:40:56 PM
+
+2021-06-15 16:41:00.710 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:41:00 PM
+
+2021-06-15 16:41:00.752 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:41:00 PM
+
+2021-06-15 16:41:00.785 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:41:00 PM
+
+2021-06-15 16:41:02.441 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:41:02 PM
+
+2021-06-15 16:41:02.476 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:41:02 PM
+
+2021-06-15 16:41:02.504 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:41:02 PM
+
+2021-06-15 16:41:03.225 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:41:03 PM
+
+2021-06-15 16:42:21.898 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:21 PM
+
+2021-06-15 16:42:22.942 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:22 PM
+
+2021-06-15 16:42:23.588 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:42:23 PM
+
+2021-06-15 16:42:23.657 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:23 PM
+
+2021-06-15 16:42:23.946 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:23 PM
+
+2021-06-15 16:42:26.968 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:26 PM
+
+2021-06-15 16:42:27.070 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:27 PM
+
+2021-06-15 16:42:27.117 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:27 PM
+
+2021-06-15 16:42:30.942 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:42:30 PM
+
+2021-06-15 16:42:31.067 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:31 PM
+
+2021-06-15 16:42:31.103 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:31 PM
+
+2021-06-15 16:42:32.307 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:42:32 PM
+
+2021-06-15 16:42:32.361 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:32 PM
+
+2021-06-15 16:42:32.391 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:42:32 PM
+
+2021-06-15 16:42:39.569 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /obrisivoznju kako bi dohvatio podatke sa https://localhost:44386/Voznja/Delete datuma 6/15/2021 4:42:39 PM
+
+2021-06-15 16:42:39.840 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:42:39 PM
+
+2021-06-15 16:43:19.618 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:43:19 PM
+
+2021-06-15 16:43:19.847 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:43:19 PM
+
+2021-06-15 16:43:19.869 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:43:19 PM
+
+2021-06-15 16:43:19.979 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:43:19 PM
+
+2021-06-15 16:43:20.307 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:43:20 PM
+
+2021-06-15 16:43:20.896 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:43:20 PM
+
+2021-06-15 16:45:26.224 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:26 PM
+
+2021-06-15 16:45:26.930 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:26 PM
+
+2021-06-15 16:45:27.246 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:45:27 PM
+
+2021-06-15 16:45:27.289 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:27 PM
+
+2021-06-15 16:45:27.473 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:27 PM
+
+2021-06-15 16:45:29.007 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:29 PM
+
+2021-06-15 16:45:31.703 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:45:31 PM
+
+2021-06-15 16:45:52.601 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /novavoznja kako bi dohvatio podatke sa https://localhost:44386/Voznja/Insert datuma 6/15/2021 4:45:52 PM
+
+2021-06-15 16:45:53.569 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:45:53 PM
+
+2021-06-15 16:45:53.662 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:53 PM
+
+2021-06-15 16:45:53.784 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:53 PM
+
+2021-06-15 16:45:56.177 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:45:56 PM
+
+2021-06-15 16:45:56.222 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:45:56 PM
+
+2021-06-15 16:46:07.680 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:07 PM
+
+2021-06-15 16:46:07.885 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:46:07 PM
+
+2021-06-15 16:46:07.916 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:07 PM
+
+2021-06-15 16:46:08.036 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:08 PM
+
+2021-06-15 16:46:08.372 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:08 PM
+
+2021-06-15 16:46:08.418 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:08 PM
+
+2021-06-15 16:46:11.258 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:46:11 PM
+
+2021-06-15 16:46:23.458 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:46:23 PM
+
+2021-06-15 16:46:23.511 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:23 PM
+
+2021-06-15 16:46:29.632 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /dodajputnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/InsertPutnika datuma 6/15/2021 4:46:29 PM
+
+2021-06-15 16:46:30.756 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:46:30 PM
+
+2021-06-15 16:46:30.792 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:30 PM
+
+2021-06-15 16:46:30.856 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:30 PM
+
+2021-06-15 16:46:30.885 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:30 PM
+
+2021-06-15 16:46:32.332 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznjekorisnika kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetByUserId datuma 6/15/2021 4:46:32 PM
+
+2021-06-15 16:46:32.372 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:32 PM
+
+2021-06-15 16:46:32.402 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:32 PM
+
+2021-06-15 16:46:33.227 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:46:33 PM
+
+2021-06-15 16:46:33.276 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:33 PM
+
+2021-06-15 16:46:33.313 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:33 PM
+
+2021-06-15 16:46:33.346 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:33 PM
+
+2021-06-15 16:46:34.125 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:34 PM
+
+2021-06-15 16:46:37.141 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/15/2021 4:46:37 PM
+
+2021-06-15 16:46:37.194 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:37 PM
+
+2021-06-15 16:46:37.223 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:37 PM
+
+2021-06-15 16:46:37.255 +02:00 [INF] Korisnik sa tokenom  i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/15/2021 4:46:37 PM
+

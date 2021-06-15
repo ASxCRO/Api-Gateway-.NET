@@ -21,6 +21,10 @@ namespace AutoStoper.API.Services
             try
             {
                 unitOfWork.Voznje.Delete(voznja.Id);
+                var voznjaUser = unitOfWork.VoznjeUser.Get(p => p.VoznjaId == voznja.Id).ToList();
+                if (voznjaUser is not null)
+                    foreach (var item in voznjaUser)
+                        unitOfWork.VoznjeUser.Delete(item.Id);
                 unitOfWork.Commit();
                 return true;
             }
