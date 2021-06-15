@@ -26,6 +26,7 @@ namespace AutoStoper.Client.Pages
         public bool AutomatskoOdobrenje { get; set; } = true;
         public int LjudiUAutu { get; set; } = 2;
         public double Cijena { get; set; } = 50;
+        private bool MojeVoznjeTabActive { get; set; } = false;
 
         public Lokacija lokacijaPolaziste { get; set; }
         public Lokacija lokacijaOdrediste { get; set; }
@@ -86,23 +87,26 @@ namespace AutoStoper.Client.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            switch (activeKey)
+            if(MojeVoznjeTabActive == false)
             {
-                case 2:
-                    await InicijalizirajMapuPolaziste();
-                    break;
-                case 3:
-                    await InicijalizirajMapuOdrediste();
-                    break;
-                case 4:
-                    if(Ruta is null)
-                    {
-                        await InicijalizirajMapuRuta();
-                        await GetLatLngPolazisteOdrediste();
-                    }
-                    break;
-                default:
-                    break;
+                switch (activeKey)
+                {
+                    case 2:
+                        await InicijalizirajMapuPolaziste();
+                        break;
+                    case 3:
+                        await InicijalizirajMapuOdrediste();
+                        break;
+                    case 4:
+                        if (Ruta is null)
+                        {
+                            await InicijalizirajMapuRuta();
+                            await GetLatLngPolazisteOdrediste();
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -201,6 +205,13 @@ namespace AutoStoper.Client.Pages
                         Putnici = await GetPutniciFromVoznja(item.Putnici)
                     });
 
+            MojeVoznjeTabActive = true;
+            StateHasChanged();
+        }
+
+        public async Task SetFirstTabActive()
+        {
+            MojeVoznjeTabActive = false;
             StateHasChanged();
         }
 

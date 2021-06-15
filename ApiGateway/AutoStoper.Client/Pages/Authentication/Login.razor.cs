@@ -50,11 +50,5 @@ namespace AutoStoper.Client.Pages.Authentication
                 PasswordInput = InputType.Text;
             }
         }
-
-        private void FillBasicUserCredentials()
-        {
-            tokenModel.Username = "test";
-            tokenModel.Password = "test";
-        }
     }
 }

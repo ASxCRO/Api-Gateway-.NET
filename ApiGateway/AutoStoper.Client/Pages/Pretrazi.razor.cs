@@ -26,7 +26,7 @@ namespace AutoStoper.Client.Pages
         public bool CantGoBackOnlyReset { get; set; } = false;
         public List<VoznjaViewModel> VoznjeTrenutnogKorisnika { get; set; }
 
-
+        public bool MojeVoznjeTabActive { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -77,24 +77,27 @@ namespace AutoStoper.Client.Pages
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            switch (activeKey)
+            if (MojeVoznjeTabActive == false)
             {
-                case 2:
-                    await InicijalizirajMapuPolaziste();
-                    break;
-                case 3:
-                    await InicijalizirajMapuOdrediste();
-                    break;
-                case 4:
-                    if (Voznje is null)
-                    {
-                        Voznje = new();
-                        await GetLatLngPolazisteOdrediste();
-                        await DohvatiVoznjeUDosegu();
-                    }
-                    break;
-                default:
-                    break;
+                switch (activeKey)
+                {
+                    case 2:
+                        await InicijalizirajMapuPolaziste();
+                        break;
+                    case 3:
+                        await InicijalizirajMapuOdrediste();
+                        break;
+                    case 4:
+                        if (Voznje is null)
+                        {
+                            Voznje = new();
+                            await GetLatLngPolazisteOdrediste();
+                            await DohvatiVoznjeUDosegu();
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -218,7 +221,13 @@ namespace AutoStoper.Client.Pages
                         Putnici = await GetPutniciFromVoznja(item.Putnici)
                     });
 
+            MojeVoznjeTabActive = true;
+            StateHasChanged();
+        }
 
+        public async Task SetFirstTabActive()
+        {
+            MojeVoznjeTabActive = false;
             StateHasChanged();
         }
 

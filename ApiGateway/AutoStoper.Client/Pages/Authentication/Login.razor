@@ -36,14 +36,8 @@
                               @bind-Value="tokenModel.Password" For="@(() => tokenModel.Password)"
                               InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
             </MudItem>
-            <MudItem xs="12" Class="d-flex justify-space-between align-center">
-                <MudCheckBox T="bool" Label="Zapamti me?" Color="Color.Primary" Class="ml-n1"></MudCheckBox> <MudLink Href="/account/forgot-password">Zaboravljena lozinka?</MudLink>
-            </MudItem>
             <MudItem xs="12" Class="d-flex justify-center">
                 <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="width: 100%;">Prijava</MudButton>
-            </MudItem>
-            <MudItem xs="12">
-                <MudButton OnClick="FillBasicUserCredentials">Popuni korisničke podatke</MudButton>
             </MudItem>
         </MudGrid>
     </EditForm>

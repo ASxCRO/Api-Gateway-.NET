@@ -5,7 +5,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/Insert",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -13,7 +13,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/GetAll",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -21,7 +21,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/GetById",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -29,7 +29,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/GetByUserId",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -37,7 +37,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/Update",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -45,7 +45,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/Delete",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -53,7 +53,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/InsertPutnika",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -61,7 +61,7 @@
       "destination": {
         "serviceId": 1,
         "uri": "Voznja/DeletePutnika",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -85,7 +85,7 @@
       "destination": {
         "serviceId": 0,
         "uri": "users/getbyid",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     },
     {
@@ -93,7 +93,7 @@
       "destination": {
         "serviceId": 0,
         "uri": "users/update",
-        "requiresAuthentication": "false"
+        "requiresAuthentication": "true"
       }
     }
   ],
