@@ -9,7 +9,7 @@ env:
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AutoStoperAPI_9a6f }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
-  WORKING_DIRECTORY: AutoStoper.Authorization
+  WORKING_DIRECTORY: /AutoStoper.Authorization
 jobs:
   build-and-deploy:
     runs-on: windows-latest
