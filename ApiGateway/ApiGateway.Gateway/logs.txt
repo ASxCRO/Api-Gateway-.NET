@@ -489,3 +489,61 @@
 
 2021-06-16 15:46:38.645 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 3:46:38 PM
 
+2021-06-16 16:00:31.105 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:31 PM
+
+2021-06-16 16:00:31.243 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/16/2021 4:00:31 PM
+
+2021-06-16 16:00:31.726 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:31 PM
+
+2021-06-16 16:00:32.006 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:32 PM
+
+2021-06-16 16:00:32.206 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:32 PM
+
+2021-06-16 16:00:34.846 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:34 PM
+
+2021-06-16 16:00:35.017 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:35 PM
+
+2021-06-16 16:00:35.178 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:35 PM
+
+2021-06-16 16:00:35.327 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:35 PM
+
+2021-06-16 16:00:35.470 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:35 PM
+
+2021-06-16 16:00:35.668 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:35 PM
+
+2021-06-16 16:00:35.858 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:35 PM
+
+2021-06-16 16:00:36.008 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:36 PM
+
+2021-06-16 16:00:36.158 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:36 PM
+
+2021-06-16 16:00:40.693 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:00:40 PM
+
+2021-06-16 16:10:45.787 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:45 PM
+
+2021-06-16 16:10:45.787 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:45 PM
+
+2021-06-16 16:10:45.960 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /voznje kako bi dohvatio podatke sa https://localhost:44386/Voznja/GetAll datuma 6/16/2021 4:10:45 PM
+
+2021-06-16 16:10:46.252 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:46 PM
+
+2021-06-16 16:10:46.375 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:46 PM
+
+2021-06-16 16:10:47.561 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:47 PM
+
+2021-06-16 16:10:47.662 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:47 PM
+
+2021-06-16 16:10:47.747 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:47 PM
+
+2021-06-16 16:10:47.865 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:47 PM
+
+2021-06-16 16:10:47.960 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:47 PM
+
+2021-06-16 16:10:48.073 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:48 PM
+
+2021-06-16 16:10:48.152 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:48 PM
+
+2021-06-16 16:10:48.223 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:48 PM
+
+2021-06-16 16:10:48.308 +02:00 [INF] Korisnik sa tokenom eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwibmJmIjoxNjIzODUxMTU5LCJleHAiOjE2MjQ0NTU5NTksImlhdCI6MTYyMzg1MTE1OX0.n6fgoF2fYfICeA22e2UjOybdV0zNvgtZoAlGJJIVFj8 i IP adresom 0.0.0.1 uputio je zahtjev na endpoint /korisnik kako bi dohvatio podatke sa https://localhost:44309/users/getbyid datuma 6/16/2021 4:10:48 PM
+

@@ -201,7 +201,10 @@
                                             @{
                                                 var imaSlobodnihMjesta = (item.Voznja.MaksimalnoPutnika - item.Putnici.Count()) > 0;
                                             }
-                                            <MudChip Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Default" OnClick="() => OtkaziVoznju(item.Voznja)">Otkaži vožnju</MudChip>
+                                            @if (item.Voznja.DateTime > DateTime.Now)
+                                            {
+                                                <MudChip Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Default" OnClick="() => OtkaziVoznju(item.Voznja)">Otkaži vožnju</MudChip>
+                                            }
                                             <MudIconButton Icon="@Icons.Material.Filled.Face" Color="Color.Default" OnClick="() => PokaziPutike(item.Voznja)" />
                                         </CardHeaderActions>
                                     </MudCardHeader>
