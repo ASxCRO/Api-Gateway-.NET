@@ -34,7 +34,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
 
         public async Task<bool> Login(LoginRequest loginRequest)
         {
-            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, loginRequest, HttpMethod.Post, "/authenticate");
+            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, loginRequest, HttpMethod.Post, "/authenticate", this.User?.Token);
             
             if(response is not null)
             {
@@ -59,7 +59,7 @@ namespace ApiGateway.Core.Services.AuthenticationServices
         public async Task<bool> Register(RegisterRequest requestModel)
         {
 
-            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, requestModel, HttpMethod.Post, "/register");
+            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, requestModel, HttpMethod.Post, "/register", this.User?.Token);
 
             if (response is not null)
             {
@@ -73,13 +73,13 @@ namespace ApiGateway.Core.Services.AuthenticationServices
 
         public async Task<bool> Update(User.User user)
         {
-            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, user, HttpMethod.Post, "/azurirajkorisnika");
+            var response = await webAssemblyHttpService.Fetch<LoginResponse>(Client.ApiGateway, user, HttpMethod.Post, "/azurirajkorisnika", this.User?.Token);
             return response is not null ? true : false;
         }
 
         public async Task<User.User> GetById(int id)
         {
-            var response = await webAssemblyHttpService.Fetch<ApiGateway.Core.User.User>(Client.ApiGateway, null, HttpMethod.Get, $"/korisnik?id={id}");
+            var response = await webAssemblyHttpService.Fetch<ApiGateway.Core.User.User>(Client.ApiGateway, null, HttpMethod.Get, $"/korisnik?id={id}", this.User?.Token);
             return response is not null ? response : null;
         }
     }

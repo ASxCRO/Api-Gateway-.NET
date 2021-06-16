@@ -101,14 +101,14 @@
     {
       "id": 0,
       "name": "authenticationService",
-      //"baseUri": "https://localhost:44309"
-      "baseUri": "https://autostoper-authorization.herokuapp.com"
+      "baseUri": "https://localhost:44309"
+      //"baseUri": "https://autostoper-authorization.herokuapp.com"
     },
     {
       "id": 1,
       "name": "autostoperService",
-      //"baseUri": "https://localhost:44386",
-      "baseUri": "https://autostoper-api.herokuapp.com"
+      "baseUri": "https://localhost:44386"
+      //"baseUri": "https://autostoper-api.herokuapp.com"
       //"ipSafelist": [
       //  "0.0.0.1"
       //]

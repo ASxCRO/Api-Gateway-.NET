@@ -65,8 +65,11 @@ namespace ApiGateway.Package.Models
 
             if (destination.RequiresAuthentication)
             {
-                string token = request.Headers["Authorization"];
-                request.Query.Append(new KeyValuePair<string, StringValues>("bearer", new StringValues(token)));
+                string tokenized = request.Headers["Authorization"];
+                var token = tokenized?.Split(" ")[1];
+                if(token is null)
+                    return ConstructErrorMessage("Neautorizirani pristup.");
+                
                 var authService = Services.First(s => s.Name.Equals("authenticationService"));
                 var datum = DateTime.Now.ToString();
                 var dateBytes = Encoding.UTF8.GetBytes(datum);
@@ -78,6 +81,7 @@ namespace ApiGateway.Package.Models
                 {
                     client.DefaultRequestHeaders.Add("Datum", datum);
                     client.DefaultRequestHeaders.Add("Hash", hashBase64);
+                    client.DefaultRequestHeaders.Add("Authorization", tokenized);
 
                     var newRequest = new HttpRequestMessage(new HttpMethod(request.Method), $"{authService.BaseUri}/users/getall");
                     var authResponse = await client.PostAsync($"{authService.BaseUri}/users/getall", new StringContent(string.Empty));

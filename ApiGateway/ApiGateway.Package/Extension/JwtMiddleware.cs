@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,8 +28,10 @@ namespace ApiGateway.Package.Extension
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
-            if (token != null)
+            if(token != null)
+            {
                 attachUserToContext(context, token);
+            }
 
             await _next(context);
         }
@@ -51,6 +54,7 @@ namespace ApiGateway.Package.Extension
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
+
                 context.Response.StatusCode = 200;
                 await context.Response.WriteAsync("jwt validan");
             }
