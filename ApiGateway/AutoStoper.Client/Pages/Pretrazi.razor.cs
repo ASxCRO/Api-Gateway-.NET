@@ -214,7 +214,7 @@ namespace AutoStoper.Client.Pages
             var sveVoznjeTrenutnogKorisnika = await _autoStoperService.GetByUserId(_authorizationService.User.Id);
             VoznjeTrenutnogKorisnika.Clear();
             foreach (var item in sveVoznjeTrenutnogKorisnika)
-                foreach (var putnik in item.Putnici.Where(p=>p.Vozac == false))
+                foreach (var putnik in item.Putnici.Where(p=>p.UserId == _authorizationService.User.Id))
                     VoznjeTrenutnogKorisnika.Add(new VoznjaViewModel
                     {
                         Voznja = item,

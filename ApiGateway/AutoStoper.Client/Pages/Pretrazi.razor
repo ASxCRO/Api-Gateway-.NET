@@ -82,8 +82,9 @@
 
                                                             <MudItem xs="6">
                                                                 <div class="d-flex justify-space-between">
-                                                                    <MudText Typo="Typo.h4"> Cijena @Math.Round(item.Voznja.Cijena, 2).ToString() kn</MudText>
+                                                                    <MudText Typo="Typo.h6"> Cijena @Math.Round(item.Voznja.Cijena, 2).ToString() kn</MudText>
                                                                     <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.TimeToLeave"></MudIcon>
+                                                                    <MudText Typo="Typo.h6">@item.Voznja.DateTime.ToString("dd.MM.yyyy HH:mm")</MudText>
                                                                 </div>
 
                                                             </MudItem>
@@ -115,7 +116,7 @@
                                                             </MudItem>
                                                             <MudItem xs="12">
                                                                 <div class="d-flex justify-space-between">
-                                                                    @if (item.Voznja.MaksimalnoPutnika == item.Putnici.Count())
+                                                                    @if ((item.Voznja.MaksimalnoPutnika - item.Voznja.Putnici.Where(p => p.Vozac == false).Count()) <= 0)
                                                                     {
                                                                         <MudChip Icon="@Icons.Material.Filled.Person" Color="Color.Error">Nema više mjesta</MudChip>
                                                                     }
@@ -201,7 +202,7 @@
                                             @{
                                                 var imaSlobodnihMjesta = (item.Voznja.MaksimalnoPutnika - item.Putnici.Count()) > 0;
                                             }
-                                            @if (item.Voznja.DateTime > DateTime.Now)
+                                            @if (item.Voznja.DateTime >= DateTime.Now)
                                             {
                                                 <MudChip Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Default" OnClick="() => OtkaziVoznju(item.Voznja)">Otkaži vožnju</MudChip>
                                             }
@@ -220,10 +221,10 @@
 
                                             <MudItem xs="6">
                                                 <div class="d-flex justify-space-between">
-                                                    <MudText Typo="Typo.h4"> Cijena @Math.Round(item.Voznja.Cijena, 2).ToString() kn</MudText>
+                                                    <MudText Typo="Typo.h6"> Cijena @Math.Round(item.Voznja.Cijena, 2).ToString() kn</MudText>
                                                     <MudIcon Size="Size.Large" Icon="@Icons.Material.Outlined.TimeToLeave"></MudIcon>
+                                                    <MudText Typo="Typo.h6">@item.Voznja.DateTime.ToString("dd.MM.yyyy HH:mm")</MudText>
                                                 </div>
-
                                             </MudItem>
                                         </MudGrid>
 

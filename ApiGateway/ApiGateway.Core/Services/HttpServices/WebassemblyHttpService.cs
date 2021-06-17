@@ -90,7 +90,15 @@ namespace ApiGateway.Core.HttpServices
                 if (token != null)
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                var response = await client.SendAsync(request);
+                HttpResponseMessage response = new HttpResponseMessage();
+                if (request.Method == HttpMethod.Post)
+                {
+                    response = await client.PostAsync(request.RequestUri.OriginalString, request.Content);
+                }
+                else if (request.Method == HttpMethod.Get)
+                {
+                    response = await client.GetAsync(request.RequestUri.OriginalString);
+                }
 
                 _spinnerService.Hide();
 
